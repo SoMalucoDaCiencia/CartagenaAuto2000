@@ -1,0 +1,11 @@
+C:\Users\alan_\Documents\senacTrabalhos\Jogo Autonomo\CartagenaAuto2000\teste\teste\bin\Debug\teste.exe.config
+C:\Users\alan_\Documents\senacTrabalhos\Jogo Autonomo\CartagenaAuto2000\teste\teste\bin\Debug\teste.exe
+C:\Users\alan_\Documents\senacTrabalhos\Jogo Autonomo\CartagenaAuto2000\teste\teste\bin\Debug\teste.pdb
+C:\Users\alan_\Documents\senacTrabalhos\Jogo Autonomo\CartagenaAuto2000\teste\teste\obj\Debug\teste.csproj.AssemblyReference.cache
+C:\Users\alan_\Documents\senacTrabalhos\Jogo Autonomo\CartagenaAuto2000\teste\teste\obj\Debug\teste.csproj.SuggestedBindingRedirects.cache
+C:\Users\alan_\Documents\senacTrabalhos\Jogo Autonomo\CartagenaAuto2000\teste\teste\obj\Debug\teste.Form1.resources
+C:\Users\alan_\Documents\senacTrabalhos\Jogo Autonomo\CartagenaAuto2000\teste\teste\obj\Debug\teste.Properties.Resources.resources
+C:\Users\alan_\Documents\senacTrabalhos\Jogo Autonomo\CartagenaAuto2000\teste\teste\obj\Debug\teste.csproj.GenerateResource.cache
+C:\Users\alan_\Documents\senacTrabalhos\Jogo Autonomo\CartagenaAuto2000\teste\teste\obj\Debug\teste.csproj.CoreCompileInputs.cache
+C:\Users\alan_\Documents\senacTrabalhos\Jogo Autonomo\CartagenaAuto2000\teste\teste\obj\Debug\teste.exe
+C:\Users\alan_\Documents\senacTrabalhos\Jogo Autonomo\CartagenaAuto2000\teste\teste\obj\Debug\teste.pdb
