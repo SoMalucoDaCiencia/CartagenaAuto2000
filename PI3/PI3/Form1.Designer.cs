@@ -297,7 +297,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LavenderBlush;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(1088, 611);
+            this.ClientSize = new System.Drawing.Size(1086, 553);
             this.Controls.Add(this.lstExibirMao);
             this.Controls.Add(this.lstTabuleiro);
             this.Controls.Add(this.label2);
@@ -325,7 +325,7 @@
             this.Controls.Add(this.lstListaDePartidas);
             this.Controls.Add(this.lblListarPartidas);
             this.Controls.Add(this.btnListarPartidas);
-            this.MinimumSize = new System.Drawing.Size(1104, 650);
+            this.MinimumSize = new System.Drawing.Size(1102, 592);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);

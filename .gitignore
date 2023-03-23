@@ -93,6 +93,7 @@ nb-configuration.xml
 .history/*
 *.launch
 .c9/
+/.vs/
 
 ##############################
 ## OS X
@@ -126,3 +127,4 @@ chrome-profiler-events*.json
 *.mov
 *.wmv
 
+/Cartagena/Cartagena/Cartagena.csproj
