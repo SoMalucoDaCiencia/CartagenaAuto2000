@@ -59,12 +59,13 @@
             // 
             // btnListarPartidas
             // 
+            this.btnListarPartidas.BackColor = System.Drawing.Color.Pink;
             this.btnListarPartidas.Location = new System.Drawing.Point(233, 40);
             this.btnListarPartidas.Name = "btnListarPartidas";
             this.btnListarPartidas.Size = new System.Drawing.Size(148, 23);
             this.btnListarPartidas.TabIndex = 0;
             this.btnListarPartidas.Text = "Listar Partidas";
-            this.btnListarPartidas.UseVisualStyleBackColor = true;
+            this.btnListarPartidas.UseVisualStyleBackColor = false;
             this.btnListarPartidas.Click += new System.EventHandler(this.btnListarPartidas_Click);
             // 
             // lblListarPartidas
@@ -85,12 +86,13 @@
             // 
             // btnPartidaSelecionada
             // 
+            this.btnPartidaSelecionada.BackColor = System.Drawing.Color.Pink;
             this.btnPartidaSelecionada.Location = new System.Drawing.Point(442, 40);
             this.btnPartidaSelecionada.Name = "btnPartidaSelecionada";
             this.btnPartidaSelecionada.Size = new System.Drawing.Size(148, 23);
             this.btnPartidaSelecionada.TabIndex = 3;
             this.btnPartidaSelecionada.Text = "Partida Selecionada";
-            this.btnPartidaSelecionada.UseVisualStyleBackColor = true;
+            this.btnPartidaSelecionada.UseVisualStyleBackColor = false;
             this.btnPartidaSelecionada.Click += new System.EventHandler(this.btnPartidaSelecionada_Click);
             // 
             // lblPartidaSelecionada
@@ -104,12 +106,13 @@
             // 
             // btnCriarPartida
             // 
+            this.btnCriarPartida.BackColor = System.Drawing.Color.Pink;
             this.btnCriarPartida.Location = new System.Drawing.Point(38, 39);
             this.btnCriarPartida.Name = "btnCriarPartida";
             this.btnCriarPartida.Size = new System.Drawing.Size(148, 23);
             this.btnCriarPartida.TabIndex = 5;
             this.btnCriarPartida.Text = "Criar Partida";
-            this.btnCriarPartida.UseVisualStyleBackColor = true;
+            this.btnCriarPartida.UseVisualStyleBackColor = false;
             this.btnCriarPartida.Click += new System.EventHandler(this.btnCriarPartida_Click);
             // 
             // lblCriarPartida
@@ -163,12 +166,13 @@
             // 
             // btnEntrarPartida
             // 
+            this.btnEntrarPartida.BackColor = System.Drawing.Color.Pink;
             this.btnEntrarPartida.Location = new System.Drawing.Point(442, 117);
             this.btnEntrarPartida.Name = "btnEntrarPartida";
             this.btnEntrarPartida.Size = new System.Drawing.Size(148, 23);
             this.btnEntrarPartida.TabIndex = 12;
             this.btnEntrarPartida.Text = "Entrar Partida";
-            this.btnEntrarPartida.UseVisualStyleBackColor = true;
+            this.btnEntrarPartida.UseVisualStyleBackColor = false;
             this.btnEntrarPartida.Click += new System.EventHandler(this.btnEntrarPartida_Click);
             // 
             // lstListaDeJogadores
@@ -181,32 +185,35 @@
             // 
             // btnTabuleiro
             // 
+            this.btnTabuleiro.BackColor = System.Drawing.Color.Pink;
             this.btnTabuleiro.Location = new System.Drawing.Point(680, 97);
             this.btnTabuleiro.Name = "btnTabuleiro";
             this.btnTabuleiro.Size = new System.Drawing.Size(75, 23);
             this.btnTabuleiro.TabIndex = 15;
             this.btnTabuleiro.Text = "Tabuleiro";
-            this.btnTabuleiro.UseVisualStyleBackColor = true;
+            this.btnTabuleiro.UseVisualStyleBackColor = false;
             this.btnTabuleiro.Click += new System.EventHandler(this.btnMapa_Click);
             // 
             // btnIniciarPartida
             // 
+            this.btnIniciarPartida.BackColor = System.Drawing.Color.Pink;
             this.btnIniciarPartida.Location = new System.Drawing.Point(657, 39);
             this.btnIniciarPartida.Name = "btnIniciarPartida";
             this.btnIniciarPartida.Size = new System.Drawing.Size(118, 23);
             this.btnIniciarPartida.TabIndex = 16;
             this.btnIniciarPartida.Text = "Iniciar Partida";
-            this.btnIniciarPartida.UseVisualStyleBackColor = true;
+            this.btnIniciarPartida.UseVisualStyleBackColor = false;
             this.btnIniciarPartida.Click += new System.EventHandler(this.btnIniciarPartida_Click);
             // 
             // btnExibirMao
             // 
+            this.btnExibirMao.BackColor = System.Drawing.Color.Pink;
             this.btnExibirMao.Location = new System.Drawing.Point(900, 39);
             this.btnExibirMao.Name = "btnExibirMao";
             this.btnExibirMao.Size = new System.Drawing.Size(75, 23);
             this.btnExibirMao.TabIndex = 17;
             this.btnExibirMao.Text = "Exibir Mão";
-            this.btnExibirMao.UseVisualStyleBackColor = true;
+            this.btnExibirMao.UseVisualStyleBackColor = false;
             this.btnExibirMao.Click += new System.EventHandler(this.btnExibirMao_Click);
             // 
             // txtCriarSenha
@@ -325,6 +332,7 @@
             this.Controls.Add(this.lstListaDePartidas);
             this.Controls.Add(this.lblListarPartidas);
             this.Controls.Add(this.btnListarPartidas);
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.MinimumSize = new System.Drawing.Size(1102, 592);
             this.Name = "Form1";
             this.Text = "Form1";
