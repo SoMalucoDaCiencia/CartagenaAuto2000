@@ -55,6 +55,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lstTabuleiro = new System.Windows.Forms.ListBox();
             this.lstExibirMao = new System.Windows.Forms.ListBox();
+            this.btnJogarFrente = new System.Windows.Forms.Button();
+            this.btnJogarTras = new System.Windows.Forms.Button();
+            this.btnPularVez = new System.Windows.Forms.Button();
+            this.lblDadosJogador = new System.Windows.Forms.Label();
+            this.btnListarJogadores = new System.Windows.Forms.Button();
+            this.btnHistorico = new System.Windows.Forms.Button();
+            this.lstHistorico = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // btnListarPartidas
@@ -81,7 +88,7 @@
             this.lstListaDePartidas.FormattingEnabled = true;
             this.lstListaDePartidas.Location = new System.Drawing.Point(222, 76);
             this.lstListaDePartidas.Name = "lstListaDePartidas";
-            this.lstListaDePartidas.Size = new System.Drawing.Size(169, 420);
+            this.lstListaDePartidas.Size = new System.Drawing.Size(169, 459);
             this.lstListaDePartidas.TabIndex = 2;
             // 
             // btnPartidaSelecionada
@@ -178,7 +185,7 @@
             // lstListaDeJogadores
             // 
             this.lstListaDeJogadores.FormattingEnabled = true;
-            this.lstListaDeJogadores.Location = new System.Drawing.Point(457, 401);
+            this.lstListaDeJogadores.Location = new System.Drawing.Point(457, 434);
             this.lstListaDeJogadores.Name = "lstListaDeJogadores";
             this.lstListaDeJogadores.Size = new System.Drawing.Size(120, 95);
             this.lstListaDeJogadores.TabIndex = 14;
@@ -287,7 +294,7 @@
             this.lstTabuleiro.FormattingEnabled = true;
             this.lstTabuleiro.Location = new System.Drawing.Point(637, 126);
             this.lstTabuleiro.Name = "lstTabuleiro";
-            this.lstTabuleiro.Size = new System.Drawing.Size(169, 368);
+            this.lstTabuleiro.Size = new System.Drawing.Size(169, 407);
             this.lstTabuleiro.TabIndex = 26;
             // 
             // lstExibirMao
@@ -298,13 +305,91 @@
             this.lstExibirMao.Size = new System.Drawing.Size(169, 160);
             this.lstExibirMao.TabIndex = 27;
             // 
+            // btnJogarFrente
+            // 
+            this.btnJogarFrente.BackColor = System.Drawing.Color.Pink;
+            this.btnJogarFrente.Location = new System.Drawing.Point(873, 261);
+            this.btnJogarFrente.Name = "btnJogarFrente";
+            this.btnJogarFrente.Size = new System.Drawing.Size(125, 23);
+            this.btnJogarFrente.TabIndex = 28;
+            this.btnJogarFrente.Text = "Jogar Para Frente";
+            this.btnJogarFrente.UseVisualStyleBackColor = false;
+            this.btnJogarFrente.Click += new System.EventHandler(this.btnJogarFrente_Click);
+            // 
+            // btnJogarTras
+            // 
+            this.btnJogarTras.BackColor = System.Drawing.Color.Pink;
+            this.btnJogarTras.Location = new System.Drawing.Point(873, 290);
+            this.btnJogarTras.Name = "btnJogarTras";
+            this.btnJogarTras.Size = new System.Drawing.Size(125, 23);
+            this.btnJogarTras.TabIndex = 29;
+            this.btnJogarTras.Text = "Jogar Para Trás";
+            this.btnJogarTras.UseVisualStyleBackColor = false;
+            this.btnJogarTras.Click += new System.EventHandler(this.btnJogarTras_Click);
+            // 
+            // btnPularVez
+            // 
+            this.btnPularVez.BackColor = System.Drawing.Color.Pink;
+            this.btnPularVez.Location = new System.Drawing.Point(873, 319);
+            this.btnPularVez.Name = "btnPularVez";
+            this.btnPularVez.Size = new System.Drawing.Size(125, 23);
+            this.btnPularVez.TabIndex = 30;
+            this.btnPularVez.Text = "Pular Vez";
+            this.btnPularVez.UseVisualStyleBackColor = false;
+            this.btnPularVez.Click += new System.EventHandler(this.btnPularVez_Click);
+            // 
+            // lblDadosJogador
+            // 
+            this.lblDadosJogador.AutoSize = true;
+            this.lblDadosJogador.Location = new System.Drawing.Point(44, 359);
+            this.lblDadosJogador.Name = "lblDadosJogador";
+            this.lblDadosJogador.Size = new System.Drawing.Size(0, 13);
+            this.lblDadosJogador.TabIndex = 31;
+            // 
+            // btnListarJogadores
+            // 
+            this.btnListarJogadores.BackColor = System.Drawing.Color.Pink;
+            this.btnListarJogadores.Location = new System.Drawing.Point(442, 395);
+            this.btnListarJogadores.Name = "btnListarJogadores";
+            this.btnListarJogadores.Size = new System.Drawing.Size(148, 23);
+            this.btnListarJogadores.TabIndex = 32;
+            this.btnListarJogadores.Text = "Listar Jogadores";
+            this.btnListarJogadores.UseVisualStyleBackColor = false;
+            this.btnListarJogadores.Click += new System.EventHandler(this.btnListarJogadores_Click);
+            // 
+            // btnHistorico
+            // 
+            this.btnHistorico.BackColor = System.Drawing.Color.Pink;
+            this.btnHistorico.Location = new System.Drawing.Point(873, 349);
+            this.btnHistorico.Name = "btnHistorico";
+            this.btnHistorico.Size = new System.Drawing.Size(125, 23);
+            this.btnHistorico.TabIndex = 33;
+            this.btnHistorico.Text = "Exibir Historico";
+            this.btnHistorico.UseVisualStyleBackColor = false;
+            this.btnHistorico.Click += new System.EventHandler(this.btnHistorico_Click);
+            // 
+            // lstHistorico
+            // 
+            this.lstHistorico.FormattingEnabled = true;
+            this.lstHistorico.Location = new System.Drawing.Point(856, 378);
+            this.lstHistorico.Name = "lstHistorico";
+            this.lstHistorico.Size = new System.Drawing.Size(169, 160);
+            this.lstHistorico.TabIndex = 34;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LavenderBlush;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(1086, 553);
+            this.ClientSize = new System.Drawing.Size(1130, 603);
+            this.Controls.Add(this.lstHistorico);
+            this.Controls.Add(this.btnHistorico);
+            this.Controls.Add(this.btnListarJogadores);
+            this.Controls.Add(this.lblDadosJogador);
+            this.Controls.Add(this.btnPularVez);
+            this.Controls.Add(this.btnJogarTras);
+            this.Controls.Add(this.btnJogarFrente);
             this.Controls.Add(this.lstExibirMao);
             this.Controls.Add(this.lstTabuleiro);
             this.Controls.Add(this.label2);
@@ -333,7 +418,7 @@
             this.Controls.Add(this.lblListarPartidas);
             this.Controls.Add(this.btnListarPartidas);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.MinimumSize = new System.Drawing.Size(1102, 592);
+            this.MinimumSize = new System.Drawing.Size(1146, 642);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -370,6 +455,13 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox lstTabuleiro;
         private System.Windows.Forms.ListBox lstExibirMao;
+        private System.Windows.Forms.Button btnJogarFrente;
+        private System.Windows.Forms.Button btnJogarTras;
+        private System.Windows.Forms.Button btnPularVez;
+        private System.Windows.Forms.Label lblDadosJogador;
+        private System.Windows.Forms.Button btnListarJogadores;
+        private System.Windows.Forms.Button btnHistorico;
+        private System.Windows.Forms.ListBox lstHistorico;
     }
 }
 

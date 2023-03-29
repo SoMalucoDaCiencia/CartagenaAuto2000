@@ -42,7 +42,7 @@ namespace PI3
             string dataPartida = itens[2];
             string status = itens[3];
 
-            lblPartidaSelecionada.Text = "id: " + idPartida.ToString() + "\nNome: " + nomePartida;
+            lblPartidaSelecionada.Text = "Id: " + idPartida.ToString() + "\nNome: " + nomePartida;
         }
 
         private void btnCriarPartida_Click(object sender, EventArgs e)
@@ -50,7 +50,7 @@ namespace PI3
             string nomeP = txtNomePartida.Text;
             string senhaP = txtCriarSenha.Text;
             string retorno = Jogo.CriarPartida(nomeP, senhaP);
-            lblCriarPartida.Text = "id partida: " + retorno;
+            lblCriarPartida.Text = "Id partida: " + retorno;
         }
 
         private void btnEntrarPartida_Click(object sender, EventArgs e)
@@ -60,7 +60,7 @@ namespace PI3
 
             string retorno = Jogo.EntrarPartida(idPartida, nome, senha);
             retorno = retorno.Replace("\r", "");
-            string[] retornoP = retorno.Split(',');  
+            string[] retornoP = retorno.Split(',');
 
             string jogadores = Jogo.ListarJogadores(idPartida);
             jogadores = jogadores.Replace("\r", "");
@@ -83,9 +83,21 @@ namespace PI3
                 
         }
 
+        private void btnListarJogadores_Click(object sender, EventArgs e)
+        {
+            string jogadores = Jogo.ListarJogadores(idPartida);
+            jogadores = jogadores.Replace("\r", "");
+            string[] jogador = jogadores.Split('\n');
+
+            for (int i = 0; i < jogador.Length; i++)
+            {
+                lstListaDeJogadores.Items.Add(jogador[i]);
+            }
+        }
+
         private void btnMapa_Click(object sender, EventArgs e)
         {
-            string mapa = Jogo.ExibirTabuleiro(18);
+            string mapa = Jogo.ExibirTabuleiro(idPartida);
             mapa = mapa.Replace("\r", "");
             string[] tabuleiro = mapa.Split('\n');
 
@@ -94,18 +106,19 @@ namespace PI3
                 lstTabuleiro.Items.Add(tabuleiro[i]);
             }
 
-            Console.WriteLine(Jogo.ExibirTabuleiro(18));
+            Console.WriteLine(Jogo.ExibirTabuleiro(idPartida));
         }
 
         private void btnIniciarPartida_Click(object sender, EventArgs e)
         {
-            string iniciar = Jogo.IniciarPartida(80, "2540E6");
+            string iniciar = Jogo.IniciarPartida(362, "55EA81");
             Console.WriteLine(iniciar);
         }
 
         private void btnExibirMao_Click(object sender, EventArgs e)
         {
-            string mao = Jogo.ConsultarMao(80, "2540E6");
+            //string mao = Jogo.ConsultarMao(362, "55EA81");
+            string mao = Jogo.ConsultarMao(363, "1F8DAE");
             mao = mao.Replace("\r", "");
             string[] exibirM = mao.Split('\n');
 
@@ -114,5 +127,39 @@ namespace PI3
                 lstExibirMao.Items.Add(exibirM[i]);
             }
         }
+
+        private void btnJogarFrente_Click(object sender, EventArgs e)
+        {
+            //string jogar = Jogo.Jogar(362, "55EA81", 0, "G");
+            string jogar = Jogo.Jogar(363, "1F8DAE", 0, "T");
+            Console.WriteLine(jogar);
+        }
+
+        private void btnJogarTras_Click(object sender, EventArgs e)
+        {
+            string jogarTras = Jogo.Jogar(362, "55EA81", 5);
+            Console.WriteLine(jogarTras);
+        }
+
+        private void btnPularVez_Click(object sender, EventArgs e)
+        {
+            //string pularVez = Jogo.Jogar(362, "55EA81");
+            string pularVez = Jogo.Jogar(363, "1F8DAE");
+            Console.WriteLine(pularVez);
+        }
+
+        private void btnHistorico_Click(object sender, EventArgs e)
+        {
+            string historico = Jogo.ExibirHistorico(idPartida);
+            historico = historico.Replace("\r", "");
+            string[] hist = historico.Split('\n');
+
+            for(int i = 0; i < hist.Length; i++)
+            {
+                lstHistorico.Items.Add(hist[i]);
+            }
+        }
+
+
     }
 }
