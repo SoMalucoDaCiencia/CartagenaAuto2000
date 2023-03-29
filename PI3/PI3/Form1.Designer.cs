@@ -420,7 +420,7 @@
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.MinimumSize = new System.Drawing.Size(1146, 642);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Catagena2000 PI3";
             this.ResumeLayout(false);
             this.PerformLayout();
 
