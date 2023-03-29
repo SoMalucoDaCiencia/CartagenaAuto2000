@@ -19,6 +19,10 @@ namespace PI3
         }
 
         int idPartida;
+        int idJogador;
+        string senhaJogador;
+        string cartaSelecionada;
+        int posicaoPirata;
 
         private void btnListarPartidas_Click(object sender, EventArgs e)
         {
@@ -95,6 +99,23 @@ namespace PI3
             }
         }
 
+        private void btnPirataSelecionado_Click(object sender, EventArgs e)
+        {
+            string pirata = lstListaDeJogadores.SelectedItem.ToString();
+            string[] itens = pirata.Split(',');
+
+            idJogador = Convert.ToInt32(itens[0]);
+            string nomeJogador = itens[1];
+            string cor = itens[2];
+
+            lblPirataSelecionado.Text = "Id: " + idJogador.ToString() + "\nNome: " + nomeJogador + "\nCor: " + cor;
+        }
+
+        private void btnSenhaJog_Click(object sender, EventArgs e)
+        {
+            senhaJogador = txtSenhaJog.Text;
+        }
+
         private void btnMapa_Click(object sender, EventArgs e)
         {
             string mapa = Jogo.ExibirTabuleiro(idPartida);
@@ -111,14 +132,13 @@ namespace PI3
 
         private void btnIniciarPartida_Click(object sender, EventArgs e)
         {
-            string iniciar = Jogo.IniciarPartida(362, "55EA81");
+            string iniciar = Jogo.IniciarPartida(idJogador, senhaJogador);
             Console.WriteLine(iniciar);
         }
 
         private void btnExibirMao_Click(object sender, EventArgs e)
         {
-            //string mao = Jogo.ConsultarMao(362, "55EA81");
-            string mao = Jogo.ConsultarMao(363, "1F8DAE");
+            string mao = Jogo.ConsultarMao(idJogador, senhaJogador);
             mao = mao.Replace("\r", "");
             string[] exibirM = mao.Split('\n');
 
@@ -128,23 +148,43 @@ namespace PI3
             }
         }
 
+        private void btnSelecionarCarta_Click(object sender, EventArgs e)
+        {
+            string carta = lstExibirMao.SelectedItem.ToString();
+            string[] itens = carta.Split(',');
+
+            cartaSelecionada = itens[0];
+            string qtdCarta = itens[1];
+
+            lblCartaSelecionada.Text = "Carta: " + cartaSelecionada + ", Qtd Carta: " + qtdCarta;
+        }
+
+       private void btnPosicao_Click(object sender, EventArgs e)
+        {
+            string posicao = lstTabuleiro.SelectedItem.ToString();
+            string[] itens = posicao.Split(',');
+
+            posicaoPirata = Convert.ToInt32(itens[0]);
+            string cartaPosicao = itens[1];
+
+            lblPosicao.Text = "Posição: " + posicaoPirata + ", Carta: " + cartaPosicao;
+        }
+
         private void btnJogarFrente_Click(object sender, EventArgs e)
         {
-            //string jogar = Jogo.Jogar(362, "55EA81", 0, "G");
-            string jogar = Jogo.Jogar(363, "1F8DAE", 0, "T");
+            string jogar = Jogo.Jogar(idJogador, senhaJogador, 0, cartaSelecionada);
             Console.WriteLine(jogar);
         }
 
         private void btnJogarTras_Click(object sender, EventArgs e)
         {
-            string jogarTras = Jogo.Jogar(362, "55EA81", 5);
+            string jogarTras = Jogo.Jogar(idJogador, senhaJogador, 5);
             Console.WriteLine(jogarTras);
         }
 
         private void btnPularVez_Click(object sender, EventArgs e)
         {
-            //string pularVez = Jogo.Jogar(362, "55EA81");
-            string pularVez = Jogo.Jogar(363, "1F8DAE");
+            string pularVez = Jogo.Jogar(idJogador, senhaJogador);
             Console.WriteLine(pularVez);
         }
 
@@ -160,6 +200,6 @@ namespace PI3
             }
         }
 
-
+ 
     }
 }

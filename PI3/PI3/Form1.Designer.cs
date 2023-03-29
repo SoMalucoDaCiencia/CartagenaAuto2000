@@ -62,6 +62,14 @@
             this.btnListarJogadores = new System.Windows.Forms.Button();
             this.btnHistorico = new System.Windows.Forms.Button();
             this.lstHistorico = new System.Windows.Forms.ListBox();
+            this.btnPirataSelecionado = new System.Windows.Forms.Button();
+            this.btnSelecionarCarta = new System.Windows.Forms.Button();
+            this.lblPirataSelecionado = new System.Windows.Forms.Label();
+            this.lblCartaSelecionada = new System.Windows.Forms.Label();
+            this.lblPosicao = new System.Windows.Forms.Label();
+            this.btnPosicao = new System.Windows.Forms.Button();
+            this.btnSenhaJog = new System.Windows.Forms.Button();
+            this.txtSenhaJog = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnListarPartidas
@@ -88,7 +96,7 @@
             this.lstListaDePartidas.FormattingEnabled = true;
             this.lstListaDePartidas.Location = new System.Drawing.Point(222, 76);
             this.lstListaDePartidas.Name = "lstListaDePartidas";
-            this.lstListaDePartidas.Size = new System.Drawing.Size(169, 459);
+            this.lstListaDePartidas.Size = new System.Drawing.Size(169, 472);
             this.lstListaDePartidas.TabIndex = 2;
             // 
             // btnPartidaSelecionada
@@ -98,7 +106,7 @@
             this.btnPartidaSelecionada.Name = "btnPartidaSelecionada";
             this.btnPartidaSelecionada.Size = new System.Drawing.Size(148, 23);
             this.btnPartidaSelecionada.TabIndex = 3;
-            this.btnPartidaSelecionada.Text = "Partida Selecionada";
+            this.btnPartidaSelecionada.Text = "Selecionar Partida";
             this.btnPartidaSelecionada.UseVisualStyleBackColor = false;
             this.btnPartidaSelecionada.Click += new System.EventHandler(this.btnPartidaSelecionada_Click);
             // 
@@ -187,7 +195,7 @@
             this.lstListaDeJogadores.FormattingEnabled = true;
             this.lstListaDeJogadores.Location = new System.Drawing.Point(457, 434);
             this.lstListaDeJogadores.Name = "lstListaDeJogadores";
-            this.lstListaDeJogadores.Size = new System.Drawing.Size(120, 95);
+            this.lstListaDeJogadores.Size = new System.Drawing.Size(120, 108);
             this.lstListaDeJogadores.TabIndex = 14;
             // 
             // btnTabuleiro
@@ -215,7 +223,7 @@
             // btnExibirMao
             // 
             this.btnExibirMao.BackColor = System.Drawing.Color.Pink;
-            this.btnExibirMao.Location = new System.Drawing.Point(900, 39);
+            this.btnExibirMao.Location = new System.Drawing.Point(895, 203);
             this.btnExibirMao.Name = "btnExibirMao";
             this.btnExibirMao.Size = new System.Drawing.Size(75, 23);
             this.btnExibirMao.TabIndex = 17;
@@ -294,13 +302,13 @@
             this.lstTabuleiro.FormattingEnabled = true;
             this.lstTabuleiro.Location = new System.Drawing.Point(637, 126);
             this.lstTabuleiro.Name = "lstTabuleiro";
-            this.lstTabuleiro.Size = new System.Drawing.Size(169, 407);
+            this.lstTabuleiro.Size = new System.Drawing.Size(169, 420);
             this.lstTabuleiro.TabIndex = 26;
             // 
             // lstExibirMao
             // 
             this.lstExibirMao.FormattingEnabled = true;
-            this.lstExibirMao.Location = new System.Drawing.Point(856, 76);
+            this.lstExibirMao.Location = new System.Drawing.Point(851, 240);
             this.lstExibirMao.Name = "lstExibirMao";
             this.lstExibirMao.Size = new System.Drawing.Size(169, 160);
             this.lstExibirMao.TabIndex = 27;
@@ -308,7 +316,7 @@
             // btnJogarFrente
             // 
             this.btnJogarFrente.BackColor = System.Drawing.Color.Pink;
-            this.btnJogarFrente.Location = new System.Drawing.Point(873, 261);
+            this.btnJogarFrente.Location = new System.Drawing.Point(1120, 31);
             this.btnJogarFrente.Name = "btnJogarFrente";
             this.btnJogarFrente.Size = new System.Drawing.Size(125, 23);
             this.btnJogarFrente.TabIndex = 28;
@@ -319,7 +327,7 @@
             // btnJogarTras
             // 
             this.btnJogarTras.BackColor = System.Drawing.Color.Pink;
-            this.btnJogarTras.Location = new System.Drawing.Point(873, 290);
+            this.btnJogarTras.Location = new System.Drawing.Point(1120, 60);
             this.btnJogarTras.Name = "btnJogarTras";
             this.btnJogarTras.Size = new System.Drawing.Size(125, 23);
             this.btnJogarTras.TabIndex = 29;
@@ -330,7 +338,7 @@
             // btnPularVez
             // 
             this.btnPularVez.BackColor = System.Drawing.Color.Pink;
-            this.btnPularVez.Location = new System.Drawing.Point(873, 319);
+            this.btnPularVez.Location = new System.Drawing.Point(1120, 89);
             this.btnPularVez.Name = "btnPularVez";
             this.btnPularVez.Size = new System.Drawing.Size(125, 23);
             this.btnPularVez.TabIndex = 30;
@@ -360,7 +368,7 @@
             // btnHistorico
             // 
             this.btnHistorico.BackColor = System.Drawing.Color.Pink;
-            this.btnHistorico.Location = new System.Drawing.Point(873, 349);
+            this.btnHistorico.Location = new System.Drawing.Point(1120, 146);
             this.btnHistorico.Name = "btnHistorico";
             this.btnHistorico.Size = new System.Drawing.Size(125, 23);
             this.btnHistorico.TabIndex = 33;
@@ -371,10 +379,88 @@
             // lstHistorico
             // 
             this.lstHistorico.FormattingEnabled = true;
-            this.lstHistorico.Location = new System.Drawing.Point(856, 378);
+            this.lstHistorico.Location = new System.Drawing.Point(1103, 175);
             this.lstHistorico.Name = "lstHistorico";
             this.lstHistorico.Size = new System.Drawing.Size(169, 160);
             this.lstHistorico.TabIndex = 34;
+            // 
+            // btnPirataSelecionado
+            // 
+            this.btnPirataSelecionado.BackColor = System.Drawing.Color.Pink;
+            this.btnPirataSelecionado.Location = new System.Drawing.Point(870, 40);
+            this.btnPirataSelecionado.Name = "btnPirataSelecionado";
+            this.btnPirataSelecionado.Size = new System.Drawing.Size(125, 23);
+            this.btnPirataSelecionado.TabIndex = 35;
+            this.btnPirataSelecionado.Text = "Selecionar Pirata";
+            this.btnPirataSelecionado.UseVisualStyleBackColor = false;
+            this.btnPirataSelecionado.Click += new System.EventHandler(this.btnPirataSelecionado_Click);
+            // 
+            // btnSelecionarCarta
+            // 
+            this.btnSelecionarCarta.BackColor = System.Drawing.Color.Pink;
+            this.btnSelecionarCarta.Location = new System.Drawing.Point(873, 423);
+            this.btnSelecionarCarta.Name = "btnSelecionarCarta";
+            this.btnSelecionarCarta.Size = new System.Drawing.Size(125, 23);
+            this.btnSelecionarCarta.TabIndex = 36;
+            this.btnSelecionarCarta.Text = "Selecionar Carta";
+            this.btnSelecionarCarta.UseVisualStyleBackColor = false;
+            this.btnSelecionarCarta.Click += new System.EventHandler(this.btnSelecionarCarta_Click);
+            // 
+            // lblPirataSelecionado
+            // 
+            this.lblPirataSelecionado.AutoSize = true;
+            this.lblPirataSelecionado.Location = new System.Drawing.Point(885, 75);
+            this.lblPirataSelecionado.Name = "lblPirataSelecionado";
+            this.lblPirataSelecionado.Size = new System.Drawing.Size(96, 13);
+            this.lblPirataSelecionado.TabIndex = 37;
+            this.lblPirataSelecionado.Text = "Pirata Selecionado";
+            // 
+            // lblCartaSelecionada
+            // 
+            this.lblCartaSelecionada.AutoSize = true;
+            this.lblCartaSelecionada.Location = new System.Drawing.Point(888, 458);
+            this.lblCartaSelecionada.Name = "lblCartaSelecionada";
+            this.lblCartaSelecionada.Size = new System.Drawing.Size(94, 13);
+            this.lblCartaSelecionada.TabIndex = 38;
+            this.lblCartaSelecionada.Text = "Carta Selecionada";
+            // 
+            // lblPosicao
+            // 
+            this.lblPosicao.AutoSize = true;
+            this.lblPosicao.Location = new System.Drawing.Point(888, 527);
+            this.lblPosicao.Name = "lblPosicao";
+            this.lblPosicao.Size = new System.Drawing.Size(107, 13);
+            this.lblPosicao.TabIndex = 40;
+            this.lblPosicao.Text = "Posição Selecionada";
+            // 
+            // btnPosicao
+            // 
+            this.btnPosicao.BackColor = System.Drawing.Color.Pink;
+            this.btnPosicao.Location = new System.Drawing.Point(873, 490);
+            this.btnPosicao.Name = "btnPosicao";
+            this.btnPosicao.Size = new System.Drawing.Size(125, 23);
+            this.btnPosicao.TabIndex = 39;
+            this.btnPosicao.Text = "Selecionar Posição";
+            this.btnPosicao.UseVisualStyleBackColor = false;
+            this.btnPosicao.Click += new System.EventHandler(this.btnPosicao_Click);
+            // 
+            // btnSenhaJog
+            // 
+            this.btnSenhaJog.BackColor = System.Drawing.Color.Pink;
+            this.btnSenhaJog.Location = new System.Drawing.Point(870, 138);
+            this.btnSenhaJog.Name = "btnSenhaJog";
+            this.btnSenhaJog.Size = new System.Drawing.Size(125, 23);
+            this.btnSenhaJog.TabIndex = 41;
+            this.btnSenhaJog.Text = "Senha Jogador";
+            this.btnSenhaJog.UseVisualStyleBackColor = false;
+            this.btnSenhaJog.Click += new System.EventHandler(this.btnSenhaJog_Click);
+            // 
+            // txtSenhaJog
+            // 
+            this.txtSenhaJog.Location = new System.Drawing.Point(874, 167);
+            this.txtSenhaJog.Name = "txtSenhaJog";
+            this.txtSenhaJog.Size = new System.Drawing.Size(118, 20);
+            this.txtSenhaJog.TabIndex = 42;
             // 
             // Form1
             // 
@@ -382,7 +468,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LavenderBlush;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(1130, 603);
+            this.ClientSize = new System.Drawing.Size(1324, 603);
+            this.Controls.Add(this.txtSenhaJog);
+            this.Controls.Add(this.btnSenhaJog);
+            this.Controls.Add(this.lblPosicao);
+            this.Controls.Add(this.btnPosicao);
+            this.Controls.Add(this.lblCartaSelecionada);
+            this.Controls.Add(this.lblPirataSelecionado);
+            this.Controls.Add(this.btnSelecionarCarta);
+            this.Controls.Add(this.btnPirataSelecionado);
             this.Controls.Add(this.lstHistorico);
             this.Controls.Add(this.btnHistorico);
             this.Controls.Add(this.btnListarJogadores);
@@ -462,6 +556,14 @@
         private System.Windows.Forms.Button btnListarJogadores;
         private System.Windows.Forms.Button btnHistorico;
         private System.Windows.Forms.ListBox lstHistorico;
+        private System.Windows.Forms.Button btnPirataSelecionado;
+        private System.Windows.Forms.Button btnSelecionarCarta;
+        private System.Windows.Forms.Label lblPirataSelecionado;
+        private System.Windows.Forms.Label lblCartaSelecionada;
+        private System.Windows.Forms.Label lblPosicao;
+        private System.Windows.Forms.Button btnPosicao;
+        private System.Windows.Forms.Button btnSenhaJog;
+        private System.Windows.Forms.TextBox txtSenhaJog;
     }
 }
 
