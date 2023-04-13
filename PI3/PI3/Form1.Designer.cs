@@ -201,7 +201,7 @@
             // btnTabuleiro
             // 
             this.btnTabuleiro.BackColor = System.Drawing.Color.Pink;
-            this.btnTabuleiro.Location = new System.Drawing.Point(680, 97);
+            this.btnTabuleiro.Location = new System.Drawing.Point(660, 268);
             this.btnTabuleiro.Name = "btnTabuleiro";
             this.btnTabuleiro.Size = new System.Drawing.Size(75, 23);
             this.btnTabuleiro.TabIndex = 15;
@@ -212,7 +212,7 @@
             // btnIniciarPartida
             // 
             this.btnIniciarPartida.BackColor = System.Drawing.Color.Pink;
-            this.btnIniciarPartida.Location = new System.Drawing.Point(657, 39);
+            this.btnIniciarPartida.Location = new System.Drawing.Point(632, 210);
             this.btnIniciarPartida.Name = "btnIniciarPartida";
             this.btnIniciarPartida.Size = new System.Drawing.Size(118, 23);
             this.btnIniciarPartida.TabIndex = 16;
@@ -223,7 +223,7 @@
             // btnExibirMao
             // 
             this.btnExibirMao.BackColor = System.Drawing.Color.Pink;
-            this.btnExibirMao.Location = new System.Drawing.Point(895, 203);
+            this.btnExibirMao.Location = new System.Drawing.Point(850, 30);
             this.btnExibirMao.Name = "btnExibirMao";
             this.btnExibirMao.Size = new System.Drawing.Size(75, 23);
             this.btnExibirMao.TabIndex = 17;
@@ -284,7 +284,7 @@
             // lblIniciarPatida
             // 
             this.lblIniciarPatida.AutoSize = true;
-            this.lblIniciarPatida.Location = new System.Drawing.Point(677, 81);
+            this.lblIniciarPatida.Location = new System.Drawing.Point(677, 79);
             this.lblIniciarPatida.Name = "lblIniciarPatida";
             this.lblIniciarPatida.Size = new System.Drawing.Size(0, 13);
             this.lblIniciarPatida.TabIndex = 24;
@@ -292,7 +292,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(677, 201);
+            this.label2.Location = new System.Drawing.Point(677, 199);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(0, 13);
             this.label2.TabIndex = 25;
@@ -300,15 +300,15 @@
             // lstTabuleiro
             // 
             this.lstTabuleiro.FormattingEnabled = true;
-            this.lstTabuleiro.Location = new System.Drawing.Point(637, 126);
+            this.lstTabuleiro.Location = new System.Drawing.Point(624, 297);
             this.lstTabuleiro.Name = "lstTabuleiro";
-            this.lstTabuleiro.Size = new System.Drawing.Size(169, 420);
+            this.lstTabuleiro.Size = new System.Drawing.Size(156, 251);
             this.lstTabuleiro.TabIndex = 26;
             // 
             // lstExibirMao
             // 
             this.lstExibirMao.FormattingEnabled = true;
-            this.lstExibirMao.Location = new System.Drawing.Point(851, 240);
+            this.lstExibirMao.Location = new System.Drawing.Point(806, 67);
             this.lstExibirMao.Name = "lstExibirMao";
             this.lstExibirMao.Size = new System.Drawing.Size(169, 160);
             this.lstExibirMao.TabIndex = 27;
@@ -316,7 +316,7 @@
             // btnJogarFrente
             // 
             this.btnJogarFrente.BackColor = System.Drawing.Color.Pink;
-            this.btnJogarFrente.Location = new System.Drawing.Point(1120, 31);
+            this.btnJogarFrente.Location = new System.Drawing.Point(1036, 55);
             this.btnJogarFrente.Name = "btnJogarFrente";
             this.btnJogarFrente.Size = new System.Drawing.Size(125, 23);
             this.btnJogarFrente.TabIndex = 28;
@@ -327,7 +327,7 @@
             // btnJogarTras
             // 
             this.btnJogarTras.BackColor = System.Drawing.Color.Pink;
-            this.btnJogarTras.Location = new System.Drawing.Point(1120, 60);
+            this.btnJogarTras.Location = new System.Drawing.Point(1036, 84);
             this.btnJogarTras.Name = "btnJogarTras";
             this.btnJogarTras.Size = new System.Drawing.Size(125, 23);
             this.btnJogarTras.TabIndex = 29;
@@ -338,7 +338,7 @@
             // btnPularVez
             // 
             this.btnPularVez.BackColor = System.Drawing.Color.Pink;
-            this.btnPularVez.Location = new System.Drawing.Point(1120, 89);
+            this.btnPularVez.Location = new System.Drawing.Point(1036, 113);
             this.btnPularVez.Name = "btnPularVez";
             this.btnPularVez.Size = new System.Drawing.Size(125, 23);
             this.btnPularVez.TabIndex = 30;
@@ -368,7 +368,7 @@
             // btnHistorico
             // 
             this.btnHistorico.BackColor = System.Drawing.Color.Pink;
-            this.btnHistorico.Location = new System.Drawing.Point(1120, 146);
+            this.btnHistorico.Location = new System.Drawing.Point(1036, 170);
             this.btnHistorico.Name = "btnHistorico";
             this.btnHistorico.Size = new System.Drawing.Size(125, 23);
             this.btnHistorico.TabIndex = 33;
@@ -379,7 +379,7 @@
             // lstHistorico
             // 
             this.lstHistorico.FormattingEnabled = true;
-            this.lstHistorico.Location = new System.Drawing.Point(1103, 175);
+            this.lstHistorico.Location = new System.Drawing.Point(1019, 199);
             this.lstHistorico.Name = "lstHistorico";
             this.lstHistorico.Size = new System.Drawing.Size(169, 160);
             this.lstHistorico.TabIndex = 34;
@@ -387,7 +387,7 @@
             // btnPirataSelecionado
             // 
             this.btnPirataSelecionado.BackColor = System.Drawing.Color.Pink;
-            this.btnPirataSelecionado.Location = new System.Drawing.Point(870, 40);
+            this.btnPirataSelecionado.Location = new System.Drawing.Point(624, 30);
             this.btnPirataSelecionado.Name = "btnPirataSelecionado";
             this.btnPirataSelecionado.Size = new System.Drawing.Size(125, 23);
             this.btnPirataSelecionado.TabIndex = 35;
@@ -398,7 +398,7 @@
             // btnSelecionarCarta
             // 
             this.btnSelecionarCarta.BackColor = System.Drawing.Color.Pink;
-            this.btnSelecionarCarta.Location = new System.Drawing.Point(873, 423);
+            this.btnSelecionarCarta.Location = new System.Drawing.Point(828, 250);
             this.btnSelecionarCarta.Name = "btnSelecionarCarta";
             this.btnSelecionarCarta.Size = new System.Drawing.Size(125, 23);
             this.btnSelecionarCarta.TabIndex = 36;
@@ -409,7 +409,7 @@
             // lblPirataSelecionado
             // 
             this.lblPirataSelecionado.AutoSize = true;
-            this.lblPirataSelecionado.Location = new System.Drawing.Point(885, 75);
+            this.lblPirataSelecionado.Location = new System.Drawing.Point(639, 65);
             this.lblPirataSelecionado.Name = "lblPirataSelecionado";
             this.lblPirataSelecionado.Size = new System.Drawing.Size(96, 13);
             this.lblPirataSelecionado.TabIndex = 37;
@@ -418,7 +418,7 @@
             // lblCartaSelecionada
             // 
             this.lblCartaSelecionada.AutoSize = true;
-            this.lblCartaSelecionada.Location = new System.Drawing.Point(888, 458);
+            this.lblCartaSelecionada.Location = new System.Drawing.Point(843, 285);
             this.lblCartaSelecionada.Name = "lblCartaSelecionada";
             this.lblCartaSelecionada.Size = new System.Drawing.Size(94, 13);
             this.lblCartaSelecionada.TabIndex = 38;
@@ -427,7 +427,7 @@
             // lblPosicao
             // 
             this.lblPosicao.AutoSize = true;
-            this.lblPosicao.Location = new System.Drawing.Point(888, 527);
+            this.lblPosicao.Location = new System.Drawing.Point(843, 354);
             this.lblPosicao.Name = "lblPosicao";
             this.lblPosicao.Size = new System.Drawing.Size(107, 13);
             this.lblPosicao.TabIndex = 40;
@@ -436,7 +436,7 @@
             // btnPosicao
             // 
             this.btnPosicao.BackColor = System.Drawing.Color.Pink;
-            this.btnPosicao.Location = new System.Drawing.Point(873, 490);
+            this.btnPosicao.Location = new System.Drawing.Point(828, 317);
             this.btnPosicao.Name = "btnPosicao";
             this.btnPosicao.Size = new System.Drawing.Size(125, 23);
             this.btnPosicao.TabIndex = 39;
@@ -447,7 +447,7 @@
             // btnSenhaJog
             // 
             this.btnSenhaJog.BackColor = System.Drawing.Color.Pink;
-            this.btnSenhaJog.Location = new System.Drawing.Point(870, 138);
+            this.btnSenhaJog.Location = new System.Drawing.Point(624, 128);
             this.btnSenhaJog.Name = "btnSenhaJog";
             this.btnSenhaJog.Size = new System.Drawing.Size(125, 23);
             this.btnSenhaJog.TabIndex = 41;
@@ -457,7 +457,7 @@
             // 
             // txtSenhaJog
             // 
-            this.txtSenhaJog.Location = new System.Drawing.Point(874, 167);
+            this.txtSenhaJog.Location = new System.Drawing.Point(628, 157);
             this.txtSenhaJog.Name = "txtSenhaJog";
             this.txtSenhaJog.Size = new System.Drawing.Size(118, 20);
             this.txtSenhaJog.TabIndex = 42;
@@ -468,7 +468,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LavenderBlush;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(1324, 603);
+            this.ClientSize = new System.Drawing.Size(1248, 593);
             this.Controls.Add(this.txtSenhaJog);
             this.Controls.Add(this.btnSenhaJog);
             this.Controls.Add(this.lblPosicao);
@@ -512,9 +512,9 @@
             this.Controls.Add(this.lblListarPartidas);
             this.Controls.Add(this.btnListarPartidas);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.MinimumSize = new System.Drawing.Size(1146, 642);
+            this.MinimumSize = new System.Drawing.Size(1264, 632);
             this.Name = "Form1";
-            this.Text = "Catagena2000 PI3";
+            this.Text = "Cartagena2000 PI3";
             this.ResumeLayout(false);
             this.PerformLayout();
 
