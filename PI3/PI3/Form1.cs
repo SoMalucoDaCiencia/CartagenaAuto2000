@@ -22,7 +22,7 @@ namespace PI3
         int idJogador;
         string senhaJogador;
         string cartaSelecionada;
-        int posicaoPirata;
+        int posicaoPirata; //pirata
 
         private void btnListarPartidas_Click(object sender, EventArgs e)
         {
