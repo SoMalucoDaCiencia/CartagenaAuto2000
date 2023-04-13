@@ -128,3 +128,4 @@ chrome-profiler-events*.json
 *.wmv
 
 /Cartagena/Cartagena/Cartagena.csproj
+/src/.vs/
