@@ -28,12 +28,10 @@ namespace PI3
         {
             string retorno = Jogo.ListarPartidas("T"); 
             retorno = retorno.Replace("\r", ""); 
-            string[] partidas = retorno.Split('\n'); 
-
-            for (int i = 0; i < partidas.Length; i++)
-            {
-                lstListaDePartidas.Items.Add(partidas[i]);
-            }
+            string[] partidas = retorno.Split('\n');
+            
+            lstListaDePartidas.Items.Clear();
+            lstListaDePartidas.Items.AddRange(partidas);
         }
 
         private void btnPartidaSelecionada_Click(object sender, EventArgs e)
@@ -70,19 +68,19 @@ namespace PI3
             jogadores = jogadores.Replace("\r", "");
             string[] jogador = jogadores.Split('\n');
 
-            for (int i = 0; i < jogador.Length; i++)
-            {
-                lstListaDeJogadores.Items.Add(jogador[i]);
-            }
+            lstListaDeJogadores.Items.Clear();
+            lstListaDeJogadores.Items.AddRange(jogador);
 
             if (retorno.StartsWith("ERRO"))
                 MessageBox.Show(retorno, "PI Cartagena", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
-                for (int i = 0; i < retornoP.Length; i++)
-                {
-                    lstDadosPartidaEntrada.Items.Add(retornoP[i]);
-                }
+                lstDadosPartidaEntrada.Items.Clear();
+                lstDadosPartidaEntrada.Items.AddRange(retornoP);
+                //for (int i = 0; i < retornoP.Length; i++)
+                //{
+                    //lstDadosPartidaEntrada.Items.Add(retornoP[i]);
+                //}
             }
                 
         }
@@ -93,10 +91,8 @@ namespace PI3
             jogadores = jogadores.Replace("\r", "");
             string[] jogador = jogadores.Split('\n');
 
-            for (int i = 0; i < jogador.Length; i++)
-            {
-                lstListaDeJogadores.Items.Add(jogador[i]);
-            }
+            lstListaDeJogadores.Items.Clear();
+            lstListaDeJogadores.Items.AddRange(jogador);
         }
 
         private void btnPirataSelecionado_Click(object sender, EventArgs e)
@@ -122,10 +118,8 @@ namespace PI3
             mapa = mapa.Replace("\r", "");
             string[] tabuleiro = mapa.Split('\n');
 
-            for (int i = 0; i < tabuleiro.Length; i++)
-            {
-                lstTabuleiro.Items.Add(tabuleiro[i]);
-            }
+            lstTabuleiro.Items.Clear();
+            lstTabuleiro.Items.AddRange(tabuleiro);
 
             Console.WriteLine(Jogo.ExibirTabuleiro(idPartida));
         }
@@ -142,10 +136,8 @@ namespace PI3
             mao = mao.Replace("\r", "");
             string[] exibirM = mao.Split('\n');
 
-            for (int i = 0; i < exibirM.Length; i++)
-            {
-                lstExibirMao.Items.Add(exibirM[i]);
-            }
+            lstExibirMao.Items.Clear();
+            lstExibirMao.Items.AddRange(exibirM);
         }
 
         private void btnSelecionarCarta_Click(object sender, EventArgs e)
@@ -172,13 +164,13 @@ namespace PI3
 
         private void btnJogarFrente_Click(object sender, EventArgs e)
         {
-            string jogar = Jogo.Jogar(idJogador, senhaJogador, 0, cartaSelecionada);
+            string jogar = Jogo.Jogar(idJogador, senhaJogador, posicaoPirata, cartaSelecionada);
             Console.WriteLine(jogar);
         }
 
         private void btnJogarTras_Click(object sender, EventArgs e)
         {
-            string jogarTras = Jogo.Jogar(idJogador, senhaJogador, 5);
+            string jogarTras = Jogo.Jogar(idJogador, senhaJogador, posicaoPirata);
             Console.WriteLine(jogarTras);
         }
 
@@ -194,11 +186,10 @@ namespace PI3
             historico = historico.Replace("\r", "");
             string[] hist = historico.Split('\n');
 
-            for(int i = 0; i < hist.Length; i++)
-            {
-                lstHistorico.Items.Add(hist[i]);
-            }
+            lstHistorico.Items.Clear();
+            lstHistorico.Items.AddRange(hist);
         }
+
 
  
     }

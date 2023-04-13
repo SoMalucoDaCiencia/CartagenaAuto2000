@@ -514,7 +514,7 @@
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.MinimumSize = new System.Drawing.Size(1264, 632);
             this.Name = "Form1";
-            this.Text = "Cartagena2000 PI3";
+            this.Text = "                                                                    ";
             this.ResumeLayout(false);
             this.PerformLayout();
 

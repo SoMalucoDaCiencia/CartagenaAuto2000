@@ -12,3 +12,4 @@ C:\Users\alan_\Documents\senacTrabalhos\Jogo Autonomo\CartagenaAuto2000\PI3\PI3\
 C:\Users\alan_\Documents\senacTrabalhos\Jogo Autonomo\CartagenaAuto2000\PI3\PI3\obj\Debug\PI3.csproj.CopyComplete
 C:\Users\alan_\Documents\senacTrabalhos\Jogo Autonomo\CartagenaAuto2000\PI3\PI3\obj\Debug\PI3.exe
 C:\Users\alan_\Documents\senacTrabalhos\Jogo Autonomo\CartagenaAuto2000\PI3\PI3\obj\Debug\PI3.pdb
+C:\Users\alan_\Documents\senacTrabalhos\Jogo Autonomo\CartagenaAuto2000\PI3\PI3\obj\Debug\PI3.Form2.resources
