@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CartagenaServer;
+using PI3.models;
 
 namespace PI3
 {
@@ -17,6 +18,8 @@ namespace PI3
         {
             InitializeComponent();
         }
+
+        Partida partidaEstado;
 
         int idPartida;
         int idJogador;
@@ -66,14 +69,9 @@ namespace PI3
             retorno = retorno.Replace("\r", "");
             string[] retornoP = retorno.Split(',');
 
-            string jogadores = Jogo.ListarJogadores(idPartida);
-            jogadores = jogadores.Replace("\r", "");
-            string[] jogador = jogadores.Split('\n');
-
-            for (int i = 0; i < jogador.Length; i++)
-            {
-                lstListaDeJogadores.Items.Add(jogador[i]);
-            }
+            var players = Player.CreatePlayers(Jogo.ListarJogadores(idPartida));
+            lstListaDeJogadores.Items.Clear();
+            lstListaDeJogadores.Items.AddRange(Player.GetPlayersNames(players).ToArray());
 
             if (retorno.StartsWith("ERRO"))
                 MessageBox.Show(retorno, "PI Cartagena", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -89,14 +87,9 @@ namespace PI3
 
         private void btnListarJogadores_Click(object sender, EventArgs e)
         {
-            string jogadores = Jogo.ListarJogadores(idPartida);
-            jogadores = jogadores.Replace("\r", "");
-            string[] jogador = jogadores.Split('\n');
-
-            for (int i = 0; i < jogador.Length; i++)
-            {
-                lstListaDeJogadores.Items.Add(jogador[i]);
-            }
+            var players = Player.CreatePlayers(Jogo.ListarJogadores(idPartida));
+            lstListaDeJogadores.Items.Clear();
+            lstListaDeJogadores.Items.AddRange(Player.GetPlayersNames(players).ToArray());
         }
 
         private void btnPirataSelecionado_Click(object sender, EventArgs e)

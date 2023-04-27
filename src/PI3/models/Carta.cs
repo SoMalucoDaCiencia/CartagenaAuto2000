@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace PI3.models{
     
     public enum TipoCartaEnum{
@@ -8,6 +10,7 @@ namespace PI3.models{
         Garrafa,
         Bandeira,
     }
+
     public class Carta{
 
         public TipoCartaEnum tipo { get; set; }
@@ -33,6 +36,17 @@ namespace PI3.models{
                 }
             }
             this.quantidade = quantidade;
+        }
+
+        public static List<Carta> CreateMao(string serverReponse)
+        {
+            List<Carta> ret = new List<Carta>();
+            List<string> list = new List<string>(serverReponse.Replace("\r", "").Split('\n'));
+            list.ForEach((str) => {
+                var arr = str.Split(',');
+                ret.Add(new Carta(arr[0], int.Parse(arr[0])));
+            });
+            return ret;
         }
     }
 }
