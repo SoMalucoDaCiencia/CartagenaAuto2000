@@ -1,8 +1,5 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PI3.models
 {
@@ -10,6 +7,6 @@ namespace PI3.models
     {
         public TipoCartaEnum tipoPosicao { get; set; }
 
-        //public 
+        public List<Pirata> piratasPresentes { get; set; }
     }
 }
