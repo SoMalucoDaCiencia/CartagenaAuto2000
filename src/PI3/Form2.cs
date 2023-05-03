@@ -8,12 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PI3
-{
-    public partial class Form2 : Form
-    {
-        public Form2()
-        {
+namespace PI3{
+    public partial class Form2 : Form{
+        public Form2() {
             InitializeComponent();
         }
     }
