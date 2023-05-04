@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using CartagenaServer;
 using PI3.models;
 
@@ -25,9 +24,22 @@ namespace PI3{
             return ret;
         }
 
-        // public static Partida criarPartida(string nome, string senha) {
-        //
-        // }
+        /// <summary>Cria partida e retorna a instancia</summary>
+        /// <param name="nome"> Nome da partida </param>
+        /// <param name="senha"> Senha da partida </param>
+        /// <returns></returns>
+        public static Partida criarPartida(string nome, string senha) {
+            Partida ret = new Partida();
+            ret.id = int.Parse(Jogo.CriarPartida(nome, senha));
+            ret.name = nome;
+            ret.senha = senha;
+            ret.state = PartidaState.parse(Jogo.VerificarVez(ret.id).Substring(0, 1));
+
+            ret.players.AddRange(listarJogadores(ret.id));
+            ret.createdAt = DateTime.Now;
+
+            return ret;
+        }
 
         /// <summary>Lista players presentes na partida</summary>
         /// <param name="idPartida"> Id da partida </param>

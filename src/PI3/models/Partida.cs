@@ -22,19 +22,6 @@ namespace PI3{
 
         public DateTime createdAt { get; set; }
 
-        public static Partida CreatePartida(string nomeP, string senhaP) {
-            Partida ret = new Partida();
-            ret.id = int.Parse(Jogo.CriarPartida(nomeP, senhaP));
-            ret.name = nomeP;
-            ret.senha = senhaP;
-            ret.state = PartidaState.parse(Jogo.VerificarVez(ret.id).Substring(0, 1));
-
-            ret.players.AddRange(GameCore.listarJogadores(ret.id));
-            ret.createdAt = DateTime.Now;
-
-            return ret;
-        }
-
         public static Partida EnterPartida(int idPartida, string nomeP, string senhaP) {
             Partida ret = new Partida();
             ret.id = int.Parse(Jogo.EntrarPartida(idPartida, nomeP, senhaP));
