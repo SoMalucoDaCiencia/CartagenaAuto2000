@@ -25,13 +25,16 @@ namespace PI3{
         int posicaoPirata; //pirata
 
         private void btnListarPartidas_Click(object sender, EventArgs e) {
-            string retorno = Jogo.ListarPartidas("T");
-            retorno = retorno.Replace("\r", "");
-            string[] partidas = retorno.Split('\n');
+            // string retorno = Jogo.ListarPartidas("T");
+            // retorno = retorno.Replace("\r", "");
+            // string[] partidas = retorno.Split('\n');
 
-            for (int i = 0; i < partidas.Length; i++) {
-                lstListaDePartidas.Items.Add(partidas[i]);
-            }
+            // for (int i = 0; i < partidas.Length; i++) {
+                // lstListaDePartidas.Items.Add(partidas[i]);
+            // }
+            var partidas = GameCore.listarPartidas(PartidaState.PartidaEnum.ABERTA);
+            lstListaDePartidas.Items.Clear();
+            lstListaDePartidas.Items.AddRange(Partida.getPartidasNames(partidas).ToArray());
         }
 
         private void btnPartidaSelecionada_Click(object sender, EventArgs e) {
@@ -61,7 +64,7 @@ namespace PI3{
             retorno = retorno.Replace("\r", "");
             string[] retornoP = retorno.Split(',');
 
-            var players = Player.CreatePlayers(Jogo.ListarJogadores(idPartida));
+            var players = GameCore.listarJogadores(idPartida);
             lstListaDeJogadores.Items.Clear();
             lstListaDeJogadores.Items.AddRange(Player.GetPlayersNames(players).ToArray());
 
@@ -75,7 +78,7 @@ namespace PI3{
         }
 
         private void btnListarJogadores_Click(object sender, EventArgs e) {
-            var players = Player.CreatePlayers(Jogo.ListarJogadores(idPartida));
+            var players = GameCore.listarJogadores(idPartida);
             lstListaDeJogadores.Items.Clear();
             lstListaDeJogadores.Items.AddRange(Player.GetPlayersNames(players).ToArray());
         }

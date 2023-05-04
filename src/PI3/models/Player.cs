@@ -1,7 +1,6 @@
 using CartagenaServer;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http.Headers;
 
 namespace PI3.models{
     public class Player{
@@ -43,21 +42,6 @@ namespace PI3.models{
             var pl = new Player(int.Parse(response[0]), Utils.firstToUpper(name), response[1], new Color(response[2]));
             partida.players.Add(pl);
             return pl;
-        }
-
-        // Cria uma lista de players baseado na String retornada do servidor
-        public static List<Player> CreatePlayers(string serverReponse) {
-            List<Player> ret = new List<Player>();
-            List<string> list = new List<string>(serverReponse.Replace("\r", "").Split('\n'));
-            list.ForEach((str) => {
-                if(str != "")
-                {
-                    var arr = str.Split(',');
-                    ret.Add(new Player(int.Parse(arr[0]), arr[1], new Color(arr[2])));
-                }
-                
-            });
-            return ret;
         }
 
         //Retona uma lista com todos os nomes dos jogadores presentes na lista

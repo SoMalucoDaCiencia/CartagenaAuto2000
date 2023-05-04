@@ -27,9 +27,9 @@ namespace PI3{
             ret.id = int.Parse(Jogo.CriarPartida(nomeP, senhaP));
             ret.name = nomeP;
             ret.senha = senhaP;
-            ret.state = PartidaState.Parse(Jogo.VerificarVez(ret.id).Substring(0, 1));
+            ret.state = PartidaState.parse(Jogo.VerificarVez(ret.id).Substring(0, 1));
 
-            ret.players.AddRange(Player.CreatePlayers(Jogo.ListarJogadores(ret.id)));
+            ret.players.AddRange(GameCore.listarJogadores(ret.id));
             ret.createdAt = DateTime.Now;
 
             return ret;
@@ -40,16 +40,30 @@ namespace PI3{
             ret.id = int.Parse(Jogo.EntrarPartida(idPartida, nomeP, senhaP));
             ret.name = nomeP;
             ret.senha = senhaP;
-            ret.state = PartidaState.Parse(Jogo.VerificarVez(ret.id).Substring(0, 1));
+            ret.state = PartidaState.parse(Jogo.VerificarVez(ret.id).Substring(0, 1));
 
-            ret.players.AddRange(Player.CreatePlayers(Jogo.ListarJogadores(ret.id)));
+            ret.players.AddRange(GameCore.listarJogadores(ret.id));
             ret.createdAt = DateTime.Parse(new List<string>(Jogo.ListarPartidas("T").Replace("\r", "").Split('\n'))
                 .FindAll((str) => str.StartsWith(ret.id + ","))[0].Split(',')[2]);
 
             return ret;
         }
 
-        public void UpdateTabuleiro() {
+        public Partida() { }
+
+        public Partida(int id, string name, DateTime createdAt, PartidaState.PartidaEnum state) {
+            this.id = id;
+            this.name = name;
+            this.state = state;
+            this.createdAt = createdAt;
+        }
+
+        //Retona uma lista com todos os nomes das partidas presentes na lista
+        public static List<string> getPartidasNames(List<Partida> partidas) {
+            return new List<string>(partidas.Select((p) => p.name));
+        }
+
+        public void updateTabuleiro() {
         }
     }
 
@@ -61,12 +75,21 @@ namespace PI3{
             ENCERRADA
         }
 
-        public static PartidaEnum Parse(string str) {
+        public static PartidaEnum parse(string str) {
             switch (str) {
                 case "A": return PartidaEnum.ABERTA;
                 case "J": return PartidaEnum.INICIADA;
                 case "E": return PartidaEnum.ENCERRADA;
                 default: return PartidaEnum.ERRO;
+            }
+        }
+
+        public static string intoSring(PartidaEnum type) {
+            switch (type) {
+                case PartidaEnum.ABERTA: return "A";
+                case PartidaEnum.INICIADA: return "J";
+                case PartidaEnum.ENCERRADA: return "E";
+                default: return "";
             }
         }
     }

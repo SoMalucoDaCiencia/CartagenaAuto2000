@@ -61,6 +61,7 @@
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
+    <Compile Include="GameCore.cs" />
     <Compile Include="models\Carta.cs" />
     <Compile Include="models\Color.cs" />
     <Compile Include="models\Pirata.cs" />
@@ -112,6 +113,8 @@
   <ItemGroup>
     <None Include="Resources\2799ec3847ca53eb8a3f0631b9cf07ce.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\MainBackground.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
