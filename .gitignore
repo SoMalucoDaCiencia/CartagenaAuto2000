@@ -131,3 +131,4 @@ chrome-profiler-events*.json
 /Cartagena/Cartagena/Cartagena.csproj
 /src/.vs/
 /src/PI3/obj/
+/src/PI3/.vs
