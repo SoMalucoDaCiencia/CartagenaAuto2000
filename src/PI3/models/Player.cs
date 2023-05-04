@@ -33,7 +33,6 @@ namespace PI3.models{
             this.nome = nome;
             this.senha = "";
             this.cor = cor;
-            this.mao.AddRange(Carta.CreateMao(Jogo.ConsultarMao(this.id, this.senha)));
             //this.piratas.AddRange()
         }
 
@@ -49,10 +48,14 @@ namespace PI3.models{
         // Cria uma lista de players baseado na String retornada do servidor
         public static List<Player> CreatePlayers(string serverReponse) {
             List<Player> ret = new List<Player>();
-            List<string> list = new List<string>(serverReponse.Split('\n'));
+            List<string> list = new List<string>(serverReponse.Replace("\r", "").Split('\n'));
             list.ForEach((str) => {
-                var arr = str.Split(',');
-                ret.Add(new Player(int.Parse(arr[0]), arr[1], new Color(arr[2])));
+                if(str != "")
+                {
+                    var arr = str.Split(',');
+                    ret.Add(new Player(int.Parse(arr[0]), arr[1], new Color(arr[2])));
+                }
+                
             });
             return ret;
         }
