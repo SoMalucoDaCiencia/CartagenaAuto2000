@@ -13,7 +13,7 @@ namespace PI3{
 
         public static void checkError(string serverResponse) {
             if (serverResponse.Contains("Erro")) {
-                throw new ExternalException(Utils.splitByString(serverResponse, "Erro:")[1]);
+                throw new Exception(splitByString(serverResponse, "Erro:")[1]);
             }
         }
     }

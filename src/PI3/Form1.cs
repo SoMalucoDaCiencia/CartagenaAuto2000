@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using CartagenaServer;
 using PI3.models;
@@ -46,35 +39,54 @@ namespace PI3{
             string dataPartida = itens[2];
             string status = itens[3];
 
-            lblPartidaSelecionada.Text = "Id: " + idPartida.ToString() + "\nNome: " + nomePartida;
+            lblPartidaSelecionada.Text = "Id: " + idPartida + "\nNome: " + nomePartida;
         }
 
         private void btnCriarPartida_Click(object sender, EventArgs e) {
-            string nomeP = txtNomePartida.Text;
-            string senhaP = txtCriarSenha.Text;
-            string retorno = Jogo.CriarPartida(nomeP, senhaP);
-            lblCriarPartida.Text = "Id partida: " + retorno;
+            // string nomeP = txtNomePartida.Text;
+            // string senhaP = txtCriarSenha.Text;
+            // string retorno = Jogo.CriarPartida(nomeP, senhaP);
+            // lblCriarPartida.Text = "Id partida: " + retorno;
+            var partida = GameCore.criarPartida(txtNomePartida.Text, txtCriarSenha.Text);
+            lblCriarPartida.Text = "Id partida: " + partida.id;
         }
 
         private void btnEntrarPartida_Click(object sender, EventArgs e) {
-            string nome = txtNomeJogador.Text;
-            string senha = txtSenhaPartida.Text;
+            // string nome = txtNomeJogador.Text;
+            // string senha = txtSenhaPartida.Text;
+            //
+            // string retorno = Jogo.EntrarPartida(idPartida, nome, senha);
+            // retorno = retorno.Replace("\r", "");
+            // string[] retornoP = retorno.Split(',');
+            //
+            // var players = GameCore.ListarJogadores(idPartida);
+            // lstListaDeJogadores.Items.Clear();
+            // lstListaDeJogadores.Items.AddRange(Player.GetPlayersNames(players).ToArray());
+            //
+            // if (retorno.StartsWith("ERRO"))
+            //     MessageBox.Show(retorno, "PI Cartagena", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            // else {
+            //     for (int i = 0; i < retornoP.Length; i++) {
+            //         lstDadosPartidaEntrada.Items.Add(retornoP[i]);
+            //     }
+            // }
 
-            string retorno = Jogo.EntrarPartida(idPartida, nome, senha);
-            retorno = retorno.Replace("\r", "");
-            string[] retornoP = retorno.Split(',');
+            GameCore.entrarPartida(idPartida, txtNomeJogador.Text, txtSenhaPartida.Text);
+            // string retorno = Jogo.EntrarPartida(idPartida, txtNomeJogador.Text, txtSenhaPartida.Text);
+            // retorno = retorno.Replace("\r", "");
+            // string[] retornoP = retorno.Split(',');
 
             var players = GameCore.listarJogadores(idPartida);
             lstListaDeJogadores.Items.Clear();
             lstListaDeJogadores.Items.AddRange(Player.GetPlayersNames(players).ToArray());
 
-            if (retorno.StartsWith("ERRO"))
-                MessageBox.Show(retorno, "PI Cartagena", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else {
-                for (int i = 0; i < retornoP.Length; i++) {
-                    lstDadosPartidaEntrada.Items.Add(retornoP[i]);
-                }
-            }
+            // if (retorno.StartsWith("ERRO"))
+                // MessageBox.Show(retorno, "PI Cartagena", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            // else {
+                // for (int i = 0; i < retornoP.Length; i++) {
+                    // lstDadosPartidaEntrada.Items.Add(retornoP[i]);
+                // }
+            // }
         }
 
         private void btnListarJogadores_Click(object sender, EventArgs e) {

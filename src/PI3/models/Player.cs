@@ -8,7 +8,7 @@ namespace PI3.models{
 
         private string nome { get; set; }
 
-        private Color cor { get; set; }
+        private Color.ColorEnum cor { get; set; }
 
         private string senha { get; set; }
 
@@ -18,7 +18,7 @@ namespace PI3.models{
 
         //public
 
-        public Player(int id, string nome, string senha, Color cor) {
+        public Player(int id, string nome, string senha, Color.ColorEnum cor) {
             this.id = id;
             this.nome = nome;
             this.senha = senha;
@@ -27,7 +27,7 @@ namespace PI3.models{
             //this.piratas.AddRange()
         }
 
-        public Player(int id, string nome, Color cor) {
+        public Player(int id, string nome, Color.ColorEnum cor) {
             this.id = id;
             this.nome = nome;
             this.senha = "";
@@ -39,7 +39,7 @@ namespace PI3.models{
         public static Player CreatePlayerServer(string name, Partida partida) {
             var response = CartagenaServer.Jogo.EntrarPartida(partida.id, Utils.firstToUpper(name), partida.senha)
                 .Split(',');
-            var pl = new Player(int.Parse(response[0]), Utils.firstToUpper(name), response[1], new Color(response[2]));
+            var pl = new Player(int.Parse(response[0]), Utils.firstToUpper(name), response[1],  Color.Parse(response[2]));
             partida.players.Add(pl);
             return pl;
         }
@@ -49,11 +49,12 @@ namespace PI3.models{
             return new List<string>(players.Select((p) => p.nome));
         }
 
-        public class PlayerState{
-            public enum PlayerEnum{
+        public class PlayerState {
+            public enum PlayerEnum {
                 PRIMEIRA_JOGADA,
                 SEGUNDA_JOGADA,
-                TERCEIRA_JOGADA
+                TERCEIRA_JOGADA,
+                NULL
             }
 
             public static PlayerEnum Parse(int str) {
@@ -61,7 +62,7 @@ namespace PI3.models{
                     case 1: return PlayerEnum.PRIMEIRA_JOGADA;
                     case 2: return PlayerEnum.SEGUNDA_JOGADA;
                     case 3: return PlayerEnum.TERCEIRA_JOGADA;
-                    default: return PlayerEnum.TERCEIRA_JOGADA;
+                    default: return PlayerEnum.NULL;
                 }
             }
         }
