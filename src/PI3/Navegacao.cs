@@ -22,6 +22,7 @@ namespace PI3
             Menu menu = new Menu();
             menu.Show();
             this.Close();
+            //a
         }
     }
 }
