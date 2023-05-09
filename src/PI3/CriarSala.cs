@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,18 +10,11 @@ using System.Windows.Forms;
 
 namespace PI3
 {
-    public partial class Navegacao : Form
+    public partial class CriarSala : Form
     {
-        public Navegacao()
+        public CriarSala()
         {
             InitializeComponent();
-        }
-
-        private void btnVoltar_Click(object sender, EventArgs e)
-        {
-            Menu menu = new Menu();
-            menu.Show();
-            this.Close();
         }
     }
 }

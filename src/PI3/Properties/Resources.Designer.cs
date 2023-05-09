@@ -63,39 +63,9 @@ namespace PI3.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _1000_F_113239895_Gyiy5fv7ZjcDxD7ufRE4z3jINdQHmTBt {
+        internal static System.Drawing.Bitmap MainBackground {
             get {
-                object obj = ResourceManager.GetObject("1000_F_113239895_Gyiy5fv7ZjcDxD7ufRE4z3jINdQHmTBt", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap _2799ec3847ca53eb8a3f0631b9cf07ce {
-            get {
-                object obj = ResourceManager.GetObject("2799ec3847ca53eb8a3f0631b9cf07ce", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap _360_F_107916793_8MPR8uxzajyoGTdGh7S2ciOgZCT5L62J {
-            get {
-                object obj = ResourceManager.GetObject("360_F_107916793_8MPR8uxzajyoGTdGh7S2ciOgZCT5L62J", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap istockphoto_487398582_612x612 {
-            get {
-                object obj = ResourceManager.GetObject("istockphoto-487398582-612x612", resourceCulture);
+                object obj = ResourceManager.GetObject("MainBackground", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

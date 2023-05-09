@@ -24,6 +24,12 @@ namespace PI3{
         private void btnSair_Click(object sender, EventArgs e)
         {
             this.Close();
+            Application.Exit();
+        }
+
+        private void btnCriarPartida_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
