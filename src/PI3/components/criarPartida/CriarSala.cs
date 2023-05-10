@@ -1,3 +1,5 @@
+using PI3.components.navegacao;
+using PI3.models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +15,6 @@ namespace PI3.components.criarPartida
     public partial class CriarSala : Form
     {
         public string nomeSala { get; set; }
-        public string nomeJogador { get; set; }
         public string senhaSala { get; set; }
 
         public CriarSala()
@@ -25,11 +26,11 @@ namespace PI3.components.criarPartida
         private void btnOk_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
-            if (Utils.isStringValid(txtNomeSala.Text) && Utils.isStringValid(txtSenhaSala.Text) && Utils.isStringValid(txtNomeJogador.Text))
+            if (Utils.isStringValid(txtNomeSala.Text) && Utils.isStringValid(txtSenhaSala.Text))
             {
                 nomeSala = txtNomeSala.Text;
                 senhaSala = txtSenhaSala.Text;
-                nomeJogador = txtNomeJogador.Text;
+                var partida = GameCore.criarPartida(nomeSala, senhaSala);
                 this.Close();
             }
             else

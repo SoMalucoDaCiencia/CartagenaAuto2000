@@ -55,21 +55,31 @@
             // 
             // lstListarPartidas
             // 
+            this.lstListarPartidas.BackColor = System.Drawing.Color.AliceBlue;
+            this.lstListarPartidas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lstListarPartidas.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lstListarPartidas.FormattingEnabled = true;
-            this.lstListarPartidas.Location = new System.Drawing.Point(129, 181);
+            this.lstListarPartidas.Location = new System.Drawing.Point(61, 107);
             this.lstListarPartidas.Name = "lstListarPartidas";
-            this.lstListarPartidas.Size = new System.Drawing.Size(167, 290);
+            this.lstListarPartidas.Size = new System.Drawing.Size(167, 288);
             this.lstListarPartidas.TabIndex = 1;
             this.lstListarPartidas.SelectedIndexChanged += new System.EventHandler(this.lstListarPartidas_SelectedIndexChanged);
             // 
             // btnListarPartidas
             // 
-            this.btnListarPartidas.Location = new System.Drawing.Point(230, 110);
+            this.btnListarPartidas.BackColor = System.Drawing.Color.Transparent;
+            this.btnListarPartidas.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnListarPartidas.BackgroundImage")));
+            this.btnListarPartidas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnListarPartidas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnListarPartidas.FlatAppearance.BorderSize = 0;
+            this.btnListarPartidas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnListarPartidas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnListarPartidas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnListarPartidas.Location = new System.Drawing.Point(145, 399);
             this.btnListarPartidas.Name = "btnListarPartidas";
-            this.btnListarPartidas.Size = new System.Drawing.Size(75, 23);
+            this.btnListarPartidas.Size = new System.Drawing.Size(116, 33);
             this.btnListarPartidas.TabIndex = 2;
-            this.btnListarPartidas.UseVisualStyleBackColor = true;
+            this.btnListarPartidas.UseVisualStyleBackColor = false;
             this.btnListarPartidas.Click += new System.EventHandler(this.btnListarPartidas_Click);
             // 
             // Navegacao

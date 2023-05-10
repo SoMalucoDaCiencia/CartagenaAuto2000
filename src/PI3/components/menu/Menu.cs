@@ -1,4 +1,5 @@
 using PI3.components.criarPartida;
+using PI3.models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

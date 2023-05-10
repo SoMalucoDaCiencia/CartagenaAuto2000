@@ -14,12 +14,13 @@ namespace PI3
 {
     public partial class Navegacao : Form
     {
-        Partida partidaSelecionada;
+        public Partida partidaSelecionada;
         List<Partida> partidas;
 
         public Navegacao()
         {
             InitializeComponent();
+            ControlBox = false; //tira os negocios da janela do form
             updateList();
         }
 
@@ -44,19 +45,22 @@ namespace PI3
 
         private void lstListarPartidas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            partidaSelecionada = partidas[lstListarPartidas.SelectedIndex];
-            NomeSenha nomeSenha = new NomeSenha();
-            var result = nomeSenha.ShowDialog();
-            if(result == DialogResult.OK)
+            if(partidas.Count > 0)
             {
-                Player player = GameCore.entrarPartida(partidaSelecionada.id, nomeSenha.nome, nomeSenha.senha);
-                if(player != null )
+                partidaSelecionada = partidas[lstListarPartidas.SelectedIndex == -1 ? 0 : lstListarPartidas.SelectedIndex];
+                NomeSenha nomeSenha = new NomeSenha();
+                var result = nomeSenha.ShowDialog();
+                if (result == DialogResult.OK)
                 {
+                    Player player = GameCore.entrarPartida(partidaSelecionada.id, nomeSenha.nome, nomeSenha.senha);
+                    if (player != null)
+                    {
 
-                }
-                else
-                {
-                    MessageBox.Show("Senha errada, tente novamente", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Senha errada, tente novamente", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
             

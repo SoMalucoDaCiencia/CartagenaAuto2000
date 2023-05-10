@@ -61,6 +61,12 @@
     <Compile Include="components\navegacao\subComponents\NomeSenha.Designer.cs">
       <DependentUpon>NomeSenha.cs</DependentUpon>
     </Compile>
+    <Compile Include="components\tabuleiro\Tabuleiro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="components\tabuleiro\Tabuleiro.Designer.cs">
+      <DependentUpon>Tabuleiro.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
