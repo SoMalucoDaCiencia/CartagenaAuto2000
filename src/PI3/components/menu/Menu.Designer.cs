@@ -51,7 +51,7 @@ namespace PI3
             this.btnCriarPartida.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCriarPartida.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCriarPartida.ForeColor = System.Drawing.Color.Snow;
-            this.btnCriarPartida.Location = new System.Drawing.Point(588, 392);
+            this.btnCriarPartida.Location = new System.Drawing.Point(726, 510);
             this.btnCriarPartida.Name = "btnCriarPartida";
             this.btnCriarPartida.Size = new System.Drawing.Size(196, 25);
             this.btnCriarPartida.TabIndex = 22;
@@ -71,7 +71,7 @@ namespace PI3
             this.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSair.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSair.ForeColor = System.Drawing.Color.Snow;
-            this.btnSair.Location = new System.Drawing.Point(588, 441);
+            this.btnSair.Location = new System.Drawing.Point(726, 559);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(196, 24);
             this.btnSair.TabIndex = 29;
@@ -85,7 +85,7 @@ namespace PI3
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Snow;
-            this.label2.Location = new System.Drawing.Point(472, 114);
+            this.label2.Location = new System.Drawing.Point(812, 116);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(0, 20);
             this.label2.TabIndex = 31;
@@ -95,7 +95,7 @@ namespace PI3
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Location = new System.Drawing.Point(321, 31);
+            this.pictureBox1.Location = new System.Drawing.Point(470, 33);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(434, 103);
             this.pictureBox1.TabIndex = 32;
@@ -113,7 +113,7 @@ namespace PI3
             this.btnEntrarPartida.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEntrarPartida.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEntrarPartida.ForeColor = System.Drawing.Color.Snow;
-            this.btnEntrarPartida.Location = new System.Drawing.Point(588, 344);
+            this.btnEntrarPartida.Location = new System.Drawing.Point(726, 462);
             this.btnEntrarPartida.Name = "btnEntrarPartida";
             this.btnEntrarPartida.Size = new System.Drawing.Size(196, 24);
             this.btnEntrarPartida.TabIndex = 28;
@@ -126,7 +126,7 @@ namespace PI3
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox2.Location = new System.Drawing.Point(441, 104);
+            this.pictureBox2.Location = new System.Drawing.Point(595, 133);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(331, 30);
             this.pictureBox2.TabIndex = 33;
@@ -137,7 +137,8 @@ namespace PI3
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::PI3.Properties.Resources.MainBackground;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(944, 681);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label2);

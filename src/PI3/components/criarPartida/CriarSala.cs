@@ -8,14 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PI3.components.navegacao
+namespace PI3.components.criarPartida
 {
-    public partial class NomeSenha : Form
+    public partial class CriarSala : Form
     {
-        public string nome { get; set; }
-        public string senha { get; set; }
+        public string nomeSala { get; set; }
+        public string nomeJogador { get; set; }
+        public string senhaSala { get; set; }
 
-        public NomeSenha()
+        public CriarSala()
         {
             InitializeComponent();
             ControlBox = false; //tira os negocios da janela do form
@@ -24,23 +25,23 @@ namespace PI3.components.navegacao
         private void btnOk_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
-            if(Utils.isStringValid(txtNome.Text) && Utils.isStringValid(txtSenha.Text))
+            if (Utils.isStringValid(txtNomeSala.Text) && Utils.isStringValid(txtSenhaSala.Text) && Utils.isStringValid(txtNomeJogador.Text))
             {
-                nome = txtNome.Text;
-                senha = txtSenha.Text;
+                nomeSala = txtNomeSala.Text;
+                senhaSala = txtSenhaSala.Text;
+                nomeJogador = txtNomeJogador.Text;
                 this.Close();
             }
             else
             {
-                MessageBox.Show("Nome e senha não podem ser nulos", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Nomes e senha não podem ser nulos", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 DialogResult = DialogResult.Cancel;
             }
-            
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
         {
-            DialogResult= DialogResult.Cancel;
+            DialogResult = DialogResult.Cancel;
             this.Close();
         }
     }

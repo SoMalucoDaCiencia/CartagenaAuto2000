@@ -1,3 +1,4 @@
+using PI3.components.criarPartida;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,6 +13,7 @@ namespace PI3{
     public partial class Menu : Form{
         public Menu() {
             InitializeComponent();
+            ControlBox = false; //tira os negocios da janela do form
         }
 
         private void btnEntrarPartida_Click(object sender, EventArgs e)
@@ -29,7 +31,8 @@ namespace PI3{
 
         private void btnCriarPartida_Click(object sender, EventArgs e)
         {
-
+            CriarSala criarSala = new CriarSala();
+            var result = criarSala.ShowDialog();
         }
     }
 }

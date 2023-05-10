@@ -1,4 +1,4 @@
-﻿namespace PI3.components.navegacao
+namespace PI3.components.navegacao
 {
     partial class NomeSenha
     {
@@ -56,7 +56,7 @@
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(195, 135);
+            this.btnOk.Location = new System.Drawing.Point(189, 122);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
             this.btnOk.TabIndex = 2;
@@ -80,7 +80,7 @@
             // 
             // btnVoltar
             // 
-            this.btnVoltar.Location = new System.Drawing.Point(104, 135);
+            this.btnVoltar.Location = new System.Drawing.Point(98, 122);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Size = new System.Drawing.Size(75, 23);
             this.btnVoltar.TabIndex = 5;
@@ -99,6 +99,7 @@
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.MinimumSize = new System.Drawing.Size(298, 209);
             this.Name = "NomeSenha";
             this.Text = "NomeSenha";
             this.ResumeLayout(false);
