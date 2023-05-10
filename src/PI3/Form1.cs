@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows.Forms;
 using CartagenaServer;
 using PI3.models;
@@ -18,13 +18,6 @@ namespace PI3{
         int posicaoPirata; //pirata
 
         private void btnListarPartidas_Click(object sender, EventArgs e) {
-            // string retorno = Jogo.ListarPartidas("T");
-            // retorno = retorno.Replace("\r", "");
-            // string[] partidas = retorno.Split('\n');
-
-            // for (int i = 0; i < partidas.Length; i++) {
-                // lstListaDePartidas.Items.Add(partidas[i]);
-            // }
             var partidas = GameCore.listarPartidas(PartidaState.PartidaEnum.ABERTA);
             lstListaDePartidas.Items.Clear();
             lstListaDePartidas.Items.AddRange(Partida.getPartidasNames(partidas).ToArray());

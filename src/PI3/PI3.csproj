@@ -49,10 +49,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CriarSala.cs">
+    <Compile Include="components\navegacao\subComponents\NomeSenha.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CriarSala.Designer.cs">
+    <Compile Include="components\navegacao\subComponents\NomeSenha.Designer.cs">
+      <DependentUpon>NomeSenha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="components\criarSala\CriarSala.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="components\criarSala\CriarSala.Designer.cs">
       <DependentUpon>CriarSala.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
@@ -61,16 +67,10 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Lobby.cs">
+    <Compile Include="components\menu\Menu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Lobby.Designer.cs">
-      <DependentUpon>Lobby.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Menu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Menu.Designer.cs">
+    <Compile Include="components\menu\Menu.Designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
     <Compile Include="GameCore.cs" />
@@ -81,10 +81,10 @@
     <Compile Include="models\Posicao.cs" />
     <Compile Include="models\Tabuleiro.cs" />
     <Compile Include="models\Partida.cs" />
-    <Compile Include="Navegacao.cs">
+    <Compile Include="components\navegacao\Navegacao.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Navegacao.Designer.cs">
+    <Compile Include="components\navegacao\Navegacao.Designer.cs">
       <DependentUpon>Navegacao.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -95,19 +95,19 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Utils.cs" />
-    <EmbeddedResource Include="CriarSala.resx">
+    <EmbeddedResource Include="components\navegacao\subComponents\NomeSenha.resx">
+      <DependentUpon>NomeSenha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="components\criarSala\CriarSala.resx">
       <DependentUpon>CriarSala.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Lobby.resx">
-      <DependentUpon>Lobby.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Menu.resx">
+    <EmbeddedResource Include="components\menu\Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Navegacao.resx">
+    <EmbeddedResource Include="components\navegacao\Navegacao.resx">
       <DependentUpon>Navegacao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -130,6 +130,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\MainBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="components\criarSala\subComponents\" />
+    <Folder Include="components\menu\subComponents\" />
+    <Folder Include="components\tabuleiro\subComponents\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -12,9 +12,14 @@ namespace PI3{
         }
 
         public static void checkError(string serverResponse) {
-            if (serverResponse.Contains("Erro")) {
-                throw new Exception(splitByString(serverResponse, "Erro:")[1]);
+            if (serverResponse.Contains("ERRO")) {
+                throw new Exception(splitByString(serverResponse, "ERRO:")[1]);
             }
+        }
+
+        public static bool isStringValid(string str)
+        {
+            return str != null && str.Replace(" ", "").Length > 0;
         }
     }
 }

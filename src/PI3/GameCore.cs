@@ -88,7 +88,7 @@ namespace PI3{
                 string serverResponse = Jogo.EntrarPartida(idPartida, nome, senha);
                 Utils.checkError(serverResponse);
 
-                List<string> list = new List<string>(serverResponse.Replace("\r", "").Split('\n'));
+                List<string> list = new List<string>(serverResponse.Replace("\r", "").Split('\n')[0].Split(','));
                 return new Player(int.Parse(list[0]), list[1], Color.Parse(list[2]));
             }
             catch (Exception e) {
