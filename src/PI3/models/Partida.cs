@@ -12,7 +12,7 @@ namespace PI3{
 
         public string senha { get; set; }
 
-        public Player jogadorAtual { get; set; }
+        public int idJogadorAtual { get; set; }
 
         public PartidaState.PartidaEnum state { get; set; }
 

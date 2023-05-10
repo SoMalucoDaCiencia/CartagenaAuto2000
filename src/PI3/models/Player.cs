@@ -4,17 +4,17 @@ using System.Linq;
 
 namespace PI3.models{
     public class Player{
-        private int id { get; set; }
+        public int id { get; set; }
 
-        private string nome { get; set; }
+        public string nome { get; set; }
 
-        private Color.ColorEnum cor { get; set; }
+        public Color.ColorEnum cor { get; set; }
 
-        private string senha { get; set; }
+        public string senha { get; set; }
 
-        private List<Carta> mao { get; set; } = new List<Carta>();
+        public List<Carta> mao { get; set; } = new List<Carta>();
 
-        private List<Pirata> piratas { get; set; } = new List<Pirata>();
+        public List<Pirata> piratas { get; set; } = new List<Pirata>();
 
         //public
 

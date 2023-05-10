@@ -47,7 +47,6 @@ namespace PI3{
                 ret.players.AddRange(listarJogadores(ret.id));
                 ret.createdAt = DateTime.Now;
                 return ret;
-
             } catch (Exception e) {
                 MessageBox.Show(e.Message, "Um erro inesperado ocorreu, ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
@@ -71,9 +70,9 @@ namespace PI3{
                     }
                 });
                 return ret;
-
             } catch (Exception e) {
-                MessageBox.Show(e.Message, "Um erro inesperado ocorreu, tente novamente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.Message, "Um erro inesperado ocorreu, tente novamente", MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
                 return null;
             }
         }
@@ -92,14 +91,36 @@ namespace PI3{
                 return new Player(int.Parse(list[0]), list[1], Color.Parse(list[2]));
             }
             catch (Exception e) {
+                MessageBox.Show(e.Message, "Um erro inesperado ocorreu, tente novamente", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public static Player iniciarPartida(Partida partida) {
+            try {
+                if (partida.players.Count > 0) {
+                    string serverResponse = Jogo.IniciarPartida(partida.players[0].id, partida.players[0].senha);
+                    Utils.checkError(serverResponse);
+
+                    partida.idJogadorAtual = int.Parse(serverResponse);
+                    Player player = partida.players.Find((p) => p.id == partida.idJogadorAtual);
+                    if (player!=null) {
+                        return player;
+                    } else {
+                        MessageBox.Show("N foi possível achar o jogador que inicia a partida", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return null;
+                    }
+                } else {
+                    MessageBox.Show("Partdia com jogadores vazios", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+            } catch (Exception e) {
                 MessageBox.Show(e.Message, "Um erro inesperado ocorreu, tente novamente", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
         }
 
-
-        // public static string iniciarPartida(int idJogador, string senha) {
-        // }
         //
         // public static List<Carta> consultarMao(int idJogador, string senha) {
         // }
