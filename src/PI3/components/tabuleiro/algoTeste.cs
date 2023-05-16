@@ -13,8 +13,8 @@ private void attachClickEventHandler() {
                  ",x1:" + (p.Left + 25) + 
                  ",x2:" + (p.Left + 50) + 
                  ",x3:" + (p.Left + 75) +
-                 ",y1:" + (p.Top - 25) +
-                 ",y2:" + (p.Top - 75) +
+                 ",y1:" + (p.Top - 75) +
+                 ",y2:" + (p.Top - 25) +
                  ",y3:" + (p.Top - 75) 
 
          p.Click += new EventHandler(tileClick());
