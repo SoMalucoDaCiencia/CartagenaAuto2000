@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace PI3.models
-{
-    public class Posicao
-    {
+namespace PI3.models{
+    public class Posicao{
         public TipoCartaEnum tipoPosicao { get; set; }
 
-        //public 
+        public List<Pirata> piratasPresentes { get; set; }
     }
 }

@@ -1,35 +1,34 @@
 
 namespace PI3.models{
 
-    public enum ColorEnum {
-        Verde,
-        Azul,
-        Vermelho,
-        Amarelo,
-        Marrom
-    }
-    
-    public class Color{
-        
-        private ColorEnum value { get; set; }
-        
-        public Color(string color) {
-            switch (color) {
+    public class Color {
+        public enum ColorEnum {
+            Verde,
+            Azul,
+            Vermelho,
+            Amarelo,
+            Marrom,
+            NULL
+        }
+
+        public static ColorEnum Parse(string str) {
+            switch (str) {
                 case "Verde": {
-                    this.value = ColorEnum.Verde; break;
+                    return ColorEnum.Verde;
                 }
                 case "Azul": {
-                    this.value = ColorEnum.Azul; break;
+                    return ColorEnum.Azul;
                 }
                 case "Vermelho": {
-                    this.value = ColorEnum.Vermelho; break;
+                    return ColorEnum.Vermelho;
                 }
                 case "Amarelo": {
-                    this.value = ColorEnum.Amarelo; break;
+                    return ColorEnum.Amarelo;
                 }
                 case "Marrom": {
-                    this.value = ColorEnum.Marrom; break;
+                    return ColorEnum.Marrom;
                 }
+                default: return ColorEnum.NULL;
             }
         }
     }

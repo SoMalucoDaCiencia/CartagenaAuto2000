@@ -1,4 +1,4 @@
-﻿namespace PI3
+namespace PI3
 {
     partial class Form1
     {
