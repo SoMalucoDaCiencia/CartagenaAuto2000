@@ -18,11 +18,11 @@ namespace PI3.models{
         public int quantidade { get; set; }
 
         public Carta(string tipo, int quantidade) {
-            this.tipo = GetCardBitmap(tipo);
+            this.tipo = GetTipoCartaEnum(tipo);
             this.quantidade = quantidade;
         }
         
-        public static Bitmap GetCardBitmap(string tipo) {
+        public static TipoCartaEnum GetTipoCartaEnum(string tipo) {
             switch (tipo) {
                 case "G": {
                     return TipoCartaEnum.Garrafa; break;
@@ -40,6 +40,29 @@ namespace PI3.models{
                 }
                 case "F": {
                     return TipoCartaEnum.Faca; break;
+                }
+                default: return TipoCartaEnum.Faca; break;
+            }
+        }
+        
+        public static Bitmap GetCardBitmap(string tipo) {
+            switch (tipo) {
+                case "G": {
+                    return Properties.Resources.Garrafa; break;
+                }
+                case "C":
+                case "T": {// Tricornio
+                    return Properties.Resources.Chapeu; break;
+                }
+                case "P": {
+                    return Properties.Resources.Revolver; break;
+                }
+                case "B":
+                case "E": {// Esqueleto(Jolly roger)
+                    return Properties.Resources.Caveira; break;
+                }
+                case "F": {
+                    return Properties.Resources.Espada; break;
                 }
                 default: return null; break;
             }
