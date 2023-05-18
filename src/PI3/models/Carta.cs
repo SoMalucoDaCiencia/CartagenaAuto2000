@@ -18,24 +18,31 @@ namespace PI3.models{
         public int quantidade { get; set; }
 
         public Carta(string tipo, int quantidade) {
+            this.tipo = GetCardBitmap(tipo);
+            this.quantidade = quantidade;
+        }
+        
+        public static Bitmap GetCardBitmap(string tipo) {
             switch (tipo) {
                 case "G": {
-                    this.tipo = TipoCartaEnum.Garrafa; break;
+                    return TipoCartaEnum.Garrafa; break;
                 }
+                case "C":
                 case "T": {// Tricornio
-                    this.tipo = TipoCartaEnum.Chapeu; break;
+                    return TipoCartaEnum.Chapeu; break;
                 }
                 case "P": {
-                    this.tipo = TipoCartaEnum.Pistola; break;
+                    return TipoCartaEnum.Pistola; break;
                 }
+                case "B":
                 case "E": {// Esqueleto(Jolly roger)
-                    this.tipo = TipoCartaEnum.Bandeira; break;
+                    return TipoCartaEnum.Bandeira; break;
                 }
                 case "F": {
-                    this.tipo = TipoCartaEnum.Faca; break;
+                    return TipoCartaEnum.Faca; break;
                 }
+                default: return null; break;
             }
-            this.quantidade = quantidade;
         }
 
         public static List<Carta> CreateMao(string serverReponse)
