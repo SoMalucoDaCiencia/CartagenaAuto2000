@@ -22,6 +22,11 @@ namespace PI3.models{
             this.quantidade = quantidade;
         }
         
+        public Carta(string tipo) {
+            this.tipo = GetTipoCartaEnum(tipo);
+            this.quantidade = 0;
+        }
+        
         public static TipoCartaEnum GetTipoCartaEnum(string tipo) {
             switch (tipo) {
                 case "G": {
