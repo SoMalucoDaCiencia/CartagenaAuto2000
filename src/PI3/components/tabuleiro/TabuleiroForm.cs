@@ -76,13 +76,23 @@ namespace PI3.components.tabuleiro {
 
         public void tileClick(object sender, EventArgs e) {
             Panel o = (Panel) sender;
-            this.posicaoSelecionada = int.Parse(o.Tag.Split(',')[0].Split(':')[1])
+            this.posicaoSelecionada = int.Parse(o.Tag.ToString().Split(',')[0].Split(':')[1])
+            this.partida.update()
+            if (this.partida.idJogadorAtual == this.partida.jogador.id) {
+            	this.btnEnter.Enabled = true;
+            	this.btnAuto.Enabled = true;
+            }
             
         }
         
         public void cardClick(object sender, EventArgs e) {
             Panel o = (Panel) sender;
-            this.cart
+            this.cartaSelecionada = new Carta(o.Tag.ToString().Substring(0, 1))
+            this.partida.update()
+            if (this.partida.idJogadorAtual == this.partida.jogador.id) {
+            	this.btnEnter.Enabled = true;
+            	this.btnAuto.Enabled = true;
+            }
         }
     }
 }
