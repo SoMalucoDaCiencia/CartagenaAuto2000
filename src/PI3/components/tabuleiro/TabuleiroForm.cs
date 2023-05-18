@@ -8,23 +8,27 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PI3.components.tabuleiro
-{
+namespace PI3.components.tabuleiro {
+	
     public partial class TabuleiroForm : Form {
     
+    	Partida partida = null
+
         int posicaoSelecionada = -1;
         
         Carta cartaSelecionada = null;
     
-        public TabuleiroForm()
-        {
+        public TabuleiroForm(Partida partida) {
+        	this.partida = partida;
+        	this.parttida.updateTable();
             InitializeComponent();
-            ControlBox = false; //tira os negocios da janela do form
-            attachClickEventHandler();
+            this.btnEnter.Enabled = false;
+            this.btnAuto.Enabled = false;
+            setTabuleiro();
+            setCartas()
         }
         
-        private void attachClickEventHandler()
-        {
+        private void setTabuleiro() {
             for (int i = 0; i < 6; i++) {
                 for (int k = 0; k < 6; k++) {
                     Panel p = new Panel();
@@ -52,6 +56,23 @@ namespace PI3.components.tabuleiro
                 }
             }
         }
+        
+        private void setCartas() {
+            this.parttida.jogador.mao.forEach((carta) => {
+                Panel p = new Panel();
+                int h = 60;
+                int w = 60;
+                int esp = 15;
+                p.BackgroundImage = Carta.GetCardBitmap();                
+                p.BackgroundImageLayout = ImageLayout.Stretch;
+                p.Top = esp + (i > 2 ? (esp + h) : 0)
+                p.Left = esp + ((i%3) * w)
+                p.Width = w;
+                p.Height = h;
+                
+                p.Tag = carta.ToString()
+            });
+        }
 
         public void tileClick(object sender, EventArgs e) {
             Panel o = (Panel) sender;
@@ -61,8 +82,7 @@ namespace PI3.components.tabuleiro
         
         public void cardClick(object sender, EventArgs e) {
             Panel o = (Panel) sender;
-            
-            
+            this.cart
         }
     }
 }
