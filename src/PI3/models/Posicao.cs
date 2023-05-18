@@ -4,6 +4,10 @@ namespace PI3.models{
     public class Posicao{
         public TipoCartaEnum tipoPosicao { get; set; }
 
-        public List<Pirata> piratasPresentes { get; set; }
+        public Dictionary<int, int> piratasPresentes { get; set; } = new Dictionary<int, int>();
+        
+        public Posicao(TipoCartaEnum tipo) {
+            this.tipoPosicao = tipo;
+        }
     }
 }
