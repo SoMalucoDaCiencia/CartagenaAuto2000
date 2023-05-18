@@ -96,6 +96,46 @@ namespace PI3{
                 return null;
             }
         }
+        
+        
+        // <summary>Cria um jogador e entra em uma partida</summary>
+        /// <param name="idPartida">Id da partida</param>
+        /// <returns> Posicoes jogador </returns>
+        public static Dictionaty<int, Posicao> extractTabuleiro(int idPartida) {
+            try {
+            	// Return obj Dictionaty<idPosition{0~36}, Position>
+                Dictionaty<int, Posicao> ret = new Dictionaty<int, Posicao>();
+
+                // Fill list of positions instances ======
+
+                string serverResponse = Jogo.VerificarTabuleiro(idPartida);
+                Utils.checkError(serverResponse);
+                
+                serverResponse.Replace("\r", "").Split("\n").forEach((casa) => {
+                    ret.Add(int.Parse(casa.Split(",")[0]), new Posicao(Carta.GetTipoCartaEnum(casa.Split(",")[1])));
+                })
+
+                // Set pirates on it's positions ======
+
+                serverResponse = Jogo.VerificarVez(idPartida);
+                Utils.checkError(serverResponse);
+                
+                string[] processedResponse = serverResponse.Replace("\r", "").Split("\n")
+                for (int f=1; f<processedResponse.Length; f++) {
+                	string[] infCasa = processedResponse[f].Split(',')
+                	if(!ret[int.Parse(infCasa[0])].piratasPresentes.ContainsKey(int.Parse(infCasa[1]))) {
+                		ret[int.Parse(infCasa[0])].piratasPresentes.Add(int.Parse(infCasa[1]), int.Parse(infCasa[2]))
+                	} else {
+                		ret[int.Parse(infCasa[0])].piratasPresentes[int.Parse(infCasa[1])] = int.Parse(infCasa[2]))
+                	}
+                }
+                return ret;
+
+            } catch (Exception e) {
+                MessageBox.Show(e.Message, "Um erro inesperado ocorreu, tente novamente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
 
         public static Player iniciarPartida(Partida partida) {
             try {
@@ -126,3 +166,12 @@ namespace PI3{
         // }
     }
 }
+
+
+
+
+
+
+
+
+
