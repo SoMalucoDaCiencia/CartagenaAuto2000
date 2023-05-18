@@ -11,12 +11,16 @@ namespace PI3{
         public string name { get; set; }
 
         public string senha { get; set; }
+        
+        public Player jogador { get; set; }
 
         public int idJogadorAtual { get; set; }
+        
+        public int rodadaAtual { get; set; }
 
         public PartidaState.PartidaEnum state { get; set; }
 
-        public Tabuleiro tabuleiro { get; private set; }
+        public List<Posicao> casas { get; set; }
 
         public List<Player> players { get; set; } = new List<Player>();
 
