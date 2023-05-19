@@ -11,6 +11,9 @@ namespace PI3
 {
     internal static class Program
     {
+
+        public static Partida partidaEstado;
+
         /// <summary>
         /// Ponto de entrada principal para o aplicativo.
         /// </summary>
@@ -19,8 +22,8 @@ namespace PI3
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Menu());
-            Application.Run(new TabuleiroForm());
+            Application.Run(new Menu());
+            //Application.Run(new TabuleiroForm(partidaEstado));
             //Application.Run(new Form1());
         }
     }

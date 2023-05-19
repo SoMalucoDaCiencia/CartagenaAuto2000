@@ -1,14 +1,16 @@
 using System.Collections.Generic;
+using System.Drawing;
+using PI3.Properties;
 
 namespace PI3.models{
     
     public enum TipoCartaEnum{
-        Chapeu,
-        Pistola,
+        Tricornio,
+        Revolver,
         Faca,
         Chave,
         Garrafa,
-        Bandeira,
+        Esqueleto,
     }
 
     public class Carta{
@@ -32,19 +34,20 @@ namespace PI3.models{
                 case "G": {
                     return TipoCartaEnum.Garrafa; break;
                 }
-                case "C":
                 case "T": {// Tricornio
-                    return TipoCartaEnum.Chapeu; break;
+                    return TipoCartaEnum.Tricornio; break;
                 }
-                case "P": {
-                    return TipoCartaEnum.Pistola; break;
+                case "R": {
+                    return TipoCartaEnum.Revolver; break;
                 }
-                case "B":
                 case "E": {// Esqueleto(Jolly roger)
-                    return TipoCartaEnum.Bandeira; break;
+                    return TipoCartaEnum.Esqueleto; break;
                 }
                 case "F": {
                     return TipoCartaEnum.Faca; break;
+                }
+                case "C": {
+                    return TipoCartaEnum.Chave; break;
                 }
                 default: return TipoCartaEnum.Faca; break;
             }
@@ -53,35 +56,25 @@ namespace PI3.models{
         public static Bitmap GetCardBitmap(string tipo) {
             switch (tipo) {
                 case "G": {
-                    return Properties.Resources.Garrafa; break;
+                    return Properties.Resources.Garrafa ; break;
                 }
-                case "C":
                 case "T": {// Tricornio
-                    return Properties.Resources.Chapeu; break;
+                    return Properties.Resources.Tricornio; break;
                 }
-                case "P": {
+                case "R": {
                     return Properties.Resources.Revolver; break;
                 }
-                case "B":
-                case "E": {// Esqueleto(Jolly roger)
-                    return Properties.Resources.Caveira; break;
+                case "E": {
+                    return Properties.Resources.Esqueleto; break;
                 }
-                case "F": {
-                    return Properties.Resources.Espada; break;
+                case "F": {// Esqueleto(Jolly roger)
+                    return Properties.Resources.Faca; break;
+                }
+                case "C": {
+                    return Properties.Resources.Chave; break;
                 }
                 default: return null; break;
             }
-        }
-
-        public static List<Carta> CreateMao(string serverReponse)
-        {
-            List<Carta> ret = new List<Carta>();
-            List<string> list = new List<string>(serverReponse.Replace("\r", "").Split('\n'));
-            list.ForEach((str) => {
-                var arr = str.Split(',');
-                ret.Add(new Carta(arr[0], int.Parse(arr[0])));
-            });
-            return ret;
         }
     }
 }

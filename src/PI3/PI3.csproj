@@ -32,6 +32,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="CartagenaServer">
       <HintPath>..\CartagenaServer.dll</HintPath>
@@ -85,7 +86,6 @@
     <Compile Include="models\Pirata.cs" />
     <Compile Include="models\Player.cs" />
     <Compile Include="models\Posicao.cs" />
-    <Compile Include="models\Tabuleiro.cs" />
     <Compile Include="models\Partida.cs" />
     <Compile Include="components\navegacao\Navegacao.cs">
       <SubType>Form</SubType>
@@ -138,6 +138,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\Resources\fundo - cópia2.png" />
     <Content Include="Properties\Resources\MainBackground.png" />
   </ItemGroup>
   <ItemGroup>

@@ -16,6 +16,8 @@ namespace PI3.components.criarPartida
     {
         public string nomeSala { get; set; }
         public string senhaSala { get; set; }
+        public string nomePlayer { get; set; }
+
 
         public CriarSala()
         {
@@ -26,11 +28,10 @@ namespace PI3.components.criarPartida
         private void btnOk_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
-            if (Utils.isStringValid(txtNomeSala.Text) && Utils.isStringValid(txtSenhaSala.Text))
+            if (Utils.isStringValid(txtNomeSala.Text) && Utils.isStringValid(txtSenhaSala.Text) && Utils.isStringValid(txtPlayerName.Text))
             {
-                nomeSala = txtNomeSala.Text;
-                senhaSala = txtSenhaSala.Text;
-                var partida = GameCore.criarPartida(nomeSala, senhaSala);
+                Program.partidaEstado = GameCore.criarPartida(txtNomeSala.Text, txtSenhaSala.Text);
+                Program.partidaEstado.jogador = GameCore.entrarPartida(Program.partidaEstado.id, txtPlayerName.Text, txtSenhaSala.Text);
                 this.Close();
             }
             else
@@ -44,6 +45,16 @@ namespace PI3.components.criarPartida
         {
             DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

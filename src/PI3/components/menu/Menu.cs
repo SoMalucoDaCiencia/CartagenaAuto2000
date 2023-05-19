@@ -1,4 +1,5 @@
 using PI3.components.criarPartida;
+using PI3.components.tabuleiro;
 using PI3.models;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ using System.Windows.Forms;
 
 namespace PI3{
     public partial class Menu : Form{
+
         public Menu() {
             InitializeComponent();
             ControlBox = false; //tira os negocios da janela do form
@@ -34,6 +36,11 @@ namespace PI3{
         {
             CriarSala criarSala = new CriarSala();
             var result = criarSala.ShowDialog();
+            if (result == DialogResult.OK) {
+                TabuleiroForm tab = new TabuleiroForm();
+                tab.Show();
+                criarSala.Close();
+            }
         }
     }
 }

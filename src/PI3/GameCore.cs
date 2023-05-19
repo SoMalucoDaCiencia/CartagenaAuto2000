@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using CartagenaServer;
 using PI3.models;
@@ -44,7 +45,6 @@ namespace PI3{
                 ret.name = nome;
                 ret.senha = senha;
                 ret.state = PartidaState.parse(Jogo.VerificarVez(ret.id).Substring(0, 1));
-                ret.players.AddRange(listarJogadores(ret.id));
                 ret.createdAt = DateTime.Now;
                 return ret;
             } catch (Exception e) {
@@ -88,7 +88,7 @@ namespace PI3{
                 Utils.checkError(serverResponse);
 
                 List<string> list = new List<string>(serverResponse.Replace("\r", "").Split('\n')[0].Split(','));
-                return new Player(int.Parse(list[0]), list[1], Color.Parse(list[2]));
+                return new Player(int.Parse(list[0]), nome, list[1], Color.Parse(list[2]));
             }
             catch (Exception e) {
                 MessageBox.Show(e.Message, "Um erro inesperado ocorreu, tente novamente", MessageBoxButtons.OK,
@@ -101,69 +101,75 @@ namespace PI3{
         // <summary>Cria um jogador e entra em uma partida</summary>
         /// <param name="idPartida">Id da partida</param>
         /// <returns> Posicoes jogador </returns>
-        public static Dictionaty<int, Posicao> extractTabuleiro(int idPartida) {
+        public static void update(Partida partida) {
             try {
-            	// Return obj Dictionaty<idPosition{0~36}, Position>
-                Dictionaty<int, Posicao> ret = new Dictionaty<int, Posicao>();
+                Dictionary<int, Posicao> ret = new Dictionary<int, Posicao>();
 
                 // Fill list of positions instances ======
 
-                string serverResponse = Jogo.VerificarTabuleiro(idPartida);
+                string serverResponse = Jogo.ExibirTabuleiro(partida.id);
                 Utils.checkError(serverResponse);
-                
-                serverResponse.Replace("\r", "").Split("\n").forEach((casa) => {
-                    ret.Add(int.Parse(casa.Split(",")[0]), new Posicao(Carta.GetTipoCartaEnum(casa.Split(",")[1])));
-                })
+
+                serverResponse.Replace("\r", "").Split('\n').ToList().ForEach((casa) => {
+                    ret.Add(int.Parse(casa.Split(',')[0]), new Posicao(Carta.GetTipoCartaEnum(casa.Split(',')[1])));
+                });
 
                 // Set pirates on it's positions ======
 
-                serverResponse = Jogo.VerificarVez(idPartida);
+                serverResponse = Jogo.VerificarVez(partida.id);
                 Utils.checkError(serverResponse);
-                
-                string[] processedResponse = serverResponse.Replace("\r", "").Split("\n")
+
+                string[] processedResponse = serverResponse.Replace("\r", "").Split(',');
                 for (int f=1; f<processedResponse.Length; f++) {
-                	string[] infCasa = processedResponse[f].Split(',')
+                    string[] infCasa = processedResponse[f].Split(',');
                 	if(!ret[int.Parse(infCasa[0])].piratasPresentes.ContainsKey(int.Parse(infCasa[1]))) {
-                		ret[int.Parse(infCasa[0])].piratasPresentes.Add(int.Parse(infCasa[1]), int.Parse(infCasa[2]))
+                        ret[int.Parse(infCasa[0])].piratasPresentes.Add(int.Parse(infCasa[1]), int.Parse(infCasa[2]));
                 	} else {
-                		ret[int.Parse(infCasa[0])].piratasPresentes[int.Parse(infCasa[1])] = int.Parse(infCasa[2]))
+                		ret[int.Parse(infCasa[0])].piratasPresentes[int.Parse(infCasa[1])] = int.Parse(infCasa[2]);
                 	}
                 }
-                return ret;
+
+                string[] infPartida = processedResponse[0].Split(',');
+                partida.state = PartidaState.parse(infPartida[0]);
+                partida.idJogadorAtual = int.Parse(infPartida[1]);
+                partida.rodadaAtual = int.Parse(infPartida[2]);
+                partida.casas = ret;
 
             } catch (Exception e) {
                 MessageBox.Show(e.Message, "Um erro inesperado ocorreu, tente novamente", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
             }
         }
 
-        public static Player iniciarPartida(Partida partida) {
+        public static void iniciarPartida(Partida partida) {
             try {
-                if (partida.players.Count > 0) {
-                    string serverResponse = Jogo.IniciarPartida(partida.players[0].id, partida.players[0].senha);
-                    Utils.checkError(serverResponse);
+                string serverResponse = Jogo.IniciarPartida(partida.jogador.id, partida.jogador.senha);
+                Utils.checkError(serverResponse);
 
-                    partida.idJogadorAtual = int.Parse(serverResponse);
-                    Player player = partida.players.Find((p) => p.id == partida.idJogadorAtual);
-                    if (player!=null) {
-                        return player;
-                    } else {
-                        MessageBox.Show("N foi possível achar o jogador que inicia a partida", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return null;
-                    }
-                } else {
-                    MessageBox.Show("Partdia com jogadores vazios", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return null;
-                }
+                partida.idJogadorAtual = int.Parse(serverResponse);
+            } catch (Exception e) {
+                MessageBox.Show(e.Message, "Um erro inesperado ocorreu, tente novamente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static List<Carta> consultarMao(Partida partida) {
+            try {
+                string serverResponse = Jogo.ConsultarMao(partida.jogador.id, partida.jogador.senha);
+                Utils.checkError(serverResponse);
+
+                List<Carta> ret = new List<Carta>();
+                List<string> list = new List<string>(serverResponse.Replace("\r", "").Split('\n'));
+                list.ForEach((str) => {
+                    var arr = str.Split(',');
+                    ret.Add(new Carta(arr[0], int.Parse(arr[0])));
+                });
+
+                partida.idJogadorAtual = int.Parse(serverResponse);
+                return ret;
             } catch (Exception e) {
                 MessageBox.Show(e.Message, "Um erro inesperado ocorreu, tente novamente", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
         }
-
-        //
-        // public static List<Carta> consultarMao(int idJogador, string senha) {
-        // }
     }
 }
 

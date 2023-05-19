@@ -23,7 +23,9 @@ namespace PI3.models{
             this.nome = nome;
             this.senha = senha;
             this.cor = cor;
-            this.mao.AddRange(Carta.CreateMao(Jogo.ConsultarMao(this.id, this.senha)));
+            if (Program.partidaEstado.jogador != null) {
+                this.mao = GameCore.consultarMao(Program.partidaEstado);
+            }
             //this.piratas.AddRange()
         }
 
@@ -40,7 +42,6 @@ namespace PI3.models{
             var response = CartagenaServer.Jogo.EntrarPartida(partida.id, Utils.firstToUpper(name), partida.senha)
                 .Split(',');
             var pl = new Player(int.Parse(response[0]), Utils.firstToUpper(name), response[1],  Color.Parse(response[2]));
-            partida.players.Add(pl);
             return pl;
         }
 

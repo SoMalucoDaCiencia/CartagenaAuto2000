@@ -20,9 +20,7 @@ namespace PI3{
 
         public PartidaState.PartidaEnum state { get; set; }
 
-        public List<Posicao> casas { get; set; }
-
-        public List<Player> players { get; set; } = new List<Player>();
+        public Dictionary<int, Posicao> casas { get; set; }
 
         public DateTime createdAt { get; set; }
 
@@ -33,7 +31,6 @@ namespace PI3{
             ret.senha = senhaP;
             ret.state = PartidaState.parse(Jogo.VerificarVez(ret.id).Substring(0, 1));
 
-            ret.players.AddRange(GameCore.listarJogadores(ret.id));
             ret.createdAt = DateTime.Parse(new List<string>(Jogo.ListarPartidas("T").Replace("\r", "").Split('\n'))
                 .FindAll((str) => str.StartsWith(ret.id + ","))[0].Split(',')[2]);
 
@@ -52,9 +49,6 @@ namespace PI3{
         //Retona uma lista com todos os nomes das partidas presentes na lista
         public static List<string> getPartidasNames(List<Partida> partidas) {
             return new List<string>(partidas.Select((p) => p.name));
-        }
-
-        public void updateTabuleiro() {
         }
     }
 
