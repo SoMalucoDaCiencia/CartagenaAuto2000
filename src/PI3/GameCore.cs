@@ -96,8 +96,8 @@ namespace PI3{
                 return null;
             }
         }
-        
-        
+
+
         // <summary>Cria um jogador e entra em uma partida</summary>
         /// <param name="idPartida">Id da partida</param>
         /// <returns> Posicoes jogador </returns>
@@ -146,6 +146,21 @@ namespace PI3{
                 Utils.checkError(serverResponse);
 
                 partida.idJogadorAtual = int.Parse(serverResponse);
+                update(partida);
+            } catch (Exception e) {
+                MessageBox.Show(e.Message, "Um erro inesperado ocorreu, tente novamente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static void jogar(Partida partida, int indexPosicao, Carta carta) {
+            try {
+                if (partida.state == PartidaState.PartidaEnum.INICIADA) {
+                    string serverResponse = Jogo.Jogar(partida.jogador.id, partida.jogador.senha, indexPosicao, carta.ToString().ToArray()[0].ToString());
+                    Utils.checkError(serverResponse);
+
+                    partida.idJogadorAtual = int.Parse(serverResponse);
+                    update(partida);
+                }
             } catch (Exception e) {
                 MessageBox.Show(e.Message, "Um erro inesperado ocorreu, tente novamente", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -163,7 +178,7 @@ namespace PI3{
                     ret.Add(new Carta(arr[0], int.Parse(arr[0])));
                 });
 
-                partida.idJogadorAtual = int.Parse(serverResponse);
+                update(partida);
                 return ret;
             } catch (Exception e) {
                 MessageBox.Show(e.Message, "Um erro inesperado ocorreu, tente novamente", MessageBoxButtons.OK, MessageBoxIcon.Error);
