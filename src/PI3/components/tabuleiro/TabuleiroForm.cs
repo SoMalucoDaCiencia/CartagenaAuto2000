@@ -10,12 +10,21 @@ namespace PI3.components.tabuleiro {
 
         Carta cartaSelecionada = null;
 
+        bool initModalView = false;
+
         public TabuleiroForm() {
             GameCore.update(Program.partidaEstado);
-            InitializeComponent();
-            setTabuleiro();
-       //     setCartas();
-            checkButtons();
+
+            if (Program.partidaEstado.state == PartidaState.PartidaEnum.INICIADA) {
+                initModalView = false;
+                InitializeComponent();
+                setTabuleiro();
+                setCartas();
+                checkButtons();
+            } else {
+                initModalView = true;
+                // ...Draw init list
+            }
         }
 
         private void setTabuleiro() {
