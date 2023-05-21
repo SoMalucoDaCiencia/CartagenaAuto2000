@@ -106,34 +106,36 @@ namespace PI3{
                 Dictionary<int, Posicao> ret = new Dictionary<int, Posicao>();
 
                 // Fill list of positions instances ======
+                if (partida.state == PartidaState.PartidaEnum.ABERTA) {
 
-                string serverResponse = Jogo.ExibirTabuleiro(partida.id);
-                Utils.checkError(serverResponse);
+                    string serverResponse = Jogo.ExibirTabuleiro(partida.id);
+                    Utils.checkError(serverResponse);
 
-                serverResponse.Replace("\r", "").Split('\n').ToList().ForEach((casa) => {
-                    ret.Add(int.Parse(casa.Split(',')[0]), new Posicao(Carta.GetTipoCartaEnum(casa.Split(',')[1])));
-                });
+                    serverResponse.Replace("\r", "").Split('\n').ToList().ForEach((casa) => {
+                        ret.Add(int.Parse(casa.Split(',')[0]), new Posicao(Carta.GetTipoCartaEnum(casa.Split(',')[1])));
+                    });
 
-                // Set pirates on it's positions ======
+                    // Set pirates on it's positions ======
 
-                serverResponse = Jogo.VerificarVez(partida.id);
-                Utils.checkError(serverResponse);
+                    serverResponse = Jogo.VerificarVez(partida.id);
+                    Utils.checkError(serverResponse);
 
-                string[] processedResponse = serverResponse.Replace("\r", "").Split(',');
-                for (int f=1; f<processedResponse.Length; f++) {
-                    string[] infCasa = processedResponse[f].Split(',');
-                	if(!ret[int.Parse(infCasa[0])].piratasPresentes.ContainsKey(int.Parse(infCasa[1]))) {
-                        ret[int.Parse(infCasa[0])].piratasPresentes.Add(int.Parse(infCasa[1]), int.Parse(infCasa[2]));
-                	} else {
-                		ret[int.Parse(infCasa[0])].piratasPresentes[int.Parse(infCasa[1])] = int.Parse(infCasa[2]);
-                	}
+                    string[] processedResponse = serverResponse.Replace("\r", "").Split(',');
+                    for (int f=1; f<processedResponse.Length; f++) {
+                        string[] infCasa = processedResponse[f].Split(',');
+                        if(!ret[int.Parse(infCasa[0])].piratasPresentes.ContainsKey(int.Parse(infCasa[1]))) {
+                            ret[int.Parse(infCasa[0])].piratasPresentes.Add(int.Parse(infCasa[1]), int.Parse(infCasa[2]));
+                        } else {
+                            ret[int.Parse(infCasa[0])].piratasPresentes[int.Parse(infCasa[1])] = int.Parse(infCasa[2]);
+                        }
+                    }
+
+                    string[] infPartida = processedResponse[0].Split(',');
+                    partida.state = PartidaState.parse(infPartida[0]);
+                    partida.idJogadorAtual = int.Parse(infPartida[1]);
+                    partida.rodadaAtual = int.Parse(infPartida[2]);
+                    partida.casas = ret;
                 }
-
-                string[] infPartida = processedResponse[0].Split(',');
-                partida.state = PartidaState.parse(infPartida[0]);
-                partida.idJogadorAtual = int.Parse(infPartida[1]);
-                partida.rodadaAtual = int.Parse(infPartida[2]);
-                partida.casas = ret;
 
             } catch (Exception e) {
                 MessageBox.Show(e.Message, "Um erro inesperado ocorreu, tente novamente", MessageBoxButtons.OK, MessageBoxIcon.Error);
