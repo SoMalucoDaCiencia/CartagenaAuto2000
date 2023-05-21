@@ -1,22 +1,15 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using PI3.models;
 
 namespace PI3.components.tabuleiro {
-	
+
     public partial class TabuleiroForm : Form {
 
         int posicaoSelecionada = -1;
-        
+
         Carta cartaSelecionada = null;
-    
+
         public TabuleiroForm() {
             GameCore.update(Program.partidaEstado);
             InitializeComponent();
@@ -47,13 +40,13 @@ namespace PI3.components.tabuleiro {
                         ",y1:" + (p.Top -  (w*3/4)) +
                         ",y2:" + (p.Top - (w/4)) +
                         ",y3:" + (p.Top - (w*3/4));
-                    
+
                     p.Click += tileClick;
                     this.Controls.Add(p);
                 }
             }
         }
-        
+
         private void setCartas() {
             var i = 0;
             Program.partidaEstado.jogador.mao.ForEach((carta) => {
