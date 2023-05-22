@@ -1,7 +1,7 @@
 using System;
-using System.Text.Json.Serialization;
+//using System.Text.Json.Serialization;
 using System.IO;
-using System.Text.Json;
+//using System.Text.Json;
 using System.Windows.Forms;
 
 namespace PI3
@@ -35,7 +35,7 @@ namespace PI3
             //     Application.Run(new Menu());
             // } catch (Exception e) {
             //     Utils.ConsoleLogInfo("Nenhuma partida identificada.");
-                Application.Run(new Menu());
+            Application.Run(new Menu());
             // }
 
             //Application.Run(new Form1());

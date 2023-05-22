@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Navegacao));
             this.btnVoltar = new System.Windows.Forms.Button();
             this.lstListarPartidas = new System.Windows.Forms.ListBox();
             this.btnListarPartidas = new System.Windows.Forms.Button();
@@ -37,19 +36,19 @@
             // btnVoltar
             // 
             this.btnVoltar.BackColor = System.Drawing.Color.Transparent;
-            this.btnVoltar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnVoltar.BackgroundImage")));
             this.btnVoltar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnVoltar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnVoltar.FlatAppearance.BorderSize = 0;
             this.btnVoltar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnVoltar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVoltar.Font = new System.Drawing.Font("Berserker", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVoltar.ForeColor = System.Drawing.Color.Snow;
-            this.btnVoltar.Location = new System.Drawing.Point(686, 514);
+            this.btnVoltar.Location = new System.Drawing.Point(677, 514);
             this.btnVoltar.Name = "btnVoltar";
-            this.btnVoltar.Size = new System.Drawing.Size(86, 35);
+            this.btnVoltar.Size = new System.Drawing.Size(95, 35);
             this.btnVoltar.TabIndex = 0;
+            this.btnVoltar.Text = "Voltar";
             this.btnVoltar.UseVisualStyleBackColor = false;
             this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
@@ -68,17 +67,19 @@
             // btnListarPartidas
             // 
             this.btnListarPartidas.BackColor = System.Drawing.Color.Transparent;
-            this.btnListarPartidas.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnListarPartidas.BackgroundImage")));
             this.btnListarPartidas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnListarPartidas.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnListarPartidas.FlatAppearance.BorderSize = 0;
             this.btnListarPartidas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnListarPartidas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnListarPartidas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnListarPartidas.Font = new System.Drawing.Font("Berserker", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnListarPartidas.ForeColor = System.Drawing.SystemColors.Control;
             this.btnListarPartidas.Location = new System.Drawing.Point(145, 399);
             this.btnListarPartidas.Name = "btnListarPartidas";
-            this.btnListarPartidas.Size = new System.Drawing.Size(116, 33);
+            this.btnListarPartidas.Size = new System.Drawing.Size(121, 33);
             this.btnListarPartidas.TabIndex = 2;
+            this.btnListarPartidas.Text = "Atualizar";
             this.btnListarPartidas.UseVisualStyleBackColor = false;
             this.btnListarPartidas.Click += new System.EventHandler(this.btnListarPartidas_Click);
             // 

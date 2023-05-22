@@ -23,7 +23,7 @@ namespace PI3.models{
             this.nome = nome;
             this.senha = senha;
             this.cor = cor;
-            if (Program.partidaEstado.jogador != null) {
+            if (Program.partidaEstado.jogador != null && Program.partidaEstado != null) {
                 this.mao = GameCore.consultarMao(Program.partidaEstado);
             }
             //this.piratas.AddRange()

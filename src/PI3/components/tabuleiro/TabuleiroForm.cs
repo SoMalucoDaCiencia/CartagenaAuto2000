@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 using PI3.models;
 
@@ -7,7 +9,7 @@ namespace PI3.components.tabuleiro {
 
     public partial class TabuleiroForm : Form {
 
-        Timer timer = new Timer();
+        System.Timers.Timer timer = new System.Timers.Timer();
 
         int posicaoSelecionada = -1;
 
@@ -15,20 +17,41 @@ namespace PI3.components.tabuleiro {
 
         bool initModalView = false;
 
+        List<Player> jogadores;
+
+        bool stop = false;
+
         public TabuleiroForm() {
             InitializeComponent();
-            timer.Tick += ((obj, args) => {
+            ControlBox = false;
+            dataGridView1.Hide();
+            btnAuto.Hide();
+            btnEnter.Hide();
+            jogadores = GameCore.listarJogadores(Program.partidaEstado.id);
+            lstListarPlayers.Items.Clear();
+            lstListarPlayers.Items.AddRange(Player.GetPlayersNames(jogadores).ToArray());
+            //this.render();
+
+            while (stop) {
                 GameCore.update(Program.partidaEstado);
-                if (Program.partidaEstado.state == PartidaState.PartidaEnum.INICIADA) {
+                if (Program.partidaEstado.state == PartidaState.PartidaEnum.INICIADA)
+                {
                     initModalView = false;
                     this.render();
-                } else {
+                    lstListarPlayers.Hide();
+                    btnIniciarPartida.Hide();
+                    dataGridView1.Show();
+                    btnAuto.Show();
+                    btnEnter.Show();
+                }
+                else
+                {
                     initModalView = true;
                     // ...Draw init list
                 }
-            });
-            timer.Interval = 5000;
-            timer.Start();
+
+                Thread.Sleep(5000);
+            }
         }
 
         private void render() {
@@ -134,6 +157,14 @@ namespace PI3.components.tabuleiro {
             	this.btnEnter.Enabled = true;
             	this.btnAuto.Enabled = true;
             }
+        }
+
+        private void btnIniciarPartida_Click(object sender, EventArgs e)
+        {
+            GameCore.iniciarPartida(Program.partidaEstado);
+            Program.partidaEstado.state = PartidaState.PartidaEnum.INICIADA;
+            render();
+            initModalView = false;
         }
     }
 }

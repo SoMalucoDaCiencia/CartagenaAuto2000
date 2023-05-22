@@ -107,7 +107,7 @@ namespace PI3{
                 Dictionary<int, Posicao> ret = new Dictionary<int, Posicao>();
 
                 // Fill list of positions instances ======
-                if (partida.state == PartidaState.PartidaEnum.ABERTA) {
+                if (partida.state == PartidaState.PartidaEnum.INICIADA) {
 
                     string serverResponse = Jogo.ExibirTabuleiro(partida.id);
                     Utils.checkError(serverResponse);
