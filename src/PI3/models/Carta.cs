@@ -54,25 +54,25 @@ namespace PI3.models{
             }
         }
 
-        public static Bitmap GetCardBitmap(TipoCartaEnum tipo) {
+        public static Bitmap GetCardBitmap(TipoCartaEnum tipo, bool simbolo) {
             switch (tipo.ToString().ToArray()[0]) {
                 case 'G': {
-                    return Properties.Resources.Garrafa ; break;
+                    return (simbolo ? Properties.Resources.GarrafaSimbolo : Properties.Resources.Garrafa); break;
                 }
                 case 'T': {// Tricornio
-                    return Properties.Resources.Tricornio; break;
+                    return (simbolo ? Properties.Resources.TricornioSimbolo : Properties.Resources.Tricornio); break;
                 }
                 case 'R': {
-                    return Properties.Resources.Revolver; break;
+                    return (simbolo ? Properties.Resources.RevolverSimbolo : Properties.Resources.Revolver); break;
                 }
                 case 'E': {
-                    return Properties.Resources.Esqueleto; break;
+                    return (simbolo ? Properties.Resources.EsqueletoSimbolo : Properties.Resources.Esqueleto); break;
                 }
                 case 'F': {// Esqueleto(Jolly roger)
-                    return Properties.Resources.Faca; break;
+                    return (simbolo ? Properties.Resources.FacaSimbolo : Properties.Resources.Faca); break;
                 }
                 case 'C': {
-                    return Properties.Resources.Chave; break;
+                    return (simbolo ? Properties.Resources.ChaveSimbolo : Properties.Resources.Chave); break;
                 }
                 default: return null; break;
             }

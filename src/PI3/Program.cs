@@ -1,18 +1,14 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text.Json.Serialization;
+using System.IO;
+using System.Text.Json;
 using System.Windows.Forms;
-using PI3.components.tabuleiro;
-using CartagenaServer;
-using PI3.models;
 
 namespace PI3
 {
-    internal static class Program
-    {
+    internal static class Program{
 
-        public static Partida partidaEstado;
+        public static Partida partidaEstado = null;
 
         /// <summary>
         /// Ponto de entrada principal para o aplicativo.
@@ -22,8 +18,26 @@ namespace PI3
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Menu());
-            //Application.Run(new TabuleiroForm(partidaEstado));
+
+            // try {
+            //     string json = File.ReadAllText(Path.DirectorySeparatorChar + "partidaEstado.json");
+            //     if (json.Length > 0) {
+            //         partidaEstado = JsonSerializer.Deserialize<Partida>(json, new JsonSerializerOptions {NumberHandling = JsonNumberHandling.AllowReadingFromString});
+            //         GameCore.update(partidaEstado);
+            //     }
+            //
+            //     if (partidaEstado != null && partidaEstado.state == PartidaState.PartidaEnum.ABERTA || partidaEstado.state == PartidaState.PartidaEnum.INICIADA) {
+            //         Utils.ConsoleLogInfo("UMa partida chamada " + partidaEstado.name + " e de ID " + partidaEstado.id +  " foi identificada na inicialização.");
+            //     } else {
+            //         Utils.ConsoleLogInfo("Nenhuma partida identificada.");
+            //         partidaEstado = null;
+            //     }
+            //     Application.Run(new Menu());
+            // } catch (Exception e) {
+            //     Utils.ConsoleLogInfo("Nenhuma partida identificada.");
+                Application.Run(new Menu());
+            // }
+
             //Application.Run(new Form1());
         }
     }

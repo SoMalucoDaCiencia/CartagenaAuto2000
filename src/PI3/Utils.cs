@@ -21,5 +21,15 @@ namespace PI3{
         {
             return str != null && str.Replace(" ", "").Length > 0;
         }
+
+        public static void ConsoleLogInfo(String str) {
+            Console.WriteLine(ConsoleColor.Yellow + "[CARTAGENA2000] - INFO - " + DateTime.Now + " --> " + str);
+            Console.ResetColor();
+        }
+
+        public static void ConsoleLogErr(String str) {
+            Console.WriteLine(ConsoleColor.Red + "[CARTAGENA2000] - ERROR - " + DateTime.Now + " --> " + str);
+            Console.ResetColor();
+        }
     }
 }
