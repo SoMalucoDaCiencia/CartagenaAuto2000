@@ -6,6 +6,8 @@ namespace PI3.components.tabuleiro {
 
     public partial class TabuleiroForm : Form {
 
+        Timer timer = new Timer();
+
         int posicaoSelecionada = -1;
 
         Carta cartaSelecionada = null;
@@ -13,18 +15,25 @@ namespace PI3.components.tabuleiro {
         bool initModalView = false;
 
         public TabuleiroForm() {
-            GameCore.update(Program.partidaEstado);
+            timer.Tick += ((obj, args) => {
+                GameCore.update(Program.partidaEstado);
+                if (Program.partidaEstado.state == PartidaState.PartidaEnum.INICIADA) {
+                    initModalView = false;
+                    this.render();
+                } else {
+                    initModalView = true;
+                    // ...Draw init list
+                }
+            });
+            timer.Interval = 5000;
+            timer.Start();
+        }
 
-            if (Program.partidaEstado.state == PartidaState.PartidaEnum.INICIADA) {
-                initModalView = false;
-                InitializeComponent();
-                setTabuleiro();
-                setCartas();
-                checkButtons();
-            } else {
-                initModalView = true;
-                // ...Draw init list
-            }
+        private void render() {
+            InitializeComponent();
+            setTabuleiro();
+            setCartas();
+            checkButtons();
         }
 
         private void setTabuleiro() {

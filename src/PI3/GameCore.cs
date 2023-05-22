@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using CartagenaServer;
 using PI3.models;
@@ -140,6 +141,10 @@ namespace PI3{
             } catch (Exception e) {
                 MessageBox.Show(e.Message, "Um erro inesperado ocorreu, tente novamente", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        public static string getPlayerName(int idPartida, int idJogador) {
+            return Utils.firstToUpper(listarJogadores(idPartida).Find((one) => one.id == idJogador).nome);
         }
 
         public static void iniciarPartida(Partida partida) {
