@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using PI3.Properties;
 
 namespace PI3.models{
-    
+
     public enum TipoCartaEnum{
         Tricornio,
         Revolver,
@@ -23,12 +24,12 @@ namespace PI3.models{
             this.tipo = GetTipoCartaEnum(tipo);
             this.quantidade = quantidade;
         }
-        
+
         public Carta(string tipo) {
             this.tipo = GetTipoCartaEnum(tipo);
             this.quantidade = 0;
         }
-        
+
         public static TipoCartaEnum GetTipoCartaEnum(string tipo) {
             switch (tipo) {
                 case "G": {
@@ -52,25 +53,25 @@ namespace PI3.models{
                 default: return TipoCartaEnum.Faca; break;
             }
         }
-        
-        public static Bitmap GetCardBitmap(string tipo) {
-            switch (tipo) {
-                case "G": {
+
+        public static Bitmap GetCardBitmap(TipoCartaEnum tipo) {
+            switch (tipo.ToString().ToArray()[0]) {
+                case 'G': {
                     return Properties.Resources.Garrafa ; break;
                 }
-                case "T": {// Tricornio
+                case 'T': {// Tricornio
                     return Properties.Resources.Tricornio; break;
                 }
-                case "R": {
+                case 'R': {
                     return Properties.Resources.Revolver; break;
                 }
-                case "E": {
+                case 'E': {
                     return Properties.Resources.Esqueleto; break;
                 }
-                case "F": {// Esqueleto(Jolly roger)
+                case 'F': {// Esqueleto(Jolly roger)
                     return Properties.Resources.Faca; break;
                 }
-                case "C": {
+                case 'C': {
                     return Properties.Resources.Chave; break;
                 }
                 default: return null; break;
