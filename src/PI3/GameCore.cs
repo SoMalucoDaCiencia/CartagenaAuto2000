@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
@@ -45,8 +46,9 @@ namespace PI3{
                 ret.id = int.Parse(serverResponse);
                 ret.name = nome;
                 ret.senha = senha;
-                ret.state = PartidaState.parse(Jogo.VerificarVez(ret.id).Substring(0, 1));
+                ret.state = PartidaState.PartidaEnum.ABERTA;
                 ret.createdAt = DateTime.Now;
+                ret.casas = new Dictionary<int, Posicao>();
                 return ret;
             } catch (Exception e) {
                 MessageBox.Show(e.Message, "Um erro inesperado ocorreu, ", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -104,7 +106,7 @@ namespace PI3{
         /// <returns> Posicoes jogador </returns>
         public static void update(Partida partida) {
             try {
-                Dictionary<int, Posicao> ret = new Dictionary<int, Posicao>();
+               
 
                 // Fill list of positions instances ======
                 if (partida.state == PartidaState.PartidaEnum.INICIADA) {
@@ -112,8 +114,15 @@ namespace PI3{
                     string serverResponse = Jogo.ExibirTabuleiro(partida.id);
                     Utils.checkError(serverResponse);
 
-                    serverResponse.Replace("\r", "").Split('\n').ToList().ForEach((casa) => {
-                        ret.Add(int.Parse(casa.Split(',')[0]), new Posicao(Carta.GetTipoCartaEnum(casa.Split(',')[1])));
+                    var r = serverResponse.Replace("\r", "").Split('\n').ToList();
+                    partida.casas.Clear();
+                    var i = 0;
+                    r.ForEach((casa) => {
+                        if (i<38)
+                        {
+                            partida.casas.Add(int.Parse(casa.Split(',')[0]), new Posicao(Carta.GetTipoCartaEnum(casa.Split(',')[1])));
+                        }
+                        i++;
                     });
 
                     // Set pirates on it's positions ======
@@ -121,21 +130,24 @@ namespace PI3{
                     serverResponse = Jogo.VerificarVez(partida.id);
                     Utils.checkError(serverResponse);
 
-                    string[] processedResponse = serverResponse.Replace("\r", "").Split(',');
+                    string[] processedResponse = serverResponse.Replace("\r", "").Split('\n');
                     for (int f=1; f<processedResponse.Length; f++) {
-                        string[] infCasa = processedResponse[f].Split(',');
-                        if(!ret[int.Parse(infCasa[0])].piratasPresentes.ContainsKey(int.Parse(infCasa[1]))) {
-                            ret[int.Parse(infCasa[0])].piratasPresentes.Add(int.Parse(infCasa[1]), int.Parse(infCasa[2]));
-                        } else {
-                            ret[int.Parse(infCasa[0])].piratasPresentes[int.Parse(infCasa[1])] = int.Parse(infCasa[2]);
+                        if (processedResponse[f].Length > 0)
+                        {
+                            string[] infCasa = processedResponse[f].Split(',');
+                            if(!partida.casas[int.Parse(infCasa[0])].piratasPresentes.ContainsKey(int.Parse(infCasa[1]))) {
+                                partida.casas[int.Parse(infCasa[0])].piratasPresentes.Add(int.Parse(infCasa[1]), int.Parse(infCasa[2]));
+                            } else {
+                                partida.casas[int.Parse(infCasa[0])].piratasPresentes[int.Parse(infCasa[1])] = int.Parse(infCasa[2]);
+                            }
                         }
+
                     }
 
                     string[] infPartida = processedResponse[0].Split(',');
                     partida.state = PartidaState.parse(infPartida[0]);
                     partida.idJogadorAtual = int.Parse(infPartida[1]);
                     partida.rodadaAtual = int.Parse(infPartida[2]);
-                    partida.casas = ret;
                 }
 
             } catch (Exception e) {

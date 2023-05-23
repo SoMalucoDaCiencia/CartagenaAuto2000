@@ -9,13 +9,11 @@ namespace PI3.components.tabuleiro {
 
     public partial class TabuleiroForm : Form {
 
-        System.Timers.Timer timer = new System.Timers.Timer();
-
         int posicaoSelecionada = -1;
 
         Carta cartaSelecionada = null;
 
-        bool initModalView = false;
+        bool initModalView = true;
 
         List<Player> jogadores;
 
@@ -23,41 +21,56 @@ namespace PI3.components.tabuleiro {
 
         public TabuleiroForm() {
             InitializeComponent();
+            this.Refresh();
+            this.Show();
             ControlBox = false;
-            dataGridView1.Hide();
-            btnAuto.Hide();
-            btnEnter.Hide();
-            jogadores = GameCore.listarJogadores(Program.partidaEstado.id);
-            lstListarPlayers.Items.Clear();
-            lstListarPlayers.Items.AddRange(Player.GetPlayersNames(jogadores).ToArray());
-            //this.render();
 
-            while (stop) {
+            //while (!stop) {
                 GameCore.update(Program.partidaEstado);
                 if (Program.partidaEstado.state == PartidaState.PartidaEnum.INICIADA)
                 {
                     initModalView = false;
-                    this.render();
-                    lstListarPlayers.Hide();
-                    btnIniciarPartida.Hide();
-                    dataGridView1.Show();
-                    btnAuto.Show();
-                    btnEnter.Show();
+                    this.updateLobby();
+                    render();
                 }
                 else
                 {
                     initModalView = true;
-                    // ...Draw init list
+                    jogadores = GameCore.listarJogadores(Program.partidaEstado.id);
+                    lstListarPlayers.Items.Clear();
+                    lstListarPlayers.Items.AddRange(Player.GetPlayersNames(jogadores).ToArray());
+                    this.updateLobby();
                 }
 
-                Thread.Sleep(5000);
+                //Thread.Sleep(5000);
+            //}
+        }
+
+        private void updateLobby()
+        {
+            if (!initModalView)
+            {
+                lstListarPlayers.Hide();
+                dataGridView1.Show();
+                btnIniciarPartida.Hide();
+                btnAuto.Show();
+                btnEnter.Show();
+            } else {
+                lstListarPlayers.Show();
+                dataGridView1.Hide();
+                btnIniciarPartida.Show();
+                btnAuto.Hide();
+                btnEnter.Hide();
             }
         }
 
         private void render() {
+            if (!initModalView)
+            {
             setTabuleiro();
             setCartas();
             checkButtons();
+            }
         }
 
         private void setTabuleiro() {
@@ -66,11 +79,12 @@ namespace PI3.components.tabuleiro {
                     Panel p = new Panel();
                     int marginTop = 0;
                     int marginLeft = 0;
-                    int h = 80; //ç
-                    int w = 80;
-                    int esp = 20;
+                    int h = 55; //ç
+                    int w = 55;
+                    int esp = 70;
                     p.BackgroundImage = Carta.GetCardBitmap(Program.partidaEstado.casas[(6 * i) + k].tipoPosicao, true);
                     p.BackgroundImageLayout = ImageLayout.Stretch;
+                    p.BackColor = System.Drawing.Color.Transparent;
                     p.Top = marginTop + esp + (h + esp) * ((i % 2 == 0 ? 0 : 5) + (k * (i % 2 == 0 ? 1 : -1)));
                     p.Left = marginLeft + esp + (h + esp) * i;
                     p.Width = w;
@@ -163,6 +177,8 @@ namespace PI3.components.tabuleiro {
         {
             GameCore.iniciarPartida(Program.partidaEstado);
             Program.partidaEstado.state = PartidaState.PartidaEnum.INICIADA;
+            updateLobby();
+            GameCore.update(Program.partidaEstado);
             render();
             initModalView = false;
         }

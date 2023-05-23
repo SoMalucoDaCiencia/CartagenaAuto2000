@@ -7,11 +7,12 @@ namespace PI3.models{
 
     public enum TipoCartaEnum{
         Tricornio,
-        Revolver,
+        Pistola,
         Faca,
         Chave,
         Garrafa,
         Esqueleto,
+        Nula
     }
 
     public class Carta{
@@ -38,8 +39,8 @@ namespace PI3.models{
                 case "T": {// Tricornio
                     return TipoCartaEnum.Tricornio; break;
                 }
-                case "R": {
-                    return TipoCartaEnum.Revolver; break;
+                case "P": {
+                    return TipoCartaEnum.Pistola; break;
                 }
                 case "E": {// Esqueleto(Jolly roger)
                     return TipoCartaEnum.Esqueleto; break;
@@ -50,23 +51,24 @@ namespace PI3.models{
                 case "C": {
                     return TipoCartaEnum.Chave; break;
                 }
-                default: return TipoCartaEnum.Faca; break;
+                default: return TipoCartaEnum.Nula; break;
             }
         }
 
         public static Bitmap GetCardBitmap(TipoCartaEnum tipo, bool simbolo) {
-            switch (tipo.ToString().ToArray()[0]) {
+            var letter = tipo.ToString().ToArray()[0];
+            switch (letter) {
                 case 'G': {
                     return (simbolo ? Properties.Resources.garrafa1 : Properties.Resources.Garrafa); break;
                 }
                 case 'T': {// Tricornio
                     return (simbolo ? Properties.Resources.tricornio1 : Properties.Resources.Tricornio); break;
                 }
-                case 'R': {
-                    return (simbolo ? Properties.Resources.revolver1 : Properties.Resources.Revolver); break;
+                case 'P': {
+                    return (simbolo ? Properties.Resources.pistola1 : Properties.Resources.Pistola); break;
                 }
                 case 'E': {
-                    return (simbolo ? Properties.Resources.caveira : Properties.Resources.Esqueleto); break;
+                    return (simbolo ? Properties.Resources.esqueleto1 : Properties.Resources.Esqueleto); break;
                 }
                 case 'F': {// Esqueleto(Jolly roger)
                     return (simbolo ? Properties.Resources.faca1 : Properties.Resources.Faca); break;

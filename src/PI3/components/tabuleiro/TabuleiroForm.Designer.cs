@@ -48,7 +48,7 @@ namespace PI3.components.tabuleiro
             // 
             // btnEnter
             // 
-            this.btnEnter.Font = new System.Drawing.Font("Berserker", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEnter.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEnter.Location = new System.Drawing.Point(783, 604);
             this.btnEnter.Name = "btnEnter";
             this.btnEnter.Size = new System.Drawing.Size(174, 50);
@@ -59,7 +59,7 @@ namespace PI3.components.tabuleiro
             // 
             // btnAuto
             // 
-            this.btnAuto.Font = new System.Drawing.Font("Berserker", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAuto.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAuto.Location = new System.Drawing.Point(963, 604);
             this.btnAuto.Name = "btnAuto";
             this.btnAuto.Size = new System.Drawing.Size(181, 50);
@@ -80,15 +80,15 @@ namespace PI3.components.tabuleiro
             // lstListarPlayers
             // 
             this.lstListarPlayers.FormattingEnabled = true;
-            this.lstListarPlayers.Location = new System.Drawing.Point(503, 266);
+            this.lstListarPlayers.Location = new System.Drawing.Point(494, 235);
             this.lstListarPlayers.Name = "lstListarPlayers";
-            this.lstListarPlayers.Size = new System.Drawing.Size(154, 134);
+            this.lstListarPlayers.Size = new System.Drawing.Size(174, 160);
             this.lstListarPlayers.TabIndex = 4;
             // 
             // btnIniciarPartida
             // 
-            this.btnIniciarPartida.Font = new System.Drawing.Font("Berserker", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIniciarPartida.Location = new System.Drawing.Point(494, 416);
+            this.btnIniciarPartida.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIniciarPartida.Location = new System.Drawing.Point(494, 401);
             this.btnIniciarPartida.Name = "btnIniciarPartida";
             this.btnIniciarPartida.Size = new System.Drawing.Size(174, 50);
             this.btnIniciarPartida.TabIndex = 5;

@@ -50,7 +50,7 @@ namespace PI3.components.navegacao
             this.btnOk.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOk.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.btnOk.Location = new System.Drawing.Point(259, 128);
+            this.btnOk.Location = new System.Drawing.Point(237, 167);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
             this.btnOk.TabIndex = 2;
@@ -60,7 +60,7 @@ namespace PI3.components.navegacao
             // txtSenha
             // 
             this.txtSenha.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSenha.Location = new System.Drawing.Point(212, 78);
+            this.txtSenha.Location = new System.Drawing.Point(212, 108);
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.Size = new System.Drawing.Size(100, 23);
             this.txtSenha.TabIndex = 3;
@@ -68,7 +68,7 @@ namespace PI3.components.navegacao
             // txtNome
             // 
             this.txtNome.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNome.Location = new System.Drawing.Point(212, 29);
+            this.txtNome.Location = new System.Drawing.Point(212, 54);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(100, 23);
             this.txtNome.TabIndex = 4;
@@ -84,7 +84,7 @@ namespace PI3.components.navegacao
             this.btnVoltar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVoltar.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.btnVoltar.Location = new System.Drawing.Point(168, 128);
+            this.btnVoltar.Location = new System.Drawing.Point(156, 167);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Size = new System.Drawing.Size(75, 23);
             this.btnVoltar.TabIndex = 5;
@@ -96,7 +96,7 @@ namespace PI3.components.navegacao
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(26, 78);
+            this.pictureBox1.Location = new System.Drawing.Point(26, 101);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(180, 30);
             this.pictureBox1.TabIndex = 6;
@@ -107,7 +107,7 @@ namespace PI3.components.navegacao
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox2.Location = new System.Drawing.Point(26, 29);
+            this.pictureBox2.Location = new System.Drawing.Point(26, 47);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(180, 30);
             this.pictureBox2.TabIndex = 7;
@@ -117,9 +117,9 @@ namespace PI3.components.navegacao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(339, 170);
+            this.BackgroundImage = global::PI3.Properties.Resources.ModalBack;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(336, 245);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnVoltar);
@@ -127,8 +127,9 @@ namespace PI3.components.navegacao
             this.Controls.Add(this.txtSenha);
             this.Controls.Add(this.btnOk);
             this.DoubleBuffered = true;
-            this.MaximumSize = new System.Drawing.Size(355, 209);
-            this.MinimumSize = new System.Drawing.Size(355, 209);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximumSize = new System.Drawing.Size(336, 245);
+            this.MinimumSize = new System.Drawing.Size(336, 245);
             this.Name = "NomeSenha";
             this.Text = "NomeSenha";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

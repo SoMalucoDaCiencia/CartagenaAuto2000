@@ -1,3 +1,4 @@
+using PI3.models;
 using System;
 //using System.Text.Json.Serialization;
 using System.IO;
@@ -39,6 +40,8 @@ namespace PI3
             // }
 
             //Application.Run(new Form1());
+            //Posicao p = new Posicao(Carta.GetTipoCartaEnum("P")); 
+            //Console.WriteLine(p);
         }
     }
 }
