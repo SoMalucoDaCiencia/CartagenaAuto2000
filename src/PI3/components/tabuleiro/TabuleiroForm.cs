@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Threading;
 using System.Windows.Forms;
 using PI3.models;
@@ -17,34 +18,42 @@ namespace PI3.components.tabuleiro {
 
         List<Player> jogadores;
 
+        static System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
+
         bool stop = false;
 
         public TabuleiroForm() {
             InitializeComponent();
-            this.Refresh();
-            this.Show();
             ControlBox = false;
-
-            //while (!stop) {
-                GameCore.update(Program.partidaEstado);
-                if (Program.partidaEstado.state == PartidaState.PartidaEnum.INICIADA)
-                {
-                    initModalView = false;
-                    this.updateLobby();
-                    render();
-                }
-                else
-                {
-                    initModalView = true;
-                    jogadores = GameCore.listarJogadores(Program.partidaEstado.id);
-                    lstListarPlayers.Items.Clear();
-                    lstListarPlayers.Items.AddRange(Player.GetPlayersNames(jogadores).ToArray());
-                    this.updateLobby();
-                }
-
-                //Thread.Sleep(5000);
-            //}
+            InitializeTimer();
         }
+
+        private void InitializeTimer()
+        { 
+            timer.Interval = 5000;
+            timer.Tick += new EventHandler(timer_Tick);
+ 
+            timer.Enabled = true;
+        }
+
+        private void timer_Tick(object Sender, EventArgs e)
+        { 
+            GameCore.update(Program.partidaEstado);
+            if (Program.partidaEstado.state == PartidaState.PartidaEnum.INICIADA)
+            {
+                initModalView = false;
+                this.updateLobby();
+                render();
+            }
+            else
+            {
+                initModalView = true;
+                jogadores = GameCore.listarJogadores(Program.partidaEstado.id);
+                lstListarPlayers.Items.Clear();
+                lstListarPlayers.Items.AddRange(Player.GetPlayersNames(jogadores).ToArray());
+                this.updateLobby();
+            }
+        } 
 
         private void updateLobby()
         {
@@ -181,6 +190,13 @@ namespace PI3.components.tabuleiro {
             GameCore.update(Program.partidaEstado);
             render();
             initModalView = false;
+        }
+
+        private void btnVoltar_Click(object sender, EventArgs e)
+        {
+            Menu menu = new Menu();
+            menu.Show();
+            this.Close();
         }
     }
 }

@@ -40,7 +40,7 @@ namespace PI3{
                 TabuleiroForm tab = new TabuleiroForm();
                 tab.Show();
                 criarSala.Close();
-                //this.Close();
+                this.Hide();
             }
         }
     }

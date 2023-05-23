@@ -70,7 +70,7 @@ namespace PI3.models{
                 case 'E': {
                     return (simbolo ? Properties.Resources.esqueleto1 : Properties.Resources.Esqueleto); break;
                 }
-                case 'F': {// Esqueleto(Jolly roger)
+                case 'F': {
                     return (simbolo ? Properties.Resources.faca1 : Properties.Resources.Faca); break;
                 }
                 case 'C': {

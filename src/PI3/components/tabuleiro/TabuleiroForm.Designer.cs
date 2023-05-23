@@ -34,6 +34,7 @@ namespace PI3.components.tabuleiro
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.lstListarPlayers = new System.Windows.Forms.ListBox();
             this.btnIniciarPartida = new System.Windows.Forms.Button();
+            this.btnVoltar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -96,6 +97,17 @@ namespace PI3.components.tabuleiro
             this.btnIniciarPartida.UseVisualStyleBackColor = true;
             this.btnIniciarPartida.Click += new System.EventHandler(this.btnIniciarPartida_Click);
             // 
+            // btnVoltar
+            // 
+            this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVoltar.Location = new System.Drawing.Point(12, 618);
+            this.btnVoltar.Name = "btnVoltar";
+            this.btnVoltar.Size = new System.Drawing.Size(81, 36);
+            this.btnVoltar.TabIndex = 6;
+            this.btnVoltar.Text = "Voltar";
+            this.btnVoltar.UseVisualStyleBackColor = true;
+            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
+            // 
             // TabuleiroForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -103,6 +115,7 @@ namespace PI3.components.tabuleiro
             this.BackgroundImage = global::PI3.Properties.Resources.Praia;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1156, 666);
+            this.Controls.Add(this.btnVoltar);
             this.Controls.Add(this.btnIniciarPartida);
             this.Controls.Add(this.lstListarPlayers);
             this.Controls.Add(this.dataGridView1);
@@ -110,6 +123,7 @@ namespace PI3.components.tabuleiro
             this.Controls.Add(this.btnEnter);
             this.Controls.Add(this.label1);
             this.DoubleBuffered = true;
+            this.MinimumSize = new System.Drawing.Size(1172, 705);
             this.Name = "TabuleiroForm";
             this.Text = "Tabuleiro";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -126,5 +140,6 @@ namespace PI3.components.tabuleiro
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ListBox lstListarPlayers;
         private System.Windows.Forms.Button btnIniciarPartida;
+        private System.Windows.Forms.Button btnVoltar;
     }
 }
