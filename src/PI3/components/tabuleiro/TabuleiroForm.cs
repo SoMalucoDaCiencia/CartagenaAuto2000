@@ -77,16 +77,17 @@ namespace PI3.components.tabuleiro {
             for (int i = 0; i < 6; i++) {
                 for (int k = 0; k < 6; k++) {
                     Panel p = new Panel();
-                    int marginTop = 0;
-                    int marginLeft = 0;
-                    int h = 55; //ç
-                    int w = 55;
-                    int esp = 70;
+                    int marginTop = 105;
+                    int marginLeft = 120;
+                    int h = 65;
+                    int w = 65;
+                    int espY = 115;
+                    int espX = 100;
                     p.BackgroundImage = Carta.GetCardBitmap(Program.partidaEstado.casas[(6 * i) + k].tipoPosicao, true);
                     p.BackgroundImageLayout = ImageLayout.Stretch;
                     p.BackColor = System.Drawing.Color.Transparent;
-                    p.Top = marginTop + esp + (h + esp) * ((i % 2 == 0 ? 0 : 5) + (k * (i % 2 == 0 ? 1 : -1)));
-                    p.Left = marginLeft + esp + (h + esp) * i;
+                    p.Top = marginTop + espY + (h + espY) * ((i % 2 == 0 ? 0 : 5) + (k * (i % 2 == 0 ? 1 : -1)));
+                    p.Left = marginLeft + espX + (h + espX) * i;
                     p.Width = w;
                     p.Height = h;
 
