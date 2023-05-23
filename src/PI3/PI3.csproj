@@ -171,13 +171,13 @@
   <ItemGroup>
     <Content Include="partidaEstado.json" />
     <Content Include="Properties\Resources\backgrounds\modal.png" />
+    <Content Include="Properties\Resources\backgrounds\tabuleiroBackground.png" />
     <None Include="Properties\Resources\simbolos\chave.png" />
     <None Include="Properties\Resources\simbolos\esqueleto1.png" />
     <None Include="Properties\Resources\simbolos\tricornio.png" />
     <None Include="Properties\Resources\simbolos\pistola1.png" />
     <None Include="Properties\Resources\simbolos\garrafa.png" />
     <None Include="Properties\Resources\simbolos\faca.png" />
-    <None Include="Properties\Resources\backgrounds\tabuleiroBackground.png" />
     <Content Include="Properties\Resources\backgrounds\MainBackground.png" />
   </ItemGroup>
   <ItemGroup>
