@@ -135,7 +135,7 @@ namespace PI3.components.tabuleiro {
                 tile.BackgroundImage = Carta.GetCardBitmap(Program.partidaEstado.casas[(6 * i) + k].tipoPosicao, true);
                 tile.BackgroundImageLayout = ImageLayout.Stretch;
                 tile.BackColor = System.Drawing.Color.Transparent;
-                tile.Top = marginTop + espY + (h + espY) * ((i % 2 == 0 ? 0 : 5) + (k * (i % 2 == 0 ? 1 : -1)));
+                tile.Top = marginTop + espY + (h + espY) * (i%2==0 ? k : 5-k);
                 tile.Left = marginLeft + espX + (h + espX) * i;
                 tile.Width = w;
                 tile.Height = h;
@@ -166,8 +166,7 @@ namespace PI3.components.tabuleiro {
                             int top = (piratas == 1 ? (w / 2) : (w / 4));
                             int left = (piratas == 1 ? (w / 4) : (piratas == 2 ? (w / 2) : (w * (3 / 4))));
 
-                            p.Top = top - +marginTop + espY +
-                                    (h + espY) * ((i % 2 == 0 ? 0 : 5) + (k * (i % 2 == 0 ? 1 : -1)));
+                            p.Top = top + marginTop + espY + (h + espY) * (i%2==0 ? k : 5-k);
                             p.Left = left + marginLeft + espX + (h + espX) * i;
 
                             this.Controls.Add(p);
