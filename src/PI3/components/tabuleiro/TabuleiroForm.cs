@@ -132,31 +132,33 @@ namespace PI3.components.tabuleiro {
 
                 // Pega casa e itera piratas de jogadores naquela casa
                 Program.partidaEstado.casas[key].piratasPresentes.Keys.ToList().ForEach((innerKey) => {
-                    // Se o jogador nunca foi citado, associa ele uma nova cor
-                    if (!peopleColor.ContainsKey(innerKey)) {
-                        peopleColor[innerKey] = (Color.ColorEnum) c;
-                        c++;
-                    }
+                    if (innerKey > 0 && innerKey < 37) {
+                        // Se o jogador nunca foi citado, associa ele uma nova cor
+                        if (!peopleColor.ContainsKey(innerKey)) {
+                            peopleColor[innerKey] = (Color.ColorEnum)c;
+                            c++;
+                        }
 
-                    // Itera piratas de um jogador especifico
-                    for (int d = 0; d < Program.partidaEstado.casas[key].piratasPresentes[innerKey]; d++) {
+                        // Itera piratas de um jogador especifico
+                        for (int d = 0; d < Program.partidaEstado.casas[key].piratasPresentes[innerKey]; d++) {
+                            // Cria desenho do pirata
+                            Panel p = new Panel();
+                            p.BackgroundImage = Color.getPirate(peopleColor[innerKey]);
+                            p.BackColor = System.Drawing.Color.Transparent;
+                            p.BackgroundImageLayout = ImageLayout.Stretch;
+                            p.Height = 10;
+                            p.Width = 10;
 
-                        // Cria desenho do pirata
-                        Panel p = new Panel();
-                        p.BackgroundImage = Color.getPirate(peopleColor[innerKey]);
-                        p.BackColor = System.Drawing.Color.Transparent;
-                        p.BackgroundImageLayout = ImageLayout.Stretch;
-                        p.Height = 10;
-                        p.Width = 10;
+                            int top = (piratas == 1 ? (w / 2) : (w / 4));
+                            int left = (piratas == 1 ? (w / 4) : (piratas == 2 ? (w / 2) : (w * (3 / 4))));
 
-                        int  top = (piratas == 1 ? (w / 2) : (w / 4));
-                        int left = (piratas == 1 ? (w / 4) : (piratas==2 ? (w/2) : (w * (3 / 4))));
+                            p.Top = top - +marginTop + espY +
+                                    (h + espY) * ((i % 2 == 0 ? 0 : 5) + (k * (i % 2 == 0 ? 1 : -1)));
+                            p.Left = left + marginLeft + espX + (h + espX) * i;
 
-                        p.Top = top + marginTop + espY + (h + espY) * ((i % 2 == 0 ? 0 : 5) + (k * (i % 2 == 0 ? 1 : -1)));
-                        p.Left = left + marginLeft + espX + (h + espX) * i;
-
-                        this.Controls.Add(p);
-                        piratas++;
+                            this.Controls.Add(p);
+                            piratas++;
+                        }
                     }
                 });
             });
