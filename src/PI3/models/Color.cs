@@ -1,10 +1,12 @@
 
+using System.Drawing;
+
 namespace PI3.models{
 
     public class Color {
         public enum ColorEnum {
-            Verde,
             Azul,
+            Verde,
             Vermelho,
             Amarelo,
             Marrom,
@@ -29,6 +31,17 @@ namespace PI3.models{
                     return ColorEnum.Marrom;
                 }
                 default: return ColorEnum.NULL;
+            }
+        }
+
+        public static Bitmap getPirate(ColorEnum color) {
+            switch (color) {
+                case ColorEnum.Azul: return Properties.Resources.pirataAzul; break;
+                case ColorEnum.Verde: return Properties.Resources.pirataVerde; break;
+                case ColorEnum.Vermelho: return Properties.Resources.pirataVermelho; break;
+                case ColorEnum.Amarelo: return Properties.Resources.pirataAmarelo; break;
+                case ColorEnum.Marrom: return Properties.Resources.pirataMarrom; break;
+                default: return null; break;
             }
         }
     }

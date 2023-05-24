@@ -106,7 +106,6 @@ namespace PI3{
         /// <returns> Posicoes jogador </returns>
         public static void update(Partida partida) {
             try {
-               
 
                 // Fill list of positions instances ======
                 if (partida.state == PartidaState.PartidaEnum.INICIADA) {

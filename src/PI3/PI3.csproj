@@ -184,6 +184,7 @@
     <Folder Include="components\criarPartida\subComponents\" />
     <Folder Include="components\menu\subComponents\" />
     <Folder Include="components\tabuleiro\subComponents\" />
+    <Folder Include="Properties\Resources\piratas" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
