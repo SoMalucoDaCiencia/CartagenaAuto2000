@@ -27,6 +27,7 @@ namespace PI3.components.tabuleiro {
         }
 
         private void InitializeTimer() {
+            timer_Tick(null, null);
             timer.Interval = 5000;
             timer.Tick += new EventHandler(timer_Tick);
 
@@ -72,46 +73,13 @@ namespace PI3.components.tabuleiro {
             }
         }
 
-        // private void setTabuleiro() {
-        //     for (int i = 0; i < 6; i++) {
-        //         for (int k = 0; k < 6; k++) {
-        //             Panel p = new Panel();
-        //             int marginTop = 105;
-        //             int marginLeft = 120;
-        //             int h = 65;
-        //             int w = 65;
-        //             int espY = 115;
-        //             int espX = 100;
-        //             p.BackgroundImage = Carta.GetCardBitmap(Program.partidaEstado.casas[(6 * i) + k].tipoPosicao, true);
-        //             p.BackgroundImageLayout = ImageLayout.Stretch;
-        //             p.BackColor = System.Drawing.Color.Transparent;
-        //             p.Top = marginTop + espY + (h + espY) * ((i % 2 == 0 ? 0 : 5) + (k * (i % 2 == 0 ? 1 : -1)));
-        //             p.Left = marginLeft + espX + (h + espX) * i;
-        //             p.Width = w;
-        //             p.Height = h;
-        //
-        //             p.Tag = "i:" + ((6 * i) + k);
-        //             //          + ",x1:" + (p.Left + (w/4)) +
-        //             // ",x2:" + (p.Left + (w/2)) +
-        //             // ",x3:" + (p.Left + (w*3/4)) +
-        //             // ",y1:" + (p.Top -  (w*3/4)) +
-        //             // ",y2:" + (p.Top - (w/4)) +
-        //             // ",y3:" + (p.Top - (w*3/4));
-        //
-        //             p.Click += tileClick;
-        //             this.Controls.Add(p);
-        //         }
-        //     }
-        // }
-
-
         private void setTabuleiro() {
 
             // Cria parametros de localizacao
-            int marginLeft = 120;
-            int marginTop = 105;
-            int espY = 115;
-            int espX = 100;
+            int marginLeft = 60;
+            int marginTop = 55;
+            int espY = 27;
+            int espX = 42;
             int h = 65;
             int w = 65;
 
@@ -238,9 +206,7 @@ namespace PI3.components.tabuleiro {
             Program.partidaEstado.state = PartidaState.PartidaEnum.INICIADA;
             GameCore.update(Program.partidaEstado);
             initModalView = false;
-            updateLobby();
-            setTabuleiro();
-            render();
+            timer_Tick(null, null);
         }
 
         private void btnVoltar_Click(object sender, EventArgs e) {

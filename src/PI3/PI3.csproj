@@ -131,6 +131,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Utils.cs" />
+    <Compile Include="View\SupraButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <EmbeddedResource Include="components\criarPartida\CriarSala.resx">
       <DependentUpon>CriarSala.cs</DependentUpon>
     </EmbeddedResource>
@@ -172,6 +175,7 @@
     <Content Include="partidaEstado.json" />
     <Content Include="Properties\Resources\backgrounds\modal.png" />
     <Content Include="Properties\Resources\backgrounds\tabuleiroBackground.png" />
+    <None Include="Resources\PHOTO-2023-05-24-20-22-36.jpg" />
     <None Include="Properties\Resources\simbolos\chave.png" />
     <None Include="Properties\Resources\simbolos\esqueleto1.png" />
     <None Include="Properties\Resources\simbolos\tricornio.png" />
@@ -184,7 +188,7 @@
     <Folder Include="components\criarPartida\subComponents\" />
     <Folder Include="components\menu\subComponents\" />
     <Folder Include="components\tabuleiro\subComponents\" />
-    <Folder Include="Properties\Resources\piratas" />
+    <Folder Include="Properties\Resources\piratas\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

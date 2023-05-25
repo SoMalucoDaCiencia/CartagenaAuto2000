@@ -1,4 +1,6 @@
+using PI3.components.criarPartida;
 using PI3.components.navegacao;
+using PI3.components.tabuleiro;
 using PI3.models;
 using System;
 using System.Collections.Generic;
@@ -18,9 +20,9 @@ namespace PI3
         List<Partida> partidas;
 
         public Navegacao()
-        {
+        { 
             InitializeComponent();
-            ControlBox = false; //tira os negocios da janela do form
+            this.lstListarPartidas.SelectionChanged += new System.EventHandler(this.lstListarPartidas_SelectedIndexChanged);
             updateList();
         }
 
@@ -39,28 +41,32 @@ namespace PI3
         private void updateList()
         {
             partidas = GameCore.listarPartidas(PartidaState.PartidaEnum.ABERTA);
-            lstListarPartidas.Items.Clear();
-            lstListarPartidas.Items.AddRange(Partida.getPartidasNames(partidas).ToArray());
+            this.lstListarPartidas.Rows.Clear();
+            partidas.ForEach((partida) => {
+                this.lstListarPartidas.Rows.Add(partida.id.ToString(), partida.name.ToString(), partida.createdAt.ToString().Substring(0, 10));
+            });
+        }
+
+        private void enableGrid(object sender, EventArgs e)
+        {
+            lstListarPartidas.Tag = "";
         }
 
         private void lstListarPartidas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(partidas.Count > 0)
+            if(partidas.Count > 0 && lstListarPartidas.Tag != "not")
             {
-                partidaSelecionada = partidas[lstListarPartidas.SelectedIndex == -1 ? 0 : lstListarPartidas.SelectedIndex];
-                NomeSenha nomeSenha = new NomeSenha();
-                var result = nomeSenha.ShowDialog();
+                int i = int.Parse(lstListarPartidas.CurrentRow.Index.ToString());
+                partidaSelecionada = partidas[i == -1 ? 0 : i] ;
+
+                NomeSenha criarSala = new NomeSenha(partidaSelecionada.id);
+                var result = criarSala.ShowDialog();
                 if (result == DialogResult.OK)
                 {
-                    Player player = GameCore.entrarPartida(partidaSelecionada.id, nomeSenha.nome, nomeSenha.senha);
-                    if (player != null)
-                    {
-
-                    }
-                    else
-                    {
-                        MessageBox.Show("Senha errada, tente novamente", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    TabuleiroForm tab = new TabuleiroForm();
+                    tab.Show();
+                    criarSala.Close();
+                    this.Hide();
                 }
             }
             
