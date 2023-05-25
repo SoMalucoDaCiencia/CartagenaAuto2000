@@ -19,6 +19,7 @@ namespace PI3{
 
         private void btnVoltar_Click(object sender, EventArgs e) {
             Menu menu = new Menu();
+            btnListarPartidas.Tag = "not";
             menu.Show();
             this.Close();
         }
