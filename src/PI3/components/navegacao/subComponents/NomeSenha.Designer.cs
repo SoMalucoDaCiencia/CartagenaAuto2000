@@ -131,7 +131,9 @@ namespace PI3.components.navegacao
             this.MaximumSize = new System.Drawing.Size(336, 245);
             this.MinimumSize = new System.Drawing.Size(336, 245);
             this.Name = "NomeSenha";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "NomeSenha";
+            this.Load += new System.EventHandler(this.NomeSenha_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);

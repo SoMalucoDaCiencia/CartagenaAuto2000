@@ -42,5 +42,11 @@ namespace PI3.components.navegacao
             DialogResult= DialogResult.Cancel;
             this.Close();
         }
+
+        private void NomeSenha_Load(object sender, EventArgs e)
+        {
+            this.StartPosition = FormStartPosition.Manual;
+            this.Location = new Point(1000, 370);
+        }
     }
 }

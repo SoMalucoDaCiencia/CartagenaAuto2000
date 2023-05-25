@@ -145,8 +145,10 @@ namespace PI3
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.btnEntrarPartida);
             this.Controls.Add(this.btnCriarPartida);
+            this.DoubleBuffered = true;
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "Menu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

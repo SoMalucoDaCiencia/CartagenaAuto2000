@@ -171,6 +171,7 @@
             this.MaximumSize = new System.Drawing.Size(413, 301);
             this.MinimumSize = new System.Drawing.Size(413, 301);
             this.Name = "CriarSala";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CriarSala";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);

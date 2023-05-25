@@ -2,6 +2,7 @@ using PI3.components.navegacao;
 using PI3.components.tabuleiro;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace PI3{
@@ -54,6 +55,12 @@ namespace PI3{
                     this.Hide();
                 }
             }
+        }
+
+        private void Navegacao_Load(object sender, EventArgs e)
+        {
+            this.StartPosition = FormStartPosition.Manual;
+            this.Location = new Point(550, 220);
         }
     }
 }

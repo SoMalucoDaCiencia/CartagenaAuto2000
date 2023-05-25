@@ -34,10 +34,10 @@ namespace PI3
         {
             this.btnListarPartidas = new System.Windows.Forms.Button();
             this.lstListarPartidas = new System.Windows.Forms.DataGridView();
-            this.btnVoltar = new System.Windows.Forms.Button();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomeSala = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createdAt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnVoltar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.lstListarPartidas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,7 +52,7 @@ namespace PI3
             this.btnListarPartidas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnListarPartidas.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnListarPartidas.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnListarPartidas.Location = new System.Drawing.Point(102, 465);
+            this.btnListarPartidas.Location = new System.Drawing.Point(56, 479);
             this.btnListarPartidas.Name = "btnListarPartidas";
             this.btnListarPartidas.Size = new System.Drawing.Size(156, 34);
             this.btnListarPartidas.TabIndex = 2;
@@ -62,6 +62,7 @@ namespace PI3
             // 
             // lstListarPartidas
             // 
+            this.lstListarPartidas.AllowUserToAddRows = false;
             this.lstListarPartidas.AllowUserToDeleteRows = false;
             this.lstListarPartidas.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(75)))), ((int)(((byte)(86)))));
             this.lstListarPartidas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -70,34 +71,14 @@ namespace PI3
             this.nomeSala,
             this.createdAt});
             this.lstListarPartidas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(75)))), ((int)(((byte)(86)))));
-            this.lstListarPartidas.Location = new System.Drawing.Point(102, 31);
+            this.lstListarPartidas.Location = new System.Drawing.Point(56, 31);
             this.lstListarPartidas.Name = "lstListarPartidas";
             this.lstListarPartidas.ReadOnly = true;
+            this.lstListarPartidas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.lstListarPartidas.Size = new System.Drawing.Size(310, 428);
             this.lstListarPartidas.TabIndex = 3;
-            this.lstListarPartidas.AllowUserToAddRows = false;
-            this.lstListarPartidas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            this.lstListarPartidas.Click += new System.EventHandler(this.enableGrid);
             this.lstListarPartidas.Tag = "not";
-            // 
-            // btnVoltar
-            // 
-            this.btnVoltar.BackColor = System.Drawing.Color.Transparent;
-            this.btnVoltar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnVoltar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnVoltar.FlatAppearance.BorderSize = 0;
-            this.btnVoltar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.btnVoltar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVoltar.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnVoltar.Location = new System.Drawing.Point(273, 465);
-            this.btnVoltar.Name = "btnVoltar";
-            this.btnVoltar.Size = new System.Drawing.Size(139, 34);
-            this.btnVoltar.TabIndex = 4;
-            this.btnVoltar.Text = "Voltar";
-            this.btnVoltar.UseVisualStyleBackColor = false;
-            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
+            this.lstListarPartidas.Click += new System.EventHandler(this.enableGrid);
             // 
             // id
             // 
@@ -120,17 +101,41 @@ namespace PI3
             this.createdAt.ReadOnly = true;
             this.createdAt.Width = 91;
             // 
+            // btnVoltar
+            // 
+            this.btnVoltar.BackColor = System.Drawing.Color.Transparent;
+            this.btnVoltar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnVoltar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnVoltar.FlatAppearance.BorderSize = 0;
+            this.btnVoltar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnVoltar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVoltar.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnVoltar.Location = new System.Drawing.Point(227, 479);
+            this.btnVoltar.Name = "btnVoltar";
+            this.btnVoltar.Size = new System.Drawing.Size(139, 34);
+            this.btnVoltar.TabIndex = 4;
+            this.btnVoltar.Text = "Voltar";
+            this.btnVoltar.UseVisualStyleBackColor = false;
+            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
+            // 
             // Navegacao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::PI3.Properties.Resources.FundoNav;
-            this.ClientSize = new System.Drawing.Size(506, 575);
+            this.ClientSize = new System.Drawing.Size(419, 519);
             this.Controls.Add(this.btnVoltar);
             this.Controls.Add(this.lstListarPartidas);
             this.Controls.Add(this.btnListarPartidas);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximumSize = new System.Drawing.Size(435, 558);
+            this.MinimumSize = new System.Drawing.Size(435, 558);
             this.Name = "Navegacao";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Navegacao";
+            this.Load += new System.EventHandler(this.Navegacao_Load);
             ((System.ComponentModel.ISupportInitialize)(this.lstListarPartidas)).EndInit();
             this.ResumeLayout(false);
 
