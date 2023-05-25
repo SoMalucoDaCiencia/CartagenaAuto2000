@@ -36,7 +36,6 @@ namespace PI3.components.tabuleiro {
                 lobbyView = true;
             }
             render();
-            checkButtons();
         }
 
         public void tileClick(object sender, EventArgs e) {
@@ -45,7 +44,6 @@ namespace PI3.components.tabuleiro {
             if (Program.partidaEstado.casas[prov].piratasPresentes[Program.partidaEstado.jogador.id] > 0) {
                 this.posicaoSelecionada = prov;
                 render();
-                checkButtons();
             } else {
                 MessageBox.Show("Você n tem piratas nessa casa");
             }
@@ -55,21 +53,18 @@ namespace PI3.components.tabuleiro {
             Panel o = (Panel) sender;
             this.cartaSelecionada = new Carta(o.Tag.ToString().Substring(0, 1));
             render();
-            checkButtons();
         }
 
         private void btnEnter_Click(object sender, EventArgs e) {
             GameCore.jogar(Program.partidaEstado, posicaoSelecionada, cartaSelecionada);
             GameCore.update(Program.partidaEstado);
             render();
-            checkButtons();
         }
 
         private void btnAuto_Click(object sender, EventArgs e) {
             Engine.process();
             GameCore.update(Program.partidaEstado);
             render();
-            checkButtons();
         }
 
         private void checkButtons() {
@@ -97,6 +92,7 @@ namespace PI3.components.tabuleiro {
         // =========== Renderização =============>
 
         private void render() {
+            checkButtons();
             drawLobby();
             if (!lobbyView) {
                 drawTabuleiro();
