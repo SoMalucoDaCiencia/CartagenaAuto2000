@@ -28,6 +28,7 @@ namespace PI3.components.tabuleiro
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TabuleiroForm));
             this.label1 = new System.Windows.Forms.Label();
             this.btnEnter = new System.Windows.Forms.Button();
             this.btnAuto = new System.Windows.Forms.Button();
@@ -100,7 +101,7 @@ namespace PI3.components.tabuleiro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::PI3.Properties.Resources.Praia;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1156, 666);
             this.Controls.Add(this.btnIniciarPartida);
