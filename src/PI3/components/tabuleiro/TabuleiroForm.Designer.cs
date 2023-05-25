@@ -32,23 +32,22 @@ namespace PI3.components.tabuleiro
             this.btnEnter = new System.Windows.Forms.Button();
             this.btnAuto = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.lstListarPlayers = new System.Windows.Forms.ListBox();
+            this.lstPlayersLobby = new System.Windows.Forms.ListBox();
             this.btnIniciarPartida = new System.Windows.Forms.Button();
-            this.btnVoltar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
+            //
             // label1
-            // 
+            //
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(351, 154);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 64);
             this.label1.TabIndex = 0;
-            // 
+            //
             // btnEnter
-            // 
+            //
             this.btnEnter.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEnter.Location = new System.Drawing.Point(783, 604);
             this.btnEnter.Name = "btnEnter";
@@ -57,9 +56,9 @@ namespace PI3.components.tabuleiro
             this.btnEnter.Text = "Enter";
             this.btnEnter.UseVisualStyleBackColor = true;
             this.btnEnter.Click += new System.EventHandler(this.btnEnter_Click);
-            // 
+            //
             // btnAuto
-            // 
+            //
             this.btnAuto.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAuto.Location = new System.Drawing.Point(963, 604);
             this.btnAuto.Name = "btnAuto";
@@ -68,26 +67,26 @@ namespace PI3.components.tabuleiro
             this.btnAuto.Text = "Automático";
             this.btnAuto.UseVisualStyleBackColor = true;
             this.btnAuto.Click += new System.EventHandler(this.btnAuto_Click);
-            // 
+            //
             // dataGridView1
-            // 
+            //
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(783, 12);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(361, 267);
             this.dataGridView1.TabIndex = 3;
-            // 
-            // lstListarPlayers
-            // 
-            this.lstListarPlayers.FormattingEnabled = true;
-            this.lstListarPlayers.Location = new System.Drawing.Point(494, 235);
-            this.lstListarPlayers.Name = "lstListarPlayers";
-            this.lstListarPlayers.Size = new System.Drawing.Size(174, 160);
-            this.lstListarPlayers.TabIndex = 4;
-            // 
+            //
+            // lstPlayersLobby
+            //
+            this.lstPlayersLobby.FormattingEnabled = true;
+            this.lstPlayersLobby.Location = new System.Drawing.Point(494, 235);
+            this.lstPlayersLobby.Name = "lstPlayersLobby";
+            this.lstPlayersLobby.Size = new System.Drawing.Size(174, 160);
+            this.lstPlayersLobby.TabIndex = 4;
+            //
             // btnIniciarPartida
-            // 
+            //
             this.btnIniciarPartida.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIniciarPartida.Location = new System.Drawing.Point(494, 401);
             this.btnIniciarPartida.Name = "btnIniciarPartida";
@@ -96,28 +95,16 @@ namespace PI3.components.tabuleiro
             this.btnIniciarPartida.Text = "Iniciar Partida";
             this.btnIniciarPartida.UseVisualStyleBackColor = true;
             this.btnIniciarPartida.Click += new System.EventHandler(this.btnIniciarPartida_Click);
-            // 
-            // btnVoltar
-            // 
-            this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVoltar.Location = new System.Drawing.Point(12, 618);
-            this.btnVoltar.Name = "btnVoltar";
-            this.btnVoltar.Size = new System.Drawing.Size(81, 36);
-            this.btnVoltar.TabIndex = 6;
-            this.btnVoltar.Text = "Voltar";
-            this.btnVoltar.UseVisualStyleBackColor = true;
-            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
-            // 
+            //
             // TabuleiroForm
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::PI3.Properties.Resources.Praia;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1156, 666);
-            this.Controls.Add(this.btnVoltar);
             this.Controls.Add(this.btnIniciarPartida);
-            this.Controls.Add(this.lstListarPlayers);
+            this.Controls.Add(this.lstPlayersLobby);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnAuto);
             this.Controls.Add(this.btnEnter);
@@ -138,8 +125,7 @@ namespace PI3.components.tabuleiro
         private System.Windows.Forms.Button btnEnter;
         private System.Windows.Forms.Button btnAuto;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ListBox lstListarPlayers;
+        private System.Windows.Forms.ListBox lstPlayersLobby;
         private System.Windows.Forms.Button btnIniciarPartida;
-        private System.Windows.Forms.Button btnVoltar;
     }
 }

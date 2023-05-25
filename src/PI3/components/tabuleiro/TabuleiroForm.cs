@@ -12,7 +12,7 @@ namespace PI3.components.tabuleiro {
 
         Carta cartaSelecionada = null;
 
-        bool initModalView = true;
+        bool lobbyView = true;
 
         List<Player> jogadores;
 
@@ -22,42 +22,97 @@ namespace PI3.components.tabuleiro {
 
         public TabuleiroForm() {
             InitializeComponent();
-            ControlBox = false;
-            InitializeTimer();
-        }
-
-        private void InitializeTimer() {
-            timer_Tick(null, null);
+            timerRoutine(null, null);
             timer.Interval = 5000;
-            timer.Tick += new EventHandler(timer_Tick);
-
+            timer.Tick += timerRoutine;
             timer.Enabled = true;
         }
 
-        private void timer_Tick(object Sender, EventArgs e) {
+        private void timerRoutine(object Sender, EventArgs e) {
             GameCore.update(Program.partidaEstado);
             if (Program.partidaEstado.state == PartidaState.PartidaEnum.INICIADA) {
-                initModalView = false;
-                this.updateLobby();
-                render();
+                lobbyView = false;
             } else {
-                initModalView = true;
-                jogadores = GameCore.listarJogadores(Program.partidaEstado.id);
-                lstListarPlayers.Items.Clear();
-                lstListarPlayers.Items.AddRange(Player.GetPlayersNames(jogadores).ToArray());
-                this.updateLobby();
+                lobbyView = true;
+            }
+            render();
+            checkButtons();
+        }
+
+        public void tileClick(object sender, EventArgs e) {
+            Panel o = (Panel) sender;
+            int prov = int.Parse(o.Tag.ToString().Split(',')[0].Split(':')[1]);
+            if (Program.partidaEstado.casas[prov].piratasPresentes[Program.partidaEstado.jogador.id] > 0) {
+                this.posicaoSelecionada = prov;
+                render();
+                checkButtons();
+            } else {
+                MessageBox.Show("Você n tem piratas nessa casa");
             }
         }
 
-        private void updateLobby() {
-            if (!initModalView) {
-                lstListarPlayers.Hide();
+        public void cardClick(object sender, EventArgs e) {
+            Panel o = (Panel) sender;
+            this.cartaSelecionada = new Carta(o.Tag.ToString().Substring(0, 1));
+            render();
+            checkButtons();
+        }
+
+        private void btnEnter_Click(object sender, EventArgs e) {
+            GameCore.jogar(Program.partidaEstado, posicaoSelecionada, cartaSelecionada);
+            GameCore.update(Program.partidaEstado);
+            render();
+            checkButtons();
+        }
+
+        private void btnAuto_Click(object sender, EventArgs e) {
+            Engine.process();
+            GameCore.update(Program.partidaEstado);
+            render();
+            checkButtons();
+        }
+
+        private void checkButtons() {
+            if (Program.partidaEstado.idJogadorAtual == Program.partidaEstado.jogador.id &&
+                cartaSelecionada != null &&
+                posicaoSelecionada > 0) {
+
+            	this.btnEnter.Show();
+            	this.btnAuto.Show();
+            } else {
+                this.btnEnter.Hide();
+                this.btnAuto.Hide();
+            }
+        }
+
+        private void btnIniciarPartida_Click(object sender, EventArgs e) {
+            GameCore.iniciarPartida(Program.partidaEstado);
+            Program.partidaEstado.state = PartidaState.PartidaEnum.INICIADA;
+            GameCore.update(Program.partidaEstado);
+            lobbyView = false;
+            render();
+        }
+
+
+        // =========== Renderização =============>
+
+        private void render() {
+            drawLobby();
+            if (!lobbyView) {
+                drawTabuleiro();
+                drawCartas();
+            }
+        }
+
+        private void drawLobby() {
+            if (!lobbyView) {
+                lstPlayersLobby.Hide();
                 dataGridView1.Show();
                 btnIniciarPartida.Hide();
                 btnAuto.Show();
                 btnEnter.Show();
             } else {
-                lstListarPlayers.Show();
+                lstPlayersLobby.Show();
                 dataGridView1.Hide();
                 btnIniciarPartida.Show();
                 btnAuto.Hide();
@@ -65,15 +120,7 @@ namespace PI3.components.tabuleiro {
             }
         }
 
-        private void render() {
-            if (!initModalView) {
-                setTabuleiro();
-                setCartas();
-                checkButtons();
-            }
-        }
-
-        private void setTabuleiro() {
+        private void drawTabuleiro() {
 
             // Cria parametros de localizacao
             int marginLeft = 60;
@@ -145,7 +192,7 @@ namespace PI3.components.tabuleiro {
             });
         }
 
-        private void setCartas() {
+        private void drawCartas() {
             var i = 0;
             Program.partidaEstado.jogador.mao.ForEach((carta) => {
                 i++;
@@ -162,57 +209,6 @@ namespace PI3.components.tabuleiro {
 
                 p.Tag = carta.ToString();
             });
-        }
-
-        public void tileClick(object sender, EventArgs e) {
-            Panel o = (Panel) sender;
-            int prov = int.Parse(o.Tag.ToString().Split(',')[0].Split(':')[1]);
-            if (Program.partidaEstado.casas[prov].piratasPresentes[Program.partidaEstado.jogador.id] > 0) {
-                this.posicaoSelecionada = prov;
-                render();
-                checkButtons();
-            } else {
-                MessageBox.Show("Você n tem piratas nessa casa");
-            }
-        }
-
-        public void cardClick(object sender, EventArgs e) {
-            Panel o = (Panel) sender;
-            this.cartaSelecionada = new Carta(o.Tag.ToString().Substring(0, 1));
-            checkButtons();
-        }
-
-        private void btnEnter_Click(object sender, EventArgs e) {
-            GameCore.jogar(Program.partidaEstado, posicaoSelecionada, cartaSelecionada);
-        }
-
-        private void btnAuto_Click(object sender, EventArgs e) {
-            Engine.process();
-        }
-
-        private void checkButtons() {
-            if (Program.partidaEstado.idJogadorAtual == Program.partidaEstado.jogador.id &&
-                cartaSelecionada != null &&
-                posicaoSelecionada > 0) {
-
-            	this.btnEnter.Enabled = true;
-            	this.btnAuto.Enabled = true;
-            }
-        }
-
-        private void btnIniciarPartida_Click(object sender, EventArgs e)
-        {
-            GameCore.iniciarPartida(Program.partidaEstado);
-            Program.partidaEstado.state = PartidaState.PartidaEnum.INICIADA;
-            GameCore.update(Program.partidaEstado);
-            initModalView = false;
-            timer_Tick(null, null);
-        }
-
-        private void btnVoltar_Click(object sender, EventArgs e) {
-            Menu menu = new Menu();
-            menu.Show();
-            this.Close();
         }
     }
 }
