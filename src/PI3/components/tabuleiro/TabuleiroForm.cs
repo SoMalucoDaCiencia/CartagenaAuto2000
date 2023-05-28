@@ -29,6 +29,7 @@ namespace PI3.components.tabuleiro {
         }
 
         private void timerRoutine(object Sender, EventArgs e) {
+            dataGridView1.Visible = false;
             GameCore.update(Program.partidaEstado);
             jogadores = GameCore.listarJogadores(Program.partidaEstado.id);
             this.lstPlayersLobby.Items.Clear();
@@ -39,6 +40,7 @@ namespace PI3.components.tabuleiro {
                 lobbyView = true;
             }
             render();
+            GC.Collect();
         }
 
         public void tileClick(object sender, EventArgs e) {
@@ -92,6 +94,75 @@ namespace PI3.components.tabuleiro {
             render();
         }
 
+        private void showQtd(object sender, EventArgs e)
+        {
+            switch (((Button)sender).Tag)
+            {
+                case "G":
+                    {
+                        this.pnlGarrafa.BackgroundImage = null; break;
+                    }
+                case "T":
+                    {// Tricornio
+                        this.pnlTricornio.BackgroundImage = null; break;
+
+                    }
+                case "P":
+                    {
+                        this.pnlPistola.BackgroundImage = null; break;
+
+                    }
+                case "E":
+                    {// Esqueleto(Jolly roger)
+                        this.pnlEsqueleto.BackgroundImage = null; break;
+
+                    }
+                case "F":
+                    {
+                        this.pnlFaca.BackgroundImage = null; break;
+
+                    }
+                case "C":
+                    {
+                        this.pnlChave.BackgroundImage = null; break;
+
+                    }
+                default: break;
+            }
+        }
+
+        private void setDefault(object sender, EventArgs e)
+        {
+            switch (((Button) sender).Tag)
+            {
+                case "G":
+                    {
+                        this.pnlGarrafa.BackgroundImage = Carta.GetCardBitmap(TipoCartaEnum.Garrafa, false); break;
+                    }
+                case "T":
+                    {// Tricornio
+                        this.pnlTricornio.BackgroundImage = Carta.GetCardBitmap(TipoCartaEnum.Tricornio, false); break;
+                    }
+                case "P":
+                    {
+                        this.pnlPistola.BackgroundImage = Carta.GetCardBitmap(TipoCartaEnum.Pistola, false); break;
+                    }
+                case "E":
+                    {// Esqueleto(Jolly roger)
+                        this.pnlEsqueleto.BackgroundImage = Carta.GetCardBitmap(TipoCartaEnum.Esqueleto, false); break;
+                    }
+                case "F":
+                    {
+                        this.pnlFaca.BackgroundImage = Carta.GetCardBitmap(TipoCartaEnum.Faca, false); break;
+                    }
+                case "C":
+                    {
+                        this.pnlChave.BackgroundImage = Carta.GetCardBitmap(TipoCartaEnum.Chave, false); break;
+                    }
+                default: break;
+            }
+        }
+
 
         // =========== Renderização =============>
 
@@ -107,23 +178,38 @@ namespace PI3.components.tabuleiro {
                 }
 
                 drawTabuleiro();
-                drawCartas();
+                //drawCartas();
             }
         }
 
         private void drawLobby() {
             if (!lobbyView) {
                 lstPlayersLobby.Hide();
-                dataGridView1.Show();
+                dataGridView1.Hide();
                 btnIniciarPartida.Hide();
                 btnAuto.Show();
                 btnEnter.Show();
+                btnHistorico.Show();
+                pnlChave.Show();
+                pnlEsqueleto.Show();
+                pnlFaca.Show();
+                pnlGarrafa.Show();
+                pnlPistola.Show();
+                pnlTricornio.Show();
+
             } else {
                 lstPlayersLobby.Show();
                 dataGridView1.Hide();
                 btnIniciarPartida.Show();
                 btnAuto.Hide();
                 btnEnter.Hide();
+                btnHistorico.Hide();
+                pnlChave.Hide();
+                pnlEsqueleto.Hide();
+                pnlFaca.Hide();
+                pnlGarrafa.Hide();
+                pnlPistola.Hide();
+                pnlTricornio.Hide();
             }
         }
 
@@ -216,7 +302,13 @@ namespace PI3.components.tabuleiro {
 
                 p.Tag = carta.ToString();
                 this.Controls.Add(p);
+
             });
+        }
+
+        private void btnHistorico_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Visible = !dataGridView1.Visible;
         }
     }
 }
