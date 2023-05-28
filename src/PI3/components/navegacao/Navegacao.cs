@@ -47,7 +47,7 @@ namespace PI3{
                 int i = int.Parse(lstListarPartidas.CurrentRow.Index.ToString());
                 partidaSelecionada = partidas[i == -1 ? 0 : i];
 
-                NomeSenha criarSala = new NomeSenha(partidaSelecionada.id);
+                NomeSenha criarSala = new NomeSenha(partidaSelecionada);
                 var result = criarSala.ShowDialog();
                 if (result == DialogResult.OK) {
                     TabuleiroForm tab = new TabuleiroForm();
