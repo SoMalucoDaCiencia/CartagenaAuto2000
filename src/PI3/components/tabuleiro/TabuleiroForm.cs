@@ -44,7 +44,8 @@ namespace PI3.components.tabuleiro {
         public void tileClick(object sender, EventArgs e) {
             Panel o = (Panel) sender;
             int prov = int.Parse(o.Tag.ToString().Split(',')[0].Split(':')[1]);
-            if (Program.partidaEstado.casas[prov].piratasPresentes[Program.partidaEstado.jogador.id] > 0) {
+            var countPiratas = Program.partidaEstado.casas[prov];
+            if (countPiratas.piratasPresentes.ContainsKey(Program.partidaEstado.jogador.id) && countPiratas.piratasPresentes[Program.partidaEstado.jogador.id] > 0) {
                 this.posicaoSelecionada = prov;
                 render();
             } else {
@@ -98,6 +99,13 @@ namespace PI3.components.tabuleiro {
             checkButtons();
             drawLobby();
             if (!lobbyView) {
+
+                // Apaga todos os "Panel's" dos controls para liberar a memoria
+                foreach (Control item in this.Controls.OfType<Panel>().ToList())
+                {
+                    this.Controls.Remove(item);
+                }
+
                 drawTabuleiro();
                 drawCartas();
             }
@@ -128,11 +136,6 @@ namespace PI3.components.tabuleiro {
             int espX = 42;
             int h = 65;
             int w = 65;
-
-            // Apaga todos os "Panel's" dos controls para liberar a memoria
-            foreach (Control item in this.Controls.OfType<Panel>().ToList()) {
-                this.Controls.Remove(item);
-            }
 
             // Cria um dicionario pra mapear referencia de cor pra cada jogador da partida
             Dictionary<int, Color.ColorEnum> peopleColor = new Dictionary<int, Color.ColorEnum>();
@@ -192,21 +195,27 @@ namespace PI3.components.tabuleiro {
         }
 
         private void drawCartas() {
+            int marginLeft = 783;
+            int marginTop = 295;
+            int h = 135;
+            int w = 99;
+            int espY = 22;
+            int espX = 32;
+
             var i = 0;
             Program.partidaEstado.jogador.mao.ForEach((carta) => {
                 i++;
                 Panel p = new Panel();
-                int h = 60;
-                int w = 60;
-                int esp = 15;
                 p.BackgroundImage = Carta.GetCardBitmap(carta.tipo, false);
+                p.BackColor = System.Drawing.Color.Transparent;
                 p.BackgroundImageLayout = ImageLayout.Stretch;
-                p.Top = esp + (i > 2 ? (esp + h) : 0);
-                p.Left = esp + ((i % 3) * w);
+                p.Top = (i > 2 ? (espY + h) : 0) + marginTop;
+                p.Left = ((i % 3) * (espX + w)) + marginLeft;
                 p.Width = w;
                 p.Height = h;
 
                 p.Tag = carta.ToString();
+                this.Controls.Add(p);
             });
         }
     }

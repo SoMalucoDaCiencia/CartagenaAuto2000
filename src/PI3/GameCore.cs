@@ -124,6 +124,10 @@ namespace PI3{
                         i++;
                     });
 
+                    // Set player deck =====
+
+                    Program.partidaEstado.jogador.mao = GameCore.consultarMao(Program.partidaEstado);
+
                     // Set pirates on it's positions ======
 
                     serverResponse = Jogo.VerificarVez(partida.id);
@@ -192,11 +196,14 @@ namespace PI3{
                 List<Carta> ret = new List<Carta>();
                 List<string> list = new List<string>(serverResponse.Replace("\r", "").Split('\n'));
                 list.ForEach((str) => {
-                    var arr = str.Split(',');
-                    ret.Add(new Carta(arr[0], int.Parse(arr[0])));
+                    if(str != "")
+                    {
+                        var arr = str.Split(',');
+                        ret.Add(new Carta(arr[0], int.Parse(arr[1])));
+                    }
+                    
                 });
 
-                update(partida);
                 return ret;
             } catch (Exception e) {
                 MessageBox.Show(e.Message, "Um erro inesperado ocorreu, tente novamente", MessageBoxButtons.OK, MessageBoxIcon.Error);
