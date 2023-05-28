@@ -30,6 +30,9 @@ namespace PI3.components.tabuleiro {
 
         private void timerRoutine(object Sender, EventArgs e) {
             GameCore.update(Program.partidaEstado);
+            jogadores = GameCore.listarJogadores(Program.partidaEstado.id);
+            this.lstPlayersLobby.Items.Clear();
+            this.lstPlayersLobby.Items.AddRange(Player.GetPlayersNames(jogadores).ToArray());
             if (Program.partidaEstado.state == PartidaState.PartidaEnum.INICIADA) {
                 lobbyView = false;
             } else {
