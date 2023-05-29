@@ -21,7 +21,18 @@ namespace PI3.components.tabuleiro {
         bool stop = false;
 
         public TabuleiroForm() {
+            // Init component
             InitializeComponent();
+
+            // Hide defualt hidden components
+            pnlChave.Hide();
+            pnlEsqueleto.Hide();
+            pnlFaca.Hide();
+            pnlGarrafa.Hide();
+            pnlPistola.Hide();
+            pnlTricornio.Hide();
+
+            // Init timer
             timerRoutine(null, null);
             timer.Interval = 5000;
             timer.Tick += timerRoutine;
@@ -91,6 +102,15 @@ namespace PI3.components.tabuleiro {
             Program.partidaEstado.state = PartidaState.PartidaEnum.INICIADA;
             GameCore.update(Program.partidaEstado);
             lobbyView = false;
+
+            drawTabuleiro();
+            pnlChave.Show();
+            pnlEsqueleto.Show();
+            pnlFaca.Show();
+            pnlGarrafa.Show();
+            pnlPistola.Show();
+            pnlTricornio.Show();
+
             render();
         }
 
@@ -177,7 +197,6 @@ namespace PI3.components.tabuleiro {
                     this.Controls.Remove(item);
                 }
 
-                drawTabuleiro();
                 //drawCartas();
             }
         }
@@ -190,12 +209,12 @@ namespace PI3.components.tabuleiro {
                 btnAuto.Show();
                 btnEnter.Show();
                 btnHistorico.Show();
-                pnlChave.Show();
-                pnlEsqueleto.Show();
-                pnlFaca.Show();
-                pnlGarrafa.Show();
-                pnlPistola.Show();
-                pnlTricornio.Show();
+                //pnlChave.Show();
+                //pnlEsqueleto.Show();
+                //pnlFaca.Show();
+                //pnlGarrafa.Show();
+                //pnlPistola.Show();
+                //pnlTricornio.Show();
 
             } else {
                 lstPlayersLobby.Show();
@@ -204,16 +223,16 @@ namespace PI3.components.tabuleiro {
                 btnAuto.Hide();
                 btnEnter.Hide();
                 btnHistorico.Hide();
-                pnlChave.Hide();
-                pnlEsqueleto.Hide();
-                pnlFaca.Hide();
-                pnlGarrafa.Hide();
-                pnlPistola.Hide();
-                pnlTricornio.Hide();
+                //pnlChave.Hide();
+                //pnlEsqueleto.Hide();
+                //pnlFaca.Hide();
+                //pnlGarrafa.Hide();
+                //pnlPistola.Hide();
+                //pnlTricornio.Hide();
             }
         }
 
-        private void drawTabuleiro() {
+        private void drawPiratas() {
 
             // Cria parametros de localizacao
             int marginLeft = 60;
@@ -233,19 +252,6 @@ namespace PI3.components.tabuleiro {
                 int k = key - ((key / 6) * 6);
                 int i = key / 6;
                 int piratas = 1;
-
-                Panel tile = new Panel();
-                tile.BackgroundImage = Carta.GetCardBitmap(Program.partidaEstado.casas[(6 * i) + k].tipoPosicao, true);
-                tile.BackgroundImageLayout = ImageLayout.Stretch;
-                tile.BackColor = System.Drawing.Color.Transparent;
-                tile.Top = marginTop + espY + (h + espY) * (i%2==0 ? k : 5-k);
-                tile.Left = marginLeft + espX + (h + espX) * i;
-                tile.Width = w;
-                tile.Height = h;
-
-                tile.Tag = "i:" + ((6 * i) + k);
-                tile.Click += tileClick;
-                this.Controls.Add(tile);
 
                 // Pega casa e itera piratas de jogadores naquela casa
                 Program.partidaEstado.casas[key].piratasPresentes.Keys.ToList().ForEach((innerKey) => {
@@ -280,29 +286,33 @@ namespace PI3.components.tabuleiro {
             });
         }
 
-        private void drawCartas() {
-            int marginLeft = 783;
-            int marginTop = 295;
-            int h = 135;
-            int w = 99;
-            int espY = 22;
-            int espX = 32;
+        private void drawTabuleiro() {
+            // Cria parametros de localizacao
+            int marginLeft = 60;
+            int marginTop = 55;
+            int espY = 27;
+            int espX = 42;
+            int h = 65;
+            int w = 65;
 
-            var i = 0;
-            Program.partidaEstado.jogador.mao.ForEach((carta) => {
-                i++;
-                Panel p = new Panel();
-                p.BackgroundImage = Carta.GetCardBitmap(carta.tipo, false);
-                p.BackColor = System.Drawing.Color.Transparent;
-                p.BackgroundImageLayout = ImageLayout.Stretch;
-                p.Top = (i > 2 ? (espY + h) : 0) + marginTop;
-                p.Left = ((i % 3) * (espX + w)) + marginLeft;
-                p.Width = w;
-                p.Height = h;
+            // Itera casas da partida
+            Program.partidaEstado.casas.Keys.ToList().ForEach((key) => {
+                int k = key - ((key / 6) * 6);
+                int i = key / 6;
+                int piratas = 1;
 
-                p.Tag = carta.ToString();
-                this.Controls.Add(p);
+                Panel tile = new Panel();
+                tile.BackgroundImage = Carta.GetCardBitmap(Program.partidaEstado.casas[(6 * i) + k].tipoPosicao, true);
+                tile.BackgroundImageLayout = ImageLayout.Stretch;
+                tile.BackColor = System.Drawing.Color.Transparent;
+                tile.Top = marginTop + espY + (h + espY) * (i % 2 == 0 ? k : 5 - k);
+                tile.Left = marginLeft + espX + (h + espX) * i;
+                tile.Width = w;
+                tile.Height = h;
 
+                tile.Tag = "i:" + ((6 * i) + k);
+                tile.Click += tileClick;
+                this.Controls.Add(tile);     
             });
         }
 
