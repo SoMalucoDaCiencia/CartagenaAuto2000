@@ -195,7 +195,7 @@ namespace PI3.components.tabuleiro {
         private void render() {
             checkButtons();
             drawLobby();
-            if (!lobbyView) {
+            if (lobbyView) {
 
                 // Apaga todos os "Panel's" dos controls para liberar a memoria
                 foreach (Control item in this.Controls.OfType<Panel>().ToList())
