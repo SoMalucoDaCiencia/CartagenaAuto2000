@@ -55,7 +55,7 @@ namespace PI3.components.criarPartida
             this.btnVoltar.Location = new System.Drawing.Point(200, 229);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Size = new System.Drawing.Size(98, 36);
-            this.btnVoltar.TabIndex = 11;
+            this.btnVoltar.TabIndex = 4;
             this.btnVoltar.Text = "Voltar";
             this.btnVoltar.UseVisualStyleBackColor = false;
             this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
@@ -66,7 +66,7 @@ namespace PI3.components.criarPartida
             this.txtNomeSala.Location = new System.Drawing.Point(223, 38);
             this.txtNomeSala.Name = "txtNomeSala";
             this.txtNomeSala.Size = new System.Drawing.Size(161, 23);
-            this.txtNomeSala.TabIndex = 10;
+            this.txtNomeSala.TabIndex = 1;
             // 
             // txtSenhaSala
             // 
@@ -74,7 +74,7 @@ namespace PI3.components.criarPartida
             this.txtSenhaSala.Location = new System.Drawing.Point(222, 93);
             this.txtSenhaSala.Name = "txtSenhaSala";
             this.txtSenhaSala.Size = new System.Drawing.Size(161, 23);
-            this.txtSenhaSala.TabIndex = 9;
+            this.txtSenhaSala.TabIndex = 2;
             // 
             // btnOk
             // 
@@ -90,7 +90,7 @@ namespace PI3.components.criarPartida
             this.btnOk.Location = new System.Drawing.Point(286, 229);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 36);
-            this.btnOk.TabIndex = 8;
+            this.btnOk.TabIndex = 5;
             this.btnOk.Text = "Ok";
             this.btnOk.UseVisualStyleBackColor = false;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
@@ -102,7 +102,7 @@ namespace PI3.components.criarPartida
             this.txtPlayerName.Location = new System.Drawing.Point(223, 150);
             this.txtPlayerName.Name = "txtPlayerName";
             this.txtPlayerName.Size = new System.Drawing.Size(160, 23);
-            this.txtPlayerName.TabIndex = 14;
+            this.txtPlayerName.TabIndex = 3;
             // 
             // label1
             // 
@@ -113,7 +113,7 @@ namespace PI3.components.criarPartida
             this.label1.Location = new System.Drawing.Point(38, 37);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(147, 25);
-            this.label1.TabIndex = 17;
+            this.label1.TabIndex = 6;
             this.label1.Text = "Nome da Sala";
             // 
             // label2
@@ -125,7 +125,7 @@ namespace PI3.components.criarPartida
             this.label2.Location = new System.Drawing.Point(38, 91);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(153, 25);
-            this.label2.TabIndex = 18;
+            this.label2.TabIndex = 8;
             this.label2.Text = "Senha da Sala";
             // 
             // label3
@@ -137,7 +137,7 @@ namespace PI3.components.criarPartida
             this.label3.Location = new System.Drawing.Point(32, 148);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(182, 25);
-            this.label3.TabIndex = 21;
+            this.label3.TabIndex = 9;
             this.label3.Text = "Nome de Jogador";
             // 
             // CriarSala
