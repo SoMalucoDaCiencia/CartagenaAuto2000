@@ -178,6 +178,15 @@
     <Content Include="partidaEstado.json" />
     <Content Include="Properties\Resources\backgrounds\modal.png" />
     <Content Include="Properties\Resources\backgrounds\tabuleiroBackground.png" />
+    <None Include="Resources\procurarSalaBerserker.png" />
+    <None Include="Resources\senhaSalaBerserker.png" />
+    <None Include="Resources\sairBerserker.png" />
+    <None Include="Resources\voltarBerserker.png" />
+    <None Include="Resources\okBerserker.png" />
+    <None Include="Resources\nomeSalaBerserker.png" />
+    <None Include="Resources\nomeJogadorBerserker.png" />
+    <None Include="Resources\criarSalaBerserker2.png" />
+    <None Include="Resources\atualizarBerserker.png" />
     <None Include="Resources\PHOTO-2023-05-24-20-22-36.jpg" />
     <None Include="Properties\Resources\simbolos\chave.png" />
     <None Include="Properties\Resources\simbolos\esqueleto1.png" />

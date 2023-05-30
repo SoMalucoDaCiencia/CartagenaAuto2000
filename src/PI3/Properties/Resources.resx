@@ -196,4 +196,31 @@
   <data name="FundoNav" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PHOTO-2023-05-24-20-22-36.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="atualizarBerserker" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\atualizarBerserker.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="criarSalaBerserker2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\criarSalaBerserker2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="nomeJogadorBerserker" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\nomeJogadorBerserker.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="nomeSalaBerserker" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\nomeSalaBerserker.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="okBerserker" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\okBerserker.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="procurarSalaBerserker" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\procurarSalaBerserker.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sairBerserker" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sairBerserker.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="senhaSalaBerserker" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\senhaSalaBerserker.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="voltarBerserker" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\voltarBerserker.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

@@ -102,8 +102,7 @@ namespace PI3.components.tabuleiro {
 
         private void btnIniciarPartida_Click(object sender, EventArgs e) {
             GameCore.iniciarPartida(Program.partidaEstado);
-            Program.partidaEstado.state = PartidaState.PartidaEnum.INICIADA;
-            if (GameCore.update(Program.partidaEstado) )
+            if (Program.partidaEstado.state == PartidaState.PartidaEnum.INICIADA)
             {
                 lobbyView = false;
 
@@ -117,6 +116,10 @@ namespace PI3.components.tabuleiro {
                 pnlTricornio.Show();
 
                 render();
+            }
+            else
+            {
+                MessageBox.Show("ERRO!", "Um erro inesperado ocorreu, a partida não foi iniciada", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
