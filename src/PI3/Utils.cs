@@ -11,10 +11,12 @@ namespace PI3{
             return str.Split(new [] { sub }, StringSplitOptions.None);
         }
 
-        public static void checkError(string serverResponse) {
+        public static bool checkError(string serverResponse) {
             if (serverResponse.Contains("ERRO")) {
                 throw new Exception(splitByString(serverResponse, "ERRO:")[1]);
+                return false;
             }
+            return true;
         }
 
         public static bool isStringValid(string str)

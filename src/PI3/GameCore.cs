@@ -104,14 +104,16 @@ namespace PI3{
         // <summary>Cria um jogador e entra em uma partida</summary>
         /// <param name="idPartida">Id da partida</param>
         /// <returns> Posicoes jogador </returns>
-        public static void update(Partida partida) {
+        public static bool update(Partida partida) {
             try {
 
                 // Fill list of positions instances ======
                 if (partida.state == PartidaState.PartidaEnum.INICIADA) {
 
                     string serverResponse = Jogo.ExibirTabuleiro(partida.id);
-                    Utils.checkError(serverResponse);
+                    if (Utils.checkError(serverResponse) == false) {
+                        return false;
+                    }
 
                     var r = serverResponse.Replace("\r", "").Split('\n').ToList();
                     partida.casas.Clear();
@@ -151,10 +153,14 @@ namespace PI3{
                     partida.state = PartidaState.parse(infPartida[0]);
                     partida.idJogadorAtual = int.Parse(infPartida[1]);
                     partida.rodadaAtual = int.Parse(infPartida[2]);
+                    return true;
                 }
+                return true;
 
-            } catch (Exception e) {
+            }
+            catch (Exception e) {
                 MessageBox.Show(e.Message, "Um erro inesperado ocorreu, tente novamente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
         }
 

@@ -41,17 +41,20 @@ namespace PI3.components.tabuleiro {
 
         private void timerRoutine(object Sender, EventArgs e) {
             dataGridView1.Visible = false;
-            GameCore.update(Program.partidaEstado);
-            jogadores = GameCore.listarJogadores(Program.partidaEstado.id);
-            this.lstPlayersLobby.Items.Clear();
-            this.lstPlayersLobby.Items.AddRange(Player.GetPlayersNames(jogadores).ToArray());
-            if (Program.partidaEstado.state == PartidaState.PartidaEnum.INICIADA) {
-                lobbyView = false;
-            } else {
-                lobbyView = true;
+            if (GameCore.update(Program.partidaEstado))
+            {
+                jogadores = GameCore.listarJogadores(Program.partidaEstado.id);
+                this.lstPlayersLobby.Items.Clear();
+                this.lstPlayersLobby.Items.AddRange(Player.GetPlayersNames(jogadores).ToArray());
+                if (Program.partidaEstado.state == PartidaState.PartidaEnum.INICIADA) {
+                    lobbyView = false;
+                } else {
+                    lobbyView = true;
+                }
+                render();
+                GC.Collect();
             }
-            render();
-            GC.Collect();
+
         }
 
         public void tileClick(object sender, EventArgs e) {
@@ -100,7 +103,8 @@ namespace PI3.components.tabuleiro {
         private void btnIniciarPartida_Click(object sender, EventArgs e) {
             GameCore.iniciarPartida(Program.partidaEstado);
             Program.partidaEstado.state = PartidaState.PartidaEnum.INICIADA;
-            GameCore.update(Program.partidaEstado);
+            if (GameCore.update(Program.partidaEstado) )
+            {
             lobbyView = false;
 
             drawTabuleiro();
@@ -112,6 +116,8 @@ namespace PI3.components.tabuleiro {
             pnlTricornio.Show();
 
             render();
+            }
+
         }
 
         private void showQtd(object sender, EventArgs e)
@@ -196,7 +202,6 @@ namespace PI3.components.tabuleiro {
                 {
                     this.Controls.Remove(item);
                 }
-
                 //drawCartas();
             }
         }
