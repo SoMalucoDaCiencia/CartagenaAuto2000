@@ -40,7 +40,7 @@ namespace PI3.components.tabuleiro {
         }
 
         private void timerRoutine(object Sender, EventArgs e) {
-            dataGridView1.Visible = false;
+            HistoricoGrid.Visible = false;
             if (GameCore.update(Program.partidaEstado))
             {
                 jogadores = GameCore.listarJogadores(Program.partidaEstado.id);
@@ -92,10 +92,10 @@ namespace PI3.components.tabuleiro {
                 cartaSelecionada != null &&
                 posicaoSelecionada > 0) {
 
-            	this.btnEnter.Show();
+            	this.btnJogar.Show();
             	this.btnAuto.Show();
             } else {
-                this.btnEnter.Hide();
+                this.btnJogar.Hide();
                 this.btnAuto.Hide();
             }
         }
@@ -105,17 +105,18 @@ namespace PI3.components.tabuleiro {
             Program.partidaEstado.state = PartidaState.PartidaEnum.INICIADA;
             if (GameCore.update(Program.partidaEstado) )
             {
-            lobbyView = false;
+                lobbyView = false;
 
-            drawTabuleiro();
-            pnlChave.Show();
-            pnlEsqueleto.Show();
-            pnlFaca.Show();
-            pnlGarrafa.Show();
-            pnlPistola.Show();
-            pnlTricornio.Show();
+                drawTabuleiro();
+                listarHistorico();
+                pnlChave.Show();
+                pnlEsqueleto.Show();
+                pnlFaca.Show();
+                pnlGarrafa.Show();
+                pnlPistola.Show();
+                pnlTricornio.Show();
 
-            render();
+                render();
             }
 
         }
@@ -209,10 +210,10 @@ namespace PI3.components.tabuleiro {
         private void drawLobby() {
             if (!lobbyView) {
                 lstPlayersLobby.Hide();
-                dataGridView1.Hide();
+                HistoricoGrid.Hide();
                 btnIniciarPartida.Hide();
                 btnAuto.Show();
-                btnEnter.Show();
+                btnJogar.Show();
                 btnHistorico.Show();
                 //pnlChave.Show();
                 //pnlEsqueleto.Show();
@@ -223,10 +224,10 @@ namespace PI3.components.tabuleiro {
 
             } else {
                 lstPlayersLobby.Show();
-                dataGridView1.Hide();
+                HistoricoGrid.Hide();
                 btnIniciarPartida.Show();
                 btnAuto.Hide();
-                btnEnter.Hide();
+                btnJogar.Hide();
                 btnHistorico.Hide();
                 //pnlChave.Hide();
                 //pnlEsqueleto.Hide();
@@ -323,7 +324,17 @@ namespace PI3.components.tabuleiro {
 
         private void btnHistorico_Click(object sender, EventArgs e)
         {
-            dataGridView1.Visible = !dataGridView1.Visible;
+            HistoricoGrid.Visible = !HistoricoGrid.Visible;
+        }
+
+        private void listarHistorico()
+        {
+            Program.partidaEstado.jogadasAntigas = JogadaAntiga.VerHistorico(Program.partidaEstado);
+            this.HistoricoGrid.Rows.Clear();
+            Program.partidaEstado.jogadasAntigas.ForEach((partida) => {
+                this.HistoricoGrid.Rows.Add(partida.id.ToString(), partida.numJogada.ToString(),
+                    partida.simbolo, partida.posOrigem, partida.posDestino);
+            });
         }
     }
 }

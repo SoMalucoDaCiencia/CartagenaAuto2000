@@ -30,9 +30,9 @@ namespace PI3.components.tabuleiro
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TabuleiroForm));
             this.label1 = new System.Windows.Forms.Label();
-            this.btnEnter = new System.Windows.Forms.Button();
+            this.btnJogar = new System.Windows.Forms.Button();
             this.btnAuto = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.HistoricoGrid = new System.Windows.Forms.DataGridView();
             this.idJogador = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nmJogada = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.simbolo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,7 +47,7 @@ namespace PI3.components.tabuleiro
             this.pnlPistola = new System.Windows.Forms.Button();
             this.pnlGarrafa = new System.Windows.Forms.Button();
             this.btnHistorico = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HistoricoGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -59,45 +59,49 @@ namespace PI3.components.tabuleiro
             this.label1.Size = new System.Drawing.Size(0, 64);
             this.label1.TabIndex = 0;
             // 
-            // btnEnter
+            // btnJogar
             // 
-            this.btnEnter.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEnter.Location = new System.Drawing.Point(783, 604);
-            this.btnEnter.Name = "btnEnter";
-            this.btnEnter.Size = new System.Drawing.Size(174, 50);
-            this.btnEnter.TabIndex = 1;
-            this.btnEnter.Text = "Enter";
-            this.btnEnter.UseVisualStyleBackColor = true;
-            this.btnEnter.Click += new System.EventHandler(this.btnEnter_Click);
+            this.btnJogar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnJogar.Font = new System.Drawing.Font("Berserker", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJogar.Location = new System.Drawing.Point(783, 604);
+            this.btnJogar.Name = "btnJogar";
+            this.btnJogar.Size = new System.Drawing.Size(174, 50);
+            this.btnJogar.TabIndex = 1;
+            this.btnJogar.Text = "Jogar";
+            this.btnJogar.UseVisualStyleBackColor = true;
+            this.btnJogar.Click += new System.EventHandler(this.btnEnter_Click);
             // 
             // btnAuto
             // 
+            this.btnAuto.BackColor = System.Drawing.SystemColors.Control;
+            this.btnAuto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAuto.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAuto.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAuto.Location = new System.Drawing.Point(963, 604);
             this.btnAuto.Name = "btnAuto";
             this.btnAuto.Size = new System.Drawing.Size(181, 50);
             this.btnAuto.TabIndex = 2;
             this.btnAuto.Text = "Automático";
-            this.btnAuto.UseVisualStyleBackColor = true;
+            this.btnAuto.UseVisualStyleBackColor = false;
             this.btnAuto.Click += new System.EventHandler(this.btnAuto_Click);
             // 
-            // dataGridView1
+            // HistoricoGrid
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.HistoricoGrid.AllowUserToAddRows = false;
+            this.HistoricoGrid.AllowUserToDeleteRows = false;
+            this.HistoricoGrid.BackgroundColor = System.Drawing.Color.LightGray;
+            this.HistoricoGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.HistoricoGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idJogador,
             this.nmJogada,
             this.simbolo,
             this.posOrigem,
             this.posDestino});
-            this.dataGridView1.Location = new System.Drawing.Point(783, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(361, 267);
-            this.dataGridView1.TabIndex = 3;
+            this.HistoricoGrid.Location = new System.Drawing.Point(783, 12);
+            this.HistoricoGrid.Name = "HistoricoGrid";
+            this.HistoricoGrid.ReadOnly = true;
+            this.HistoricoGrid.Size = new System.Drawing.Size(361, 267);
+            this.HistoricoGrid.TabIndex = 3;
             // 
             // idJogador
             // 
@@ -145,6 +149,7 @@ namespace PI3.components.tabuleiro
             // 
             // btnIniciarPartida
             // 
+            this.btnIniciarPartida.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnIniciarPartida.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIniciarPartida.Location = new System.Drawing.Point(494, 401);
             this.btnIniciarPartida.Name = "btnIniciarPartida";
@@ -258,13 +263,15 @@ namespace PI3.components.tabuleiro
             // 
             // btnHistorico
             // 
-            this.btnHistorico.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHistorico.Location = new System.Drawing.Point(1034, 239);
+            this.btnHistorico.BackColor = System.Drawing.SystemColors.Control;
+            this.btnHistorico.FlatAppearance.BorderSize = 0;
+            this.btnHistorico.Font = new System.Drawing.Font("Berserker", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHistorico.Location = new System.Drawing.Point(1021, 239);
             this.btnHistorico.Name = "btnHistorico";
-            this.btnHistorico.Size = new System.Drawing.Size(110, 40);
+            this.btnHistorico.Size = new System.Drawing.Size(123, 40);
             this.btnHistorico.TabIndex = 12;
             this.btnHistorico.Text = "Historico";
-            this.btnHistorico.UseVisualStyleBackColor = true;
+            this.btnHistorico.UseVisualStyleBackColor = false;
             this.btnHistorico.Click += new System.EventHandler(this.btnHistorico_Click);
             // 
             // TabuleiroForm
@@ -283,16 +290,17 @@ namespace PI3.components.tabuleiro
             this.Controls.Add(this.pnlChave);
             this.Controls.Add(this.btnIniciarPartida);
             this.Controls.Add(this.lstPlayersLobby);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.HistoricoGrid);
             this.Controls.Add(this.btnAuto);
-            this.Controls.Add(this.btnEnter);
+            this.Controls.Add(this.btnJogar);
             this.Controls.Add(this.label1);
             this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MinimumSize = new System.Drawing.Size(1172, 705);
             this.Name = "TabuleiroForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tabuleiro";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HistoricoGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -301,9 +309,9 @@ namespace PI3.components.tabuleiro
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnEnter;
+        private System.Windows.Forms.Button btnJogar;
         private System.Windows.Forms.Button btnAuto;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView HistoricoGrid;
         private System.Windows.Forms.ListBox lstPlayersLobby;
         private System.Windows.Forms.Button btnIniciarPartida;
         private System.Windows.Forms.Button pnlFaca;

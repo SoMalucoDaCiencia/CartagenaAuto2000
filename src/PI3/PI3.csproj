@@ -114,6 +114,7 @@
     <Compile Include="GameCore.cs" />
     <Compile Include="models\Carta.cs" />
     <Compile Include="models\Color.cs" />
+    <Compile Include="models\JogadaAntiga.cs" />
     <Compile Include="models\Pirata.cs" />
     <Compile Include="models\Player.cs" />
     <Compile Include="models\Posicao.cs" />

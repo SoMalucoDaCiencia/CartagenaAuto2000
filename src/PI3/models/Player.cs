@@ -39,7 +39,7 @@ namespace PI3.models{
 
         // Manda nome do jodador, id e senha da partida pro servidor, pega a resposta do servidor, cria player, adicionar na lista de players da partida e retorna o player criado
         public static Player CreatePlayerServer(string name, Partida partida) {
-            var response = CartagenaServer.Jogo.EntrarPartida(partida.id, Utils.firstToUpper(name), partida.senha)
+            var response = Jogo.EntrarPartida(partida.id, Utils.firstToUpper(name), partida.senha)
                 .Split(',');
             var pl = new Player(int.Parse(response[0]), Utils.firstToUpper(name), response[1],  Color.Parse(response[2]));
             return pl;

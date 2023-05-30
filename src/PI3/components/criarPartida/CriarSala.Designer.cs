@@ -97,12 +97,12 @@ namespace PI3.components.criarPartida
             // 
             // txtPlayerName
             // 
-            this.txtPlayerName.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPlayerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            //this.txtPlayerName.Font = new System.Drawing.Font(FontsResources.berserker.Families[0], 16, FontStyle.Regular);
             this.txtPlayerName.Location = new System.Drawing.Point(223, 150);
             this.txtPlayerName.Name = "txtPlayerName";
             this.txtPlayerName.Size = new System.Drawing.Size(160, 23);
             this.txtPlayerName.TabIndex = 14;
-            this.txtPlayerName.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label1
             // 
@@ -122,7 +122,7 @@ namespace PI3.components.criarPartida
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(32, 91);
+            this.label2.Location = new System.Drawing.Point(38, 91);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(153, 25);
             this.label2.TabIndex = 18;
@@ -134,11 +134,11 @@ namespace PI3.components.criarPartida
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(38, 150);
+            this.label3.Location = new System.Drawing.Point(32, 148);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(153, 25);
+            this.label3.Size = new System.Drawing.Size(182, 25);
             this.label3.TabIndex = 21;
-            this.label3.Text = "Senha da Sala";
+            this.label3.Text = "Nome de Jogador";
             // 
             // CriarSala
             // 

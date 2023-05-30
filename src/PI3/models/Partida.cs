@@ -22,6 +22,8 @@ namespace PI3{
 
         public Dictionary<int, Posicao> casas { get; set; }
 
+        public List<JogadaAntiga> jogadasAntigas { get; set; }
+
         public DateTime createdAt { get; set; }
 
         public static Partida EnterPartida(int idPartida, string nomeP, string senhaP) {

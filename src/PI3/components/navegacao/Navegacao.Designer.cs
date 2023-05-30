@@ -64,7 +64,8 @@ namespace PI3
             // 
             this.lstListarPartidas.AllowUserToAddRows = false;
             this.lstListarPartidas.AllowUserToDeleteRows = false;
-            this.lstListarPartidas.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(75)))), ((int)(((byte)(86)))));
+            this.lstListarPartidas.BackgroundColor = System.Drawing.Color.Gainsboro;
+            this.lstListarPartidas.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lstListarPartidas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.lstListarPartidas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
@@ -125,12 +126,13 @@ namespace PI3
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::PI3.Properties.Resources.FundoNav;
-            this.ClientSize = new System.Drawing.Size(419, 519);
+            this.ClientSize = new System.Drawing.Size(419, 534);
             this.Controls.Add(this.btnVoltar);
             this.Controls.Add(this.lstListarPartidas);
             this.Controls.Add(this.btnListarPartidas);
+            this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.MaximumSize = new System.Drawing.Size(435, 558);
+            this.MaximumSize = new System.Drawing.Size(435, 573);
             this.MinimumSize = new System.Drawing.Size(435, 558);
             this.Name = "Navegacao";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
