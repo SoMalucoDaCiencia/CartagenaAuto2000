@@ -185,7 +185,21 @@ namespace PI3{
         public static void jogar(Partida partida, int indexPosicao, TipoCartaEnum carta) {
             try {
                 if (partida.state == PartidaState.PartidaEnum.INICIADA) {
-                    string serverResponse = Jogo.Jogar(partida.jogador.id, partida.jogador.senha, indexPosicao, carta.ToString().ToArray()[0].ToString());
+                    string serverResponse;
+                    if(indexPosicao >= 0)
+                    {
+                        if(carta != null && carta != TipoCartaEnum.Nula)
+                        {
+                            serverResponse = Jogo.Jogar(partida.jogador.id, partida.jogador.senha, indexPosicao, carta.ToString().ToArray()[0].ToString());
+                        } else
+                        {
+                            serverResponse = Jogo.Jogar(partida.jogador.id, partida.jogador.senha, indexPosicao);
+                        }
+                    } else
+                    {
+                        serverResponse = Jogo.Jogar(partida.jogador.id, partida.jogador.senha);
+                    }
+                    
                     Utils.checkError(serverResponse);
 
                     partida.idJogadorAtual = int.Parse(serverResponse);

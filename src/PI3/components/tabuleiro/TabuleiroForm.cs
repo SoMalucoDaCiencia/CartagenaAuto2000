@@ -164,15 +164,16 @@ namespace PI3.components.tabuleiro
 
         private void btnEnter_Click(object sender, EventArgs e)
         {
-            GameCore.jogar(Program.partidaEstado, int.Parse(lblPosicaoSelecionada.Text), Carta.GetTipoCartaEnum(lblCartaSelecionada.Text.ToString().Substring(0,1)));
-            GameCore.update(Program.partidaEstado);
+            int posicao = (Utils.isStringValid(lblPosicaoSelecionada.Text.Replace("x", "")) ? int.Parse(lblPosicaoSelecionada.Text.Replace("x", "")) : -1);
+            GameCore.jogar(Program.partidaEstado, posicao, Carta.GetTipoCartaEnum(lblCartaSelecionada.Text.Substring(0,1)));
+            timerRoutine(null, null);
             //render();
         }
 
         private void btnAuto_Click(object sender, EventArgs e)
         {
             Engine.process();
-            GameCore.update(Program.partidaEstado);
+            timerRoutine(null, null);
             //render();
         }
 
@@ -180,7 +181,7 @@ namespace PI3.components.tabuleiro
         {
             if (Program.partidaEstado.idJogadorAtual == Program.partidaEstado.jogador.id)
             {
-                lblComunicacao.Text = "É a sua vez.";
+                lblComunicacao.Text = "É a sua vez. Jogadas restantes: " + (4 - Program.partidaEstado.rodadaAtual);
                 this.btnJogar.Show();
                 btnJogar.Text = "Pular";
                 this.btnAuto.Show();

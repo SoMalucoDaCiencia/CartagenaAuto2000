@@ -181,7 +181,7 @@ namespace PI3.components.tabuleiro
             // 
             this.lblComunicacao.AutoSize = true;
             this.lblComunicacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblComunicacao.Location = new System.Drawing.Point(172, 169);
+            this.lblComunicacao.Location = new System.Drawing.Point(62, 166);
             this.lblComunicacao.Name = "lblComunicacao";
             this.lblComunicacao.Size = new System.Drawing.Size(0, 24);
             this.lblComunicacao.TabIndex = 13;
