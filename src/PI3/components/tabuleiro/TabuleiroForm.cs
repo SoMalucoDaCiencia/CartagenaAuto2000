@@ -305,7 +305,8 @@ namespace PI3.components.tabuleiro{
 
                             p.Top = (top + marginTop + espY + (h + espY) * (i % 2 == 0 ? k : 5 - k)) - 25;
                             p.Left = (left + marginLeft + espX + (h + espX) * i) - 10;
-
+                            p.BringToFront();
+                            this.Controls.SetChildIndex(p, 0);
                             piratas++;
                         }
                     }
@@ -375,6 +376,8 @@ namespace PI3.components.tabuleiro{
                 tile.Tag = "i:" + ((6 * i) + k);
                 tile.Click += tileClick;
                 this.Controls.Add(tile);
+                this.Controls.SetChildIndex(tile, 1);
+
             });
         }
 
