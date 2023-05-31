@@ -202,6 +202,7 @@ namespace PI3.components.tabuleiro{
             if (Program.partidaEstado.state == PartidaState.PartidaEnum.INICIADA) {
                 hideLobby();
                 drawTabuleiro();
+                createPiratesZeroPoint();//////
                 listarHistorico();
                 checkButtons();
                 updateMao();
@@ -307,13 +308,14 @@ namespace PI3.components.tabuleiro{
                         // Itera piratas de um jogador especifico
                         for (int d = 0; d < Program.partidaEstado.casas[key].piratasPresentes[innerKey]; d++) {
                             // Cria desenho do pirata
-                            Panel p = new Panel();
-                            p.BringToFront();
-                            p.BackgroundImage = Color.getPirate(peopleColor[innerKey]);
-                            p.BackColor = System.Drawing.Color.Transparent;
-                            p.BackgroundImageLayout = ImageLayout.Stretch;
-                            p.Height = 150;
-                            p.Width = 100;
+                            Panel p = this.Controls.OfType<Panel>().ToList().Find((panel) => innerKey + "." + key == panel.Tag.ToString());
+                            // Panel p = new Panel();
+                            // p.BringToFront();
+                            // p.BackgroundImage = Color.getPirate(peopleColor[innerKey]);
+                            // p.BackColor = System.Drawing.Color.Transparent;
+                            // p.BackgroundImageLayout = ImageLayout.Stretch;
+                            // p.Height = 150;
+                            // p.Width = 100;
 
                             int top = (piratas == 1 ? (w / 2) : (w / 4));
                             int left = (piratas == 1 ? (w / 4) : (piratas == 2 ? (w / 2) : (w * (3 / 4))));
@@ -321,11 +323,42 @@ namespace PI3.components.tabuleiro{
                             p.Top = top + marginTop + espY + (h + espY) * (i % 2 == 0 ? k : 5 - k);
                             p.Left = left + marginLeft + espX + (h + espX) * i;
 
-                            this.Controls.Add(p);
+                            // this.Controls.Add(p);
                             piratas++;
                         }
                     }
                 });
+            });
+        }
+
+        private void createPiratesZeroPoint()
+        {
+            HashSet<int> jogadoresPresentes = new HashSet<int>();
+            foreach (var casa in Program.partidaEstado.casas.Values.ToList()) {
+                jogadoresPresentes.Union(casa.piratasPresentes.Keys.ToList());
+                if (jogadores.Count >= 4) {
+                    break;
+                }
+            }
+
+            int order = 0;
+            jogadoresPresentes.ToList().ForEach((idJogador) => {
+                for (int i=1; i <=6; i++) {
+                    Panel p = new Panel();
+                    p.BringToFront();
+                    p.BackgroundImage = Color.getPirate((Color.ColorEnum) order);
+                    p.BackColor = System.Drawing.Color.Transparent;
+                    p.BackgroundImageLayout = ImageLayout.Stretch;
+                    p.Tag = idJogador + ".0";
+                    p.Height = 150;
+                    p.Width = 100;
+
+                    p.Top = (order > 2 ? 300 : 100) + (40 * i);
+                    p.Left = 100 * (order%2 + 1);
+
+                    this.Controls.Add(p);
+                }
+                order++;
             });
         }
 
