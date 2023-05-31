@@ -158,7 +158,14 @@ namespace PI3.components.tabuleiro
         public void cardClick(object sender, EventArgs e)
         {
             Panel o = (Panel)sender;
-            this.lblCartaSelecionada.Text = new Carta(o.Tag.ToString().Substring(0, 1)).tipo.ToString();
+            if (lblCartaSelecionada.Text != "x" && lblCartaSelecionada.Text == o.Tag.ToString())
+            {
+                this.lblCartaSelecionada.Text = "x";
+            }
+            else
+            {
+                this.lblCartaSelecionada.Text = new Carta(o.Tag.ToString().Substring(0, 1)).tipo.ToString();
+            }
             //render();
         }
 
@@ -167,6 +174,7 @@ namespace PI3.components.tabuleiro
             int posicao = (Utils.isStringValid(lblPosicaoSelecionada.Text.Replace("x", "")) ? int.Parse(lblPosicaoSelecionada.Text.Replace("x", "")) : -1);
             GameCore.jogar(Program.partidaEstado, posicao, Carta.GetTipoCartaEnum(lblCartaSelecionada.Text.Substring(0,1)));
             timerRoutine(null, null);
+            drawPiratas();
             //render();
         }
 
@@ -174,6 +182,7 @@ namespace PI3.components.tabuleiro
         {
             Engine.process();
             timerRoutine(null, null);
+            drawPiratas();
             //render();
         }
 
