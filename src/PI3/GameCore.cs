@@ -202,7 +202,7 @@ namespace PI3{
                     
                     Utils.checkError(serverResponse);
 
-                    partida.idJogadorAtual = int.Parse(serverResponse);
+                    partida.idJogadorAtual = int.Parse(Utils.splitByString(serverResponse, "\r\n")[0].Split(',')[1]);
                     update(partida);
                 }
             } catch (Exception e) {
