@@ -173,6 +173,16 @@ namespace PI3.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap madeiraFundo {
+            get {
+                object obj = ResourceManager.GetObject("madeiraFundo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap MainBackground {
             get {
                 object obj = ResourceManager.GetObject("MainBackground", resourceCulture);

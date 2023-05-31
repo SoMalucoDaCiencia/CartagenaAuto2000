@@ -44,8 +44,42 @@ namespace PI3.components.tabuleiro
             if(Program.partidaEstado.state == PartidaState.PartidaEnum.INICIADA)
             {
                 checkButtons();
+                updateMao();
                 GC.Collect();
             }
+        }
+
+        public void updateMao()
+        {
+                lblFaca.Text = "0";
+                lblChave.Text = "0";
+                lblTricornio.Text = "0";
+                lblEsqueleto.Text = "0";
+                lblGarrafa.Text = "0";
+                lblPistola.Text = "0";
+            Program.partidaEstado.jogador.mao.ForEach((carta) => {
+                switch (carta.tipo)
+                {
+                    case TipoCartaEnum.Esqueleto:
+                        this.lblEsqueleto.Text = carta.quantidade.ToString();
+                        break;
+                    case TipoCartaEnum.Faca:
+                        this.lblFaca.Text = carta.quantidade.ToString();
+                        break;
+                    case TipoCartaEnum.Tricornio:
+                        this.lblTricornio.Text = carta.quantidade.ToString();
+                        break;
+                    case TipoCartaEnum.Garrafa:
+                        this.lblGarrafa.Text = carta.quantidade.ToString();
+                        break;
+                    case TipoCartaEnum.Chave:
+                        this.lblChave.Text = carta.quantidade.ToString();
+                        break;
+                    case TipoCartaEnum.Pistola:
+                        this.lblPistola.Text = carta.quantidade.ToString();
+                        break;
+                }
+            });
         }
 
         public void hideLobby()
@@ -151,11 +185,11 @@ namespace PI3.components.tabuleiro
                 btnJogar.Text = "Pular";
                 this.btnAuto.Show();
 
-                if (lblPosicaoSelecionada.Text != null)
+                if (Utils.isStringValid(lblPosicaoSelecionada.Text.Replace("x", "")))
                 {
                     btnVoltar.Show();
 
-                    if (lblCartaSelecionada != null)
+                    if (Utils.isStringValid(lblCartaSelecionada.Text.Replace("x", "")))
                     {
                         btnJogar.Text = "Jogar";
 
@@ -179,6 +213,7 @@ namespace PI3.components.tabuleiro
                 drawTabuleiro();
                 listarHistorico();
                 checkButtons();
+                updateMao();
             }
             else
             {

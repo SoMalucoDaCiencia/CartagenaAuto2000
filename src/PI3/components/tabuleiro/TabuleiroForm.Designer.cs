@@ -44,6 +44,8 @@ namespace PI3.components.tabuleiro
             this.btnVoltar = new System.Windows.Forms.Button();
             this.lblCartaSelecionada = new System.Windows.Forms.Label();
             this.pnlMadeira = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.lblTricornio = new System.Windows.Forms.Label();
             this.lblPistola = new System.Windows.Forms.Label();
             this.lblGarrafa = new System.Windows.Forms.Label();
@@ -57,8 +59,6 @@ namespace PI3.components.tabuleiro
             this.pnlEsqueleto = new System.Windows.Forms.Panel();
             this.pnlChave = new System.Windows.Forms.Panel();
             this.pnlTricornio = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.HistoricoGrid)).BeginInit();
             this.pnlMadeira.SuspendLayout();
             this.SuspendLayout();
@@ -69,7 +69,7 @@ namespace PI3.components.tabuleiro
             this.btnJogar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnJogar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnJogar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnJogar.Location = new System.Drawing.Point(24, 298);
+            this.btnJogar.Location = new System.Drawing.Point(118, 298);
             this.btnJogar.Name = "btnJogar";
             this.btnJogar.Size = new System.Drawing.Size(90, 50);
             this.btnJogar.TabIndex = 1;
@@ -192,7 +192,7 @@ namespace PI3.components.tabuleiro
             this.btnVoltar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVoltar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnVoltar.Location = new System.Drawing.Point(120, 298);
+            this.btnVoltar.Location = new System.Drawing.Point(22, 298);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Size = new System.Drawing.Size(90, 50);
             this.btnVoltar.TabIndex = 14;
@@ -237,6 +237,26 @@ namespace PI3.components.tabuleiro
             this.pnlMadeira.Name = "pnlMadeira";
             this.pnlMadeira.Size = new System.Drawing.Size(409, 361);
             this.pnlMadeira.TabIndex = 16;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(20, 247);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(165, 24);
+            this.label2.TabIndex = 24;
+            this.label2.Text = "Carta selecionada:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(20, 212);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(189, 24);
+            this.label1.TabIndex = 23;
+            this.label1.Text = "Posição selecionada:";
             // 
             // lblTricornio
             // 
@@ -379,26 +399,6 @@ namespace PI3.components.tabuleiro
             this.pnlTricornio.TabIndex = 1;
             this.pnlTricornio.Tag = "Tricornio";
             this.pnlTricornio.Click += new System.EventHandler(this.cardClick);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(20, 212);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(189, 24);
-            this.label1.TabIndex = 23;
-            this.label1.Text = "Posição selecionada:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(20, 247);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(165, 24);
-            this.label2.TabIndex = 24;
-            this.label2.Text = "Carta selecionada:";
             // 
             // TabuleiroForm
             // 
