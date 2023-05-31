@@ -164,14 +164,12 @@ namespace PI3.components.tabuleiro{
                 Carta.GetTipoCartaEnum(lblCartaSelecionada.Text.Substring(0, 1)));
             timerRoutine(null, null);
             drawPiratas();
-            //render();
         }
 
         private void btnAuto_Click(object sender, EventArgs e) {
             Engine.process();
             timerRoutine(null, null);
             drawPiratas();
-            //render();
         }
 
         private void checkButtons() {
@@ -287,11 +285,6 @@ namespace PI3.components.tabuleiro{
             int h = 65;
             int w = 65;
 
-            // Cria um dicionario pra mapear referencia de cor pra cada jogador da partida
-            Dictionary<int, Color.ColorEnum> peopleColor = new Dictionary<int, Color.ColorEnum>();
-            peopleColor[Program.partidaEstado.jogador.id] = Color.ColorEnum.Azul;
-            int c = 0;
-
             // Itera casas da partida
             Program.partidaEstado.casas.Keys.ToList().ForEach((key) => {
                 int k = key - ((key / 6) * 6);
@@ -300,24 +293,12 @@ namespace PI3.components.tabuleiro{
 
                 // Pega casa e itera piratas de jogadores naquela casa
                 Program.partidaEstado.casas[key].piratasPresentes.Keys.ToList().ForEach((innerKey) => {
-                    if (Tag != null && key > 0 && key < 37) {
-                        // Se o jogador nunca foi citado, associa ele uma nova cor
-                        if (!peopleColor.ContainsKey(innerKey)) {
-                            peopleColor[innerKey] = (Color.ColorEnum)c;
-                            c++;
-                        }
+                    if (key > 0 && key < 37) {
 
                         // Itera piratas de um jogador especifico
                         for (int d = 0; d < Program.partidaEstado.casas[key].piratasPresentes[innerKey]; d++) {
                             // Cria desenho do pirata
-                            Panel p = this.Controls.OfType<Panel>().ToList().Find((panel) => innerKey + "." + key == panel.Tag.ToString());
-                            // Panel p = new Panel();
-                            // p.BringToFront();
-                            // p.BackgroundImage = Color.getPirate(peopleColor[innerKey]);
-                            // p.BackColor = System.Drawing.Color.Transparent;
-                            // p.BackgroundImageLayout = ImageLayout.Stretch;
-                            // p.Height = 150;
-                            // p.Width = 100;
+                            Panel p = this.Controls.OfType<Panel>().ToList().Find((panel) => (panel.Tag != null) && (innerKey.ToString() == panel.Tag.ToString()));
 
                             int top = (piratas == 1 ? (w / 2) : (w / 4));
                             int left = (piratas == 1 ? (w / 4) : (piratas == 2 ? (w / 2) : (w * (3 / 4))));
@@ -325,7 +306,6 @@ namespace PI3.components.tabuleiro{
                             p.Top = (top + marginTop + espY + (h + espY) * (i % 2 == 0 ? k : 5 - k)) - 25;
                             p.Left = (left + marginLeft + espX + (h + espX) * i) - 10;
 
-                            // this.Controls.Add(p);
                             piratas++;
                         }
                     }
@@ -352,12 +332,12 @@ namespace PI3.components.tabuleiro{
                     p.BackgroundImage = Color.getPirate((Color.ColorEnum) order);
                     p.BackColor = System.Drawing.Color.Transparent;
                     p.BackgroundImageLayout = ImageLayout.Stretch;
-                    p.Tag = idJogador + ".0";
-                    p.Height = 70;
-                    p.Width = 35;
+                    p.Tag = idJogador.ToString();
+                    p.Height = 42;
+                    p.Width = 30;
 
-                    p.Top = (order > 2 ? 100 : 50) + (30 * i);
-                    p.Left = 50 * (order%2 + 1);
+                    p.Top = (order > 1 ? 500 : 0) + (50 * (i-1));
+                    p.Left = (order > 1 ? 35 : 0);
 
                     this.Controls.Add(p);
                     p.BringToFront();
