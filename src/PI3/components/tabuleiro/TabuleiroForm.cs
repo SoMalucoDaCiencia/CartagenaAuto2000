@@ -142,6 +142,7 @@ namespace PI3.components.tabuleiro{
             else {
                 MessageBox.Show("Você n tem piratas nessa casa");
             }
+            checkButtons();
         }
 
         public void cardClick(object sender, EventArgs e) {
@@ -152,7 +153,7 @@ namespace PI3.components.tabuleiro{
             else {
                 this.lblCartaSelecionada.Text = new Carta(o.Tag.ToString().Substring(0, 1)).tipo.ToString();
             }
-            //render();
+            checkButtons();
         }
 
         private void btnEnter_Click(object sender, EventArgs e) {
@@ -299,7 +300,7 @@ namespace PI3.components.tabuleiro{
 
                 // Pega casa e itera piratas de jogadores naquela casa
                 Program.partidaEstado.casas[key].piratasPresentes.Keys.ToList().ForEach((innerKey) => {
-                    if (key > 0 && key < 37) {
+                    if (Tag != null && key > 0 && key < 37) {
                         // Se o jogador nunca foi citado, associa ele uma nova cor
                         if (!peopleColor.ContainsKey(innerKey)) {
                             peopleColor[innerKey] = (Color.ColorEnum)c;
@@ -336,8 +337,10 @@ namespace PI3.components.tabuleiro{
         {
             HashSet<int> jogadoresPresentes = new HashSet<int>();
             foreach (var casa in Program.partidaEstado.casas.Values.ToList()) {
-                jogadoresPresentes.Union(casa.piratasPresentes.Keys.ToList());
-                if (jogadores.Count >= 4) {
+                casa.piratasPresentes.Keys.ToList().ForEach((key) => {
+                    jogadoresPresentes.Add(key);
+                });
+                if (jogadoresPresentes.Count >= 4) {
                     break;
                 }
             }
@@ -346,18 +349,19 @@ namespace PI3.components.tabuleiro{
             jogadoresPresentes.ToList().ForEach((idJogador) => {
                 for (int i=1; i <=6; i++) {
                     Panel p = new Panel();
-                    p.BringToFront();
                     p.BackgroundImage = Color.getPirate((Color.ColorEnum) order);
                     p.BackColor = System.Drawing.Color.Transparent;
                     p.BackgroundImageLayout = ImageLayout.Stretch;
                     p.Tag = idJogador + ".0";
-                    p.Height = 150;
-                    p.Width = 100;
+                    p.Height = 70;
+                    p.Width = 35;
 
-                    p.Top = (order > 2 ? 300 : 100) + (40 * i);
-                    p.Left = 100 * (order%2 + 1);
+                    p.Top = (order > 2 ? 100 : 50) + (30 * i);
+                    p.Left = 50 * (order%2 + 1);
 
                     this.Controls.Add(p);
+                    p.BringToFront();
+                    this.Controls.SetChildIndex(p, 0);
                 }
                 order++;
             });
@@ -384,6 +388,7 @@ namespace PI3.components.tabuleiro{
                 tile.BackColor = System.Drawing.Color.Transparent;
                 tile.Top = marginTop + espY + (h + espY) * (i % 2 == 0 ? k : 5 - k);
                 tile.Left = marginLeft + espX + (h + espX) * i;
+                tile.Cursor = System.Windows.Forms.Cursors.Hand;
                 tile.Width = w;
                 tile.Height = h;
 

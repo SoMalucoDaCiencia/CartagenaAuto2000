@@ -98,6 +98,12 @@
       <DependentUpon>TabuleiroForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Engine.cs" />
+    <Compile Include="components\tabuleiro\FimPartida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="components\tabuleiro\FimPartida.Designer.cs">
+      <DependentUpon>FimPartida.cs</DependentUpon>
+    </Compile>
     <Compile Include="FontsResources.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -144,6 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="components\tabuleiro\TabuleiroForm.resx">
       <DependentUpon>TabuleiroForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="components\tabuleiro\FimPartida.resx">
+      <DependentUpon>FimPartida.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

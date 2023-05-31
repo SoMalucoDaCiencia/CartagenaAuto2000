@@ -37,6 +37,7 @@ namespace PI3
             // } catch (Exception e) {
             //     Utils.ConsoleLogInfo("Nenhuma partida identificada.");
             Application.Run(new Menu());
+            //Application.Run(new FimPartida());
             // }
 
             //Application.Run(new Form1());
