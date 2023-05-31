@@ -22,7 +22,7 @@ namespace PI3.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace PI3.Properties {
         ///   Retorna a instância de ResourceManager armazenada em cache usada por essa classe.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PI3.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace PI3.Properties {
         ///   pesquisas de recursos que usam essa classe de recurso de tipo de alta segurança.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace PI3.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap atualizarBerserker {
+        public static System.Drawing.Bitmap atualizarBerserker {
             get {
                 object obj = ResourceManager.GetObject("atualizarBerserker", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -73,7 +73,7 @@ namespace PI3.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Chave {
+        public static System.Drawing.Bitmap Chave {
             get {
                 object obj = ResourceManager.GetObject("Chave", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -83,7 +83,7 @@ namespace PI3.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap chave1 {
+        public static System.Drawing.Bitmap chave1 {
             get {
                 object obj = ResourceManager.GetObject("chave1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -93,7 +93,7 @@ namespace PI3.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap criarSalaBerserker2 {
+        public static System.Drawing.Bitmap criarSalaBerserker2 {
             get {
                 object obj = ResourceManager.GetObject("criarSalaBerserker2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -103,7 +103,7 @@ namespace PI3.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Esqueleto {
+        public static System.Drawing.Bitmap Esqueleto {
             get {
                 object obj = ResourceManager.GetObject("Esqueleto", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -113,7 +113,7 @@ namespace PI3.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap esqueleto1 {
+        public static System.Drawing.Bitmap esqueleto1 {
             get {
                 object obj = ResourceManager.GetObject("esqueleto1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -123,7 +123,7 @@ namespace PI3.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Faca {
+        public static System.Drawing.Bitmap Faca {
             get {
                 object obj = ResourceManager.GetObject("Faca", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -133,7 +133,7 @@ namespace PI3.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap faca1 {
+        public static System.Drawing.Bitmap faca1 {
             get {
                 object obj = ResourceManager.GetObject("faca1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -143,7 +143,7 @@ namespace PI3.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap FundoNav {
+        public static System.Drawing.Bitmap FundoNav {
             get {
                 object obj = ResourceManager.GetObject("FundoNav", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -153,7 +153,7 @@ namespace PI3.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Garrafa {
+        public static System.Drawing.Bitmap Garrafa {
             get {
                 object obj = ResourceManager.GetObject("Garrafa", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -163,7 +163,7 @@ namespace PI3.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap garrafa1 {
+        public static System.Drawing.Bitmap garrafa1 {
             get {
                 object obj = ResourceManager.GetObject("garrafa1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -173,17 +173,7 @@ namespace PI3.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap madeiraFundo {
-            get {
-                object obj = ResourceManager.GetObject("madeiraFundo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap MainBackground {
+        public static System.Drawing.Bitmap MainBackground {
             get {
                 object obj = ResourceManager.GetObject("MainBackground", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -193,7 +183,7 @@ namespace PI3.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ModalBack {
+        public static System.Drawing.Bitmap ModalBack {
             get {
                 object obj = ResourceManager.GetObject("ModalBack", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -203,7 +193,7 @@ namespace PI3.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap nomeJogadorBerserker {
+        public static System.Drawing.Bitmap nomeJogadorBerserker {
             get {
                 object obj = ResourceManager.GetObject("nomeJogadorBerserker", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -213,7 +203,7 @@ namespace PI3.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap nomeSalaBerserker {
+        public static System.Drawing.Bitmap nomeSalaBerserker {
             get {
                 object obj = ResourceManager.GetObject("nomeSalaBerserker", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -223,7 +213,7 @@ namespace PI3.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap okBerserker {
+        public static System.Drawing.Bitmap okBerserker {
             get {
                 object obj = ResourceManager.GetObject("okBerserker", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -233,7 +223,7 @@ namespace PI3.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap pirataAmarelo {
+        public static System.Drawing.Bitmap pirataAmarelo {
             get {
                 object obj = ResourceManager.GetObject("pirataAmarelo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -243,7 +233,7 @@ namespace PI3.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap pirataAzul {
+        public static System.Drawing.Bitmap pirataAzul {
             get {
                 object obj = ResourceManager.GetObject("pirataAzul", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -253,7 +243,7 @@ namespace PI3.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap pirataMarrom {
+        public static System.Drawing.Bitmap pirataMarrom {
             get {
                 object obj = ResourceManager.GetObject("pirataMarrom", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -263,7 +253,7 @@ namespace PI3.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap pirataVerde {
+        public static System.Drawing.Bitmap pirataVerde {
             get {
                 object obj = ResourceManager.GetObject("pirataVerde", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -273,7 +263,7 @@ namespace PI3.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap pirataVermelho {
+        public static System.Drawing.Bitmap pirataVermelho {
             get {
                 object obj = ResourceManager.GetObject("pirataVermelho", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -283,7 +273,7 @@ namespace PI3.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Pistola {
+        public static System.Drawing.Bitmap Pistola {
             get {
                 object obj = ResourceManager.GetObject("Pistola", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -293,7 +283,7 @@ namespace PI3.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap pistola1 {
+        public static System.Drawing.Bitmap pistola1 {
             get {
                 object obj = ResourceManager.GetObject("pistola1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -303,7 +293,7 @@ namespace PI3.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Praia {
+        public static System.Drawing.Bitmap Praia {
             get {
                 object obj = ResourceManager.GetObject("Praia", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -313,7 +303,7 @@ namespace PI3.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap procurarSalaBerserker {
+        public static System.Drawing.Bitmap procurarSalaBerserker {
             get {
                 object obj = ResourceManager.GetObject("procurarSalaBerserker", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -323,7 +313,7 @@ namespace PI3.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap sairBerserker {
+        public static System.Drawing.Bitmap sairBerserker {
             get {
                 object obj = ResourceManager.GetObject("sairBerserker", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -333,7 +323,7 @@ namespace PI3.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap senhaSalaBerserker {
+        public static System.Drawing.Bitmap senhaSalaBerserker {
             get {
                 object obj = ResourceManager.GetObject("senhaSalaBerserker", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -343,7 +333,7 @@ namespace PI3.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Tricornio {
+        public static System.Drawing.Bitmap Tricornio {
             get {
                 object obj = ResourceManager.GetObject("Tricornio", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -353,7 +343,7 @@ namespace PI3.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap tricornio1 {
+        public static System.Drawing.Bitmap tricornio1 {
             get {
                 object obj = ResourceManager.GetObject("tricornio1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -363,7 +353,7 @@ namespace PI3.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap voltarBerserker {
+        public static System.Drawing.Bitmap voltarBerserker {
             get {
                 object obj = ResourceManager.GetObject("voltarBerserker", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
