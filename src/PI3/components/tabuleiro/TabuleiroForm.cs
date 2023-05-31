@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using PI3.models;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace PI3.components.tabuleiro{
     public partial class TabuleiroForm : Form{
@@ -213,7 +214,7 @@ namespace PI3.components.tabuleiro{
         }
 
         private void showQtd(object sender, EventArgs e) {
-            switch (((Button)sender).Tag) {
+            switch (((System.Windows.Forms.Button)sender).Tag) {
                 case "G": {
                     this.pnlGarrafa.BackgroundImage = null;
                     break;
@@ -243,7 +244,7 @@ namespace PI3.components.tabuleiro{
         }
 
         private void setDefault(object sender, EventArgs e) {
-            switch (((Button)sender).Tag) {
+            switch (((System.Windows.Forms.Button)sender).Tag) {
                 case "G": {
                     this.pnlGarrafa.BackgroundImage = Carta.GetCardBitmap(TipoCartaEnum.Garrafa, false);
                     break;
@@ -308,7 +309,7 @@ namespace PI3.components.tabuleiro{
                         for (int d = 0; d < Program.partidaEstado.casas[key].piratasPresentes[innerKey]; d++) {
                             // Cria desenho do pirata
                             Panel p = new Panel();
-                            p.BringToFront();
+                            p.SendToBack();
                             p.BackgroundImage = Color.getPirate(peopleColor[innerKey]);
                             p.BackColor = System.Drawing.Color.Transparent;
                             p.BackgroundImageLayout = ImageLayout.Stretch;
@@ -318,8 +319,8 @@ namespace PI3.components.tabuleiro{
                             int top = (piratas == 1 ? (w / 2) : (w / 4));
                             int left = (piratas == 1 ? (w / 4) : (piratas == 2 ? (w / 2) : (w * (3 / 4))));
 
-                            p.Top = top + marginTop + espY + (h + espY) * (i % 2 == 0 ? k : 5 - k);
-                            p.Left = left + marginLeft + espX + (h + espX) * i;
+                            p.Top = (top + marginTop + espY + (h + espY) * (i % 2 == 0 ? k : 5 - k)) - 25;
+                            p.Left = (left + marginLeft + espX + (h + espX) * i) - 10;
 
                             this.Controls.Add(p);
                             piratas++;
