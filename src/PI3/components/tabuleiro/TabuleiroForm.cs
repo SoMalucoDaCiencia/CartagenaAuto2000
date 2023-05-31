@@ -4,12 +4,8 @@ using System.Linq;
 using System.Windows.Forms;
 using PI3.models;
 
-namespace PI3.components.tabuleiro
-{
-
-    public partial class TabuleiroForm : Form
-    {
-
+namespace PI3.components.tabuleiro{
+    public partial class TabuleiroForm : Form{
         bool lobbyView = true;
 
         List<Player> jogadores;
@@ -18,8 +14,7 @@ namespace PI3.components.tabuleiro
 
         bool stop = false;
 
-        public TabuleiroForm()
-        {
+        public TabuleiroForm() {
             // Init component
             InitializeComponent();
 
@@ -33,16 +28,14 @@ namespace PI3.components.tabuleiro
             timer.Enabled = true;
         }
 
-        private void timerRoutine(object Sender, EventArgs e)
-        {
+        private void timerRoutine(object Sender, EventArgs e) {
             GameCore.update(Program.partidaEstado);
 
             jogadores = GameCore.listarJogadores(Program.partidaEstado.id);
             this.lstPlayersLobby.Items.Clear();
             this.lstPlayersLobby.Items.AddRange(Player.GetPlayersNames(jogadores).ToArray());
 
-            if(Program.partidaEstado.state == PartidaState.PartidaEnum.INICIADA)
-            {
+            if (Program.partidaEstado.state == PartidaState.PartidaEnum.INICIADA) {
                 checkButtons();
                 updateMao();
                 listarHistorico();
@@ -50,17 +43,15 @@ namespace PI3.components.tabuleiro
             }
         }
 
-        public void updateMao()
-        {
-                lblFaca.Text = "0";
-                lblChave.Text = "0";
-                lblTricornio.Text = "0";
-                lblEsqueleto.Text = "0";
-                lblGarrafa.Text = "0";
-                lblPistola.Text = "0";
+        public void updateMao() {
+            lblFaca.Text = "0";
+            lblChave.Text = "0";
+            lblTricornio.Text = "0";
+            lblEsqueleto.Text = "0";
+            lblGarrafa.Text = "0";
+            lblPistola.Text = "0";
             Program.partidaEstado.jogador.mao.ForEach((carta) => {
-                switch (carta.tipo)
-                {
+                switch (carta.tipo) {
                     case TipoCartaEnum.Esqueleto:
                         this.lblEsqueleto.Text = carta.quantidade.ToString();
                         break;
@@ -83,8 +74,7 @@ namespace PI3.components.tabuleiro
             });
         }
 
-        public void hideLobby()
-        {
+        public void hideLobby() {
             btnIniciarPartida.Hide();
             lstPlayersLobby.Hide();
             btnHistorico.Show();
@@ -109,8 +99,7 @@ namespace PI3.components.tabuleiro
             lblComunicacao.Show();
         }
 
-        public void showLobby()
-        {
+        public void showLobby() {
             btnIniciarPartida.Show();
             lstPlayersLobby.Show();
             HistoricoGrid.Hide();
@@ -141,163 +130,144 @@ namespace PI3.components.tabuleiro
         }
 
 
-        public void tileClick(object sender, EventArgs e)
-        {
+        public void tileClick(object sender, EventArgs e) {
             Panel o = (Panel)sender;
             int prov = int.Parse(o.Tag.ToString().Split(',')[0].Split(':')[1]);
             var countPiratas = Program.partidaEstado.casas[prov];
-            if (countPiratas.piratasPresentes.ContainsKey(Program.partidaEstado.jogador.id) && countPiratas.piratasPresentes[Program.partidaEstado.jogador.id] > 0)
-            {
+            if (countPiratas.piratasPresentes.ContainsKey(Program.partidaEstado.jogador.id) &&
+                countPiratas.piratasPresentes[Program.partidaEstado.jogador.id] > 0) {
                 this.lblPosicaoSelecionada.Text = prov.ToString();
             }
-            else
-            {
+            else {
                 MessageBox.Show("Você n tem piratas nessa casa");
             }
         }
 
-        public void cardClick(object sender, EventArgs e)
-        {
+        public void cardClick(object sender, EventArgs e) {
             Panel o = (Panel)sender;
-            if (lblCartaSelecionada.Text != "x" && lblCartaSelecionada.Text == o.Tag.ToString())
-            {
+            if (lblCartaSelecionada.Text != "x" && lblCartaSelecionada.Text == o.Tag.ToString()) {
                 this.lblCartaSelecionada.Text = "x";
             }
-            else
-            {
+            else {
                 this.lblCartaSelecionada.Text = new Carta(o.Tag.ToString().Substring(0, 1)).tipo.ToString();
             }
             //render();
         }
 
-        private void btnEnter_Click(object sender, EventArgs e)
-        {
-            int posicao = (Utils.isStringValid(lblPosicaoSelecionada.Text.Replace("x", "")) ? int.Parse(lblPosicaoSelecionada.Text.Replace("x", "")) : -1);
-            GameCore.jogar(Program.partidaEstado, posicao, Carta.GetTipoCartaEnum(lblCartaSelecionada.Text.Substring(0,1)));
+        private void btnEnter_Click(object sender, EventArgs e) {
+            int posicao = (Utils.isStringValid(lblPosicaoSelecionada.Text.Replace("x", ""))
+                ? int.Parse(lblPosicaoSelecionada.Text.Replace("x", ""))
+                : -1);
+            GameCore.jogar(Program.partidaEstado, posicao,
+                Carta.GetTipoCartaEnum(lblCartaSelecionada.Text.Substring(0, 1)));
             timerRoutine(null, null);
             drawPiratas();
             //render();
         }
 
-        private void btnAuto_Click(object sender, EventArgs e)
-        {
+        private void btnAuto_Click(object sender, EventArgs e) {
             Engine.process();
             timerRoutine(null, null);
             drawPiratas();
             //render();
         }
 
-        private void checkButtons()
-        {
-            if (Program.partidaEstado.idJogadorAtual == Program.partidaEstado.jogador.id)
-            {
+        private void checkButtons() {
+            if (Program.partidaEstado.idJogadorAtual == Program.partidaEstado.jogador.id) {
                 lblComunicacao.Text = "É a sua vez. Jogadas restantes: " + (4 - Program.partidaEstado.rodadaAtual);
                 this.btnJogar.Show();
                 btnJogar.Text = "Pular";
                 this.btnAuto.Show();
 
-                if (Utils.isStringValid(lblPosicaoSelecionada.Text.Replace("x", "")))
-                {
+                if (Utils.isStringValid(lblPosicaoSelecionada.Text.Replace("x", ""))) {
                     btnVoltar.Show();
 
-                    if (Utils.isStringValid(lblCartaSelecionada.Text.Replace("x", "")))
-                    {
+                    if (Utils.isStringValid(lblCartaSelecionada.Text.Replace("x", ""))) {
                         btnJogar.Text = "Jogar";
-
                     }
                 }
-            } else
-            {
-                lblComunicacao.Text = "É a vez do jogador " + GameCore.getPlayerName(Program.partidaEstado.id, Program.partidaEstado.idJogadorAtual);
+            }
+            else {
+                lblComunicacao.Text = "É a vez do jogador " +
+                                      GameCore.getPlayerName(Program.partidaEstado.id,
+                                          Program.partidaEstado.idJogadorAtual);
                 this.btnJogar.Hide();
                 btnVoltar.Hide();
                 this.btnAuto.Hide();
             }
         }
 
-        private void btnIniciarPartida_Click(object sender, EventArgs e)
-        {
+        private void btnIniciarPartida_Click(object sender, EventArgs e) {
             GameCore.iniciarPartida(Program.partidaEstado);
-            if (Program.partidaEstado.state == PartidaState.PartidaEnum.INICIADA)
-            {
+            if (Program.partidaEstado.state == PartidaState.PartidaEnum.INICIADA) {
                 hideLobby();
                 drawTabuleiro();
                 listarHistorico();
                 checkButtons();
                 updateMao();
             }
-            else
-            {
-                MessageBox.Show("ERRO!", "Um erro inesperado ocorreu, a partida não foi iniciada", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else {
+                MessageBox.Show("ERRO!", "Um erro inesperado ocorreu, a partida não foi iniciada", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
-
         }
 
-        private void showQtd(object sender, EventArgs e)
-        {
-            switch (((Button)sender).Tag)
-            {
-                case "G":
-                    {
-                        this.pnlGarrafa.BackgroundImage = null; break;
-                    }
-                case "T":
-                    {// Tricornio
-                        this.pnlTricornio.BackgroundImage = null; break;
-
-                    }
-                case "P":
-                    {
-                        this.pnlPistola.BackgroundImage = null; break;
-
-                    }
-                case "E":
-                    {// Esqueleto(Jolly roger)
-                        this.pnlEsqueleto.BackgroundImage = null; break;
-
-                    }
-                case "F":
-                    {
-                        this.pnlFaca.BackgroundImage = null; break;
-
-                    }
-                case "C":
-                    {
-                        this.pnlChave.BackgroundImage = null; break;
-
-                    }
+        private void showQtd(object sender, EventArgs e) {
+            switch (((Button)sender).Tag) {
+                case "G": {
+                    this.pnlGarrafa.BackgroundImage = null;
+                    break;
+                }
+                case "T": { // Tricornio
+                    this.pnlTricornio.BackgroundImage = null;
+                    break;
+                }
+                case "P": {
+                    this.pnlPistola.BackgroundImage = null;
+                    break;
+                }
+                case "E": { // Esqueleto(Jolly roger)
+                    this.pnlEsqueleto.BackgroundImage = null;
+                    break;
+                }
+                case "F": {
+                    this.pnlFaca.BackgroundImage = null;
+                    break;
+                }
+                case "C": {
+                    this.pnlChave.BackgroundImage = null;
+                    break;
+                }
                 default: break;
             }
         }
 
-        private void setDefault(object sender, EventArgs e)
-        {
-            switch (((Button)sender).Tag)
-            {
-                case "G":
-                    {
-                        this.pnlGarrafa.BackgroundImage = Carta.GetCardBitmap(TipoCartaEnum.Garrafa, false); break;
-                    }
-                case "T":
-                    {// Tricornio
-                        this.pnlTricornio.BackgroundImage = Carta.GetCardBitmap(TipoCartaEnum.Tricornio, false); break;
-                    }
-                case "P":
-                    {
-                        this.pnlPistola.BackgroundImage = Carta.GetCardBitmap(TipoCartaEnum.Pistola, false); break;
-                    }
-                case "E":
-                    {// Esqueleto(Jolly roger)
-                        this.pnlEsqueleto.BackgroundImage = Carta.GetCardBitmap(TipoCartaEnum.Esqueleto, false); break;
-                    }
-                case "F":
-                    {
-                        this.pnlFaca.BackgroundImage = Carta.GetCardBitmap(TipoCartaEnum.Faca, false); break;
-                    }
-                case "C":
-                    {
-                        this.pnlChave.BackgroundImage = Carta.GetCardBitmap(TipoCartaEnum.Chave, false); break;
-                    }
+        private void setDefault(object sender, EventArgs e) {
+            switch (((Button)sender).Tag) {
+                case "G": {
+                    this.pnlGarrafa.BackgroundImage = Carta.GetCardBitmap(TipoCartaEnum.Garrafa, false);
+                    break;
+                }
+                case "T": { // Tricornio
+                    this.pnlTricornio.BackgroundImage = Carta.GetCardBitmap(TipoCartaEnum.Tricornio, false);
+                    break;
+                }
+                case "P": {
+                    this.pnlPistola.BackgroundImage = Carta.GetCardBitmap(TipoCartaEnum.Pistola, false);
+                    break;
+                }
+                case "E": { // Esqueleto(Jolly roger)
+                    this.pnlEsqueleto.BackgroundImage = Carta.GetCardBitmap(TipoCartaEnum.Esqueleto, false);
+                    break;
+                }
+                case "F": {
+                    this.pnlFaca.BackgroundImage = Carta.GetCardBitmap(TipoCartaEnum.Faca, false);
+                    break;
+                }
+                case "C": {
+                    this.pnlChave.BackgroundImage = Carta.GetCardBitmap(TipoCartaEnum.Chave, false);
+                    break;
+                }
                 default: break;
             }
         }
@@ -305,9 +275,7 @@ namespace PI3.components.tabuleiro
 
         // =========== Renderização =============>
 
-        private void drawPiratas()
-        {
-
+        private void drawPiratas() {
             // Cria parametros de localizacao
             int marginLeft = 60;
             int marginTop = 55;
@@ -322,27 +290,22 @@ namespace PI3.components.tabuleiro
             int c = 0;
 
             // Itera casas da partida
-            Program.partidaEstado.casas.Keys.ToList().ForEach((key) =>
-            {
+            Program.partidaEstado.casas.Keys.ToList().ForEach((key) => {
                 int k = key - ((key / 6) * 6);
                 int i = key / 6;
                 int piratas = 1;
 
                 // Pega casa e itera piratas de jogadores naquela casa
-                Program.partidaEstado.casas[key].piratasPresentes.Keys.ToList().ForEach((innerKey) =>
-                {
-                    if (key > 0 && key < 37)
-                    {
+                Program.partidaEstado.casas[key].piratasPresentes.Keys.ToList().ForEach((innerKey) => {
+                    if (key > 0 && key < 37) {
                         // Se o jogador nunca foi citado, associa ele uma nova cor
-                        if (!peopleColor.ContainsKey(innerKey))
-                        {
+                        if (!peopleColor.ContainsKey(innerKey)) {
                             peopleColor[innerKey] = (Color.ColorEnum)c;
                             c++;
                         }
 
                         // Itera piratas de um jogador especifico
-                        for (int d = 0; d < Program.partidaEstado.casas[key].piratasPresentes[innerKey]; d++)
-                        {
+                        for (int d = 0; d < Program.partidaEstado.casas[key].piratasPresentes[innerKey]; d++) {
                             // Cria desenho do pirata
                             Panel p = new Panel();
                             p.BringToFront();
@@ -366,8 +329,7 @@ namespace PI3.components.tabuleiro
             });
         }
 
-        private void drawTabuleiro()
-        {
+        private void drawTabuleiro() {
             // Cria parametros de localizacao
             int marginLeft = 60;
             int marginTop = 55;
@@ -377,8 +339,7 @@ namespace PI3.components.tabuleiro
             int w = 65;
 
             // Itera casas da partida
-            Program.partidaEstado.casas.Keys.ToList().ForEach((key) =>
-            {
+            Program.partidaEstado.casas.Keys.ToList().ForEach((key) => {
                 int k = key - ((key / 6) * 6);
                 int i = key / 6;
                 int piratas = 1;
@@ -398,30 +359,17 @@ namespace PI3.components.tabuleiro
             });
         }
 
-        private void btnHistorico_Click(object sender, EventArgs e)
-        {
+        private void btnHistorico_Click(object sender, EventArgs e) {
             HistoricoGrid.Visible = !HistoricoGrid.Visible;
         }
 
-        private void listarHistorico()
-        {
+        private void listarHistorico() {
             Program.partidaEstado.jogadasAntigas = JogadaAntiga.VerHistorico(Program.partidaEstado);
             this.HistoricoGrid.Rows.Clear();
-            Program.partidaEstado.jogadasAntigas.ForEach((partida) =>
-            {
+            Program.partidaEstado.jogadasAntigas.ForEach((partida) => {
                 this.HistoricoGrid.Rows.Add(partida.id.ToString(), partida.numJogada.ToString(),
                     Carta.GetTipoCartaEnum(partida.simbolo).ToString(), partida.posOrigem, partida.posDestino);
             });
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
