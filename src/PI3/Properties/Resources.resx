@@ -178,21 +178,6 @@
     <value>Resources\simbolos\tricornio.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral,
             PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="pirataVerde" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\piratas\verde.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="pirataAzul" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\piratas\azul.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="pirataMarrom" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\piratas\marrom.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="pirataVermelho" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\piratas\vermelho.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="pirataAmarelo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\piratas\amarelo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="FundoNav" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PHOTO-2023-05-24-20-22-36.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -225,5 +210,20 @@
   </data>
   <data name="madeiraFundo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\madeiraFundo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pirataAmarelo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pirataAmarelo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pirataAzul" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pirataAzul.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pirataMarrom" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pirataMarrom.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pirataVerde" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pirataVerde.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pirataVermelho" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pirataVermelho.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
