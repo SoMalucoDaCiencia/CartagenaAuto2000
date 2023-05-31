@@ -330,7 +330,7 @@ namespace PI3.components.tabuleiro
                 // Pega casa e itera piratas de jogadores naquela casa
                 Program.partidaEstado.casas[key].piratasPresentes.Keys.ToList().ForEach((innerKey) =>
                 {
-                    if (innerKey > 0 && innerKey < 37)
+                    if (key > 0 && key < 37)
                     {
                         // Se o jogador nunca foi citado, associa ele uma nova cor
                         if (!peopleColor.ContainsKey(innerKey))
