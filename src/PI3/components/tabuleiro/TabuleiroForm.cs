@@ -45,6 +45,7 @@ namespace PI3.components.tabuleiro
             {
                 checkButtons();
                 updateMao();
+                listarHistorico();
                 GC.Collect();
             }
         }
@@ -344,11 +345,12 @@ namespace PI3.components.tabuleiro
                         {
                             // Cria desenho do pirata
                             Panel p = new Panel();
+                            p.BringToFront();
                             p.BackgroundImage = Color.getPirate(peopleColor[innerKey]);
                             p.BackColor = System.Drawing.Color.Transparent;
                             p.BackgroundImageLayout = ImageLayout.Stretch;
-                            p.Height = 10;
-                            p.Width = 10;
+                            p.Height = 150;
+                            p.Width = 100;
 
                             int top = (piratas == 1 ? (w / 2) : (w / 4));
                             int left = (piratas == 1 ? (w / 4) : (piratas == 2 ? (w / 2) : (w * (3 / 4))));
@@ -408,7 +410,7 @@ namespace PI3.components.tabuleiro
             Program.partidaEstado.jogadasAntigas.ForEach((partida) =>
             {
                 this.HistoricoGrid.Rows.Add(partida.id.ToString(), partida.numJogada.ToString(),
-                    partida.simbolo, partida.posOrigem, partida.posDestino);
+                    Carta.GetTipoCartaEnum(partida.simbolo).ToString(), partida.posOrigem, partida.posDestino);
             });
         }
     }

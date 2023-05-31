@@ -167,6 +167,7 @@ namespace PI3.components.tabuleiro
             // btnHistorico
             // 
             this.btnHistorico.BackColor = System.Drawing.SystemColors.Control;
+            this.btnHistorico.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnHistorico.FlatAppearance.BorderSize = 0;
             this.btnHistorico.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHistorico.Location = new System.Drawing.Point(1021, 239);
@@ -333,6 +334,7 @@ namespace PI3.components.tabuleiro
             this.pnlPistola.BackColor = System.Drawing.Color.Transparent;
             this.pnlPistola.BackgroundImage = global::PI3.Properties.Resources.Pistola;
             this.pnlPistola.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlPistola.Cursor = System.Windows.Forms.Cursors.AppStarting;
             this.pnlPistola.Location = new System.Drawing.Point(277, 18);
             this.pnlPistola.Name = "pnlPistola";
             this.pnlPistola.Size = new System.Drawing.Size(57, 71);
@@ -345,6 +347,7 @@ namespace PI3.components.tabuleiro
             this.pnlGarrafa.BackColor = System.Drawing.Color.Transparent;
             this.pnlGarrafa.BackgroundImage = global::PI3.Properties.Resources.Garrafa;
             this.pnlGarrafa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlGarrafa.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pnlGarrafa.Location = new System.Drawing.Point(214, 18);
             this.pnlGarrafa.Name = "pnlGarrafa";
             this.pnlGarrafa.Size = new System.Drawing.Size(57, 71);
@@ -357,6 +360,7 @@ namespace PI3.components.tabuleiro
             this.pnlFaca.BackColor = System.Drawing.Color.Transparent;
             this.pnlFaca.BackgroundImage = global::PI3.Properties.Resources.Faca;
             this.pnlFaca.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlFaca.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pnlFaca.Location = new System.Drawing.Point(151, 18);
             this.pnlFaca.Name = "pnlFaca";
             this.pnlFaca.Size = new System.Drawing.Size(57, 71);
@@ -369,6 +373,7 @@ namespace PI3.components.tabuleiro
             this.pnlEsqueleto.BackColor = System.Drawing.Color.Transparent;
             this.pnlEsqueleto.BackgroundImage = global::PI3.Properties.Resources.Esqueleto;
             this.pnlEsqueleto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlEsqueleto.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pnlEsqueleto.Location = new System.Drawing.Point(85, 18);
             this.pnlEsqueleto.Name = "pnlEsqueleto";
             this.pnlEsqueleto.Size = new System.Drawing.Size(57, 71);
@@ -381,6 +386,7 @@ namespace PI3.components.tabuleiro
             this.pnlChave.BackColor = System.Drawing.Color.Transparent;
             this.pnlChave.BackgroundImage = global::PI3.Properties.Resources.Chave;
             this.pnlChave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlChave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pnlChave.Location = new System.Drawing.Point(22, 18);
             this.pnlChave.Name = "pnlChave";
             this.pnlChave.Size = new System.Drawing.Size(57, 71);
@@ -393,6 +399,7 @@ namespace PI3.components.tabuleiro
             this.pnlTricornio.BackColor = System.Drawing.Color.Transparent;
             this.pnlTricornio.BackgroundImage = global::PI3.Properties.Resources.Tricornio;
             this.pnlTricornio.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlTricornio.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pnlTricornio.Location = new System.Drawing.Point(340, 18);
             this.pnlTricornio.Name = "pnlTricornio";
             this.pnlTricornio.Size = new System.Drawing.Size(57, 71);
