@@ -171,16 +171,18 @@ namespace PI3{
         public static void iniciarPartida(Partida partida) {
             try {
                 string serverResponse = Jogo.IniciarPartida(partida.jogador.id, partida.jogador.senha);
-                Utils.checkError(serverResponse);
-
-                partida.idJogadorAtual = int.Parse(serverResponse);
-                update(partida);
+                if (Utils.checkError(serverResponse))
+                {
+                    partida.idJogadorAtual = int.Parse(serverResponse);
+                    partida.state = PartidaState.PartidaEnum.INICIADA;
+                    update(partida);
+                }
             } catch (Exception e) {
                 MessageBox.Show(e.Message, "Um erro inesperado ocorreu, tente novamente", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        public static void jogar(Partida partida, int indexPosicao, Carta carta) {
+        public static void jogar(Partida partida, int indexPosicao, TipoCartaEnum carta) {
             try {
                 if (partida.state == PartidaState.PartidaEnum.INICIADA) {
                     string serverResponse = Jogo.Jogar(partida.jogador.id, partida.jogador.senha, indexPosicao, carta.ToString().ToArray()[0].ToString());

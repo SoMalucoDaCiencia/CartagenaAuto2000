@@ -178,6 +178,7 @@
     <Content Include="partidaEstado.json" />
     <Content Include="Properties\Resources\backgrounds\modal.png" />
     <Content Include="Properties\Resources\backgrounds\tabuleiroBackground.png" />
+    <None Include="Resources\madeiraFundo.jpg" />
     <None Include="Resources\procurarSalaBerserker.png" />
     <None Include="Resources\senhaSalaBerserker.png" />
     <None Include="Resources\sairBerserker.png" />

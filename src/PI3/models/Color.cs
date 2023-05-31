@@ -13,6 +13,15 @@ namespace PI3.models{
             NULL
         }
 
+        public enum ColorCartasEnum
+        {
+            Ambar,
+            VerdeAgua,
+            Ciano,
+            Roxo,
+
+        }
+
         public static ColorEnum Parse(string str) {
             switch (str) {
                 case "Verde": {
