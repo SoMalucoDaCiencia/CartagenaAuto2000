@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using CartagenaServer;
 using PI3.models;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Windows.Forms;
 
 namespace PI3.components.tabuleiro{
     public partial class TabuleiroForm : Form{
@@ -32,15 +33,14 @@ namespace PI3.components.tabuleiro{
         private void timerRoutine(object Sender, EventArgs e) {
             GameCore.update(Program.partidaEstado);
 
-            jogadores = GameCore.listarJogadores(Program.partidaEstado.id);
-            this.lstPlayersLobby.Items.Clear();
-            this.lstPlayersLobby.Items.AddRange(Player.GetPlayersNames(jogadores).ToArray());
-
             if (Program.partidaEstado.state == PartidaState.PartidaEnum.INICIADA) {
                 checkButtons();
                 updateMao();
                 listarHistorico();
-                GC.Collect();
+            } else {
+                jogadores = GameCore.listarJogadores(Program.partidaEstado.id);
+                this.lstPlayersLobby.Items.Clear();
+                this.lstPlayersLobby.Items.AddRange(Player.GetPlayersNames(jogadores).ToArray());
             }
         }
 
@@ -146,7 +146,7 @@ namespace PI3.components.tabuleiro{
         }
 
         public void cardClick(object sender, EventArgs e) {
-            Panel o = (Panel)sender;
+            Button o = (Button) sender;
             if (lblCartaSelecionada.Text != "x" && lblCartaSelecionada.Text == o.Tag.ToString()) {
                 this.lblCartaSelecionada.Text = "x";
             }
@@ -159,14 +159,22 @@ namespace PI3.components.tabuleiro{
         private void btnEnter_Click(object sender, EventArgs e) {
             int posicao = (Utils.isStringValid(lblPosicaoSelecionada.Text.Replace("x", "")) ? int.Parse(lblPosicaoSelecionada.Text.Replace("x", ""))
                 : -1);
-            GameCore.jogar(Program.partidaEstado, posicao,
-                Carta.GetTipoCartaEnum(lblCartaSelecionada.Text.Substring(0, 1)));
+            GameCore.jogar(Program.partidaEstado, posicao, Carta.GetTipoCartaEnum(lblCartaSelecionada.Text.Substring(0, 1)));
             timerRoutine(null, null);
             drawPiratas();
         }
 
         private void btnAuto_Click(object sender, EventArgs e) {
             Engine.process();
+            timerRoutine(null, null);
+            drawPiratas();
+        }
+
+        private void btnVoltar_Click(object sender, EventArgs e)
+        {
+            int posicao = (Utils.isStringValid(lblPosicaoSelecionada.Text.Replace("x", "")) ? int.Parse(lblPosicaoSelecionada.Text.Replace("x", ""))
+    : -1);
+            GameCore.jogar(Program.partidaEstado, posicao, TipoCartaEnum.Nula);
             timerRoutine(null, null);
             drawPiratas();
         }
@@ -276,6 +284,7 @@ namespace PI3.components.tabuleiro{
         // =========== Renderização =============>
 
         private void drawPiratas() {
+
             // Cria parametros de localizacao
             int marginLeft = 60;
             int marginTop = 55;
@@ -305,7 +314,7 @@ namespace PI3.components.tabuleiro{
                             // Cria desenho do pirata
                             Panel p = this.Controls.OfType<Panel>().ToList().Find((panel) => (panel.Tag != null) && (innerKey + "." + map[innerKey] == panel.Tag.ToString()));
 
-                            int top = (piratas == 1 ? (w / 2) : (w / 4));
+                            int top = (piratas == 1 ? w : (w / 4));
                             int left = (piratas == 1 ? (w / 4) : (piratas == 2 ? (w / 2) : (w * (3 / 4))));
 
                             p.Top = (top + marginTop + espY + (h + espY) * (i % 2 == 0 ? k : 5 - k)) - 25;
@@ -344,7 +353,7 @@ namespace PI3.components.tabuleiro{
                     p.Width = 30;
 
                     p.Top = (order > 1 ? 500 : 0) + (50 * (i-1));
-                    p.Left = (order > 1 ? 35 : 0);
+                    p.Left = (order > 0 ? 35 : 0);
 
                     this.Controls.Add(p);
                     p.BringToFront();
@@ -398,11 +407,6 @@ namespace PI3.components.tabuleiro{
                 this.HistoricoGrid.Rows.Add(partida.id.ToString(), partida.numJogada.ToString(),
                     Carta.GetTipoCartaEnum(partida.simbolo).ToString(), partida.posOrigem, partida.posDestino);
             });
-        }
-
-        private void btnVoltar_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

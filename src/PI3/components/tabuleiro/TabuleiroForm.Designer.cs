@@ -53,12 +53,12 @@ namespace PI3.components.tabuleiro
             this.lblEsqueleto = new System.Windows.Forms.Label();
             this.lblPosicaoSelecionada = new System.Windows.Forms.Label();
             this.lblChave = new System.Windows.Forms.Label();
-            this.pnlPistola = new System.Windows.Forms.Panel();
-            this.pnlGarrafa = new System.Windows.Forms.Panel();
-            this.pnlFaca = new System.Windows.Forms.Panel();
-            this.pnlEsqueleto = new System.Windows.Forms.Panel();
-            this.pnlChave = new System.Windows.Forms.Panel();
-            this.pnlTricornio = new System.Windows.Forms.Panel();
+            this.pnlPistola = new System.Windows.Forms.Button();
+            this.pnlGarrafa = new System.Windows.Forms.Button();
+            this.pnlFaca = new System.Windows.Forms.Button();
+            this.pnlEsqueleto = new System.Windows.Forms.Button();
+            this.pnlChave = new System.Windows.Forms.Button();
+            this.pnlTricornio = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.HistoricoGrid)).BeginInit();
             this.pnlMadeira.SuspendLayout();
             this.SuspendLayout();
@@ -457,12 +457,12 @@ namespace PI3.components.tabuleiro
         private System.Windows.Forms.Label lblEsqueleto;
         private System.Windows.Forms.Label lblPosicaoSelecionada;
         private System.Windows.Forms.Label lblChave;
-        private System.Windows.Forms.Panel pnlPistola;
-        private System.Windows.Forms.Panel pnlGarrafa;
-        private System.Windows.Forms.Panel pnlFaca;
-        private System.Windows.Forms.Panel pnlEsqueleto;
-        private System.Windows.Forms.Panel pnlChave;
-        private System.Windows.Forms.Panel pnlTricornio;
+        private System.Windows.Forms.Button pnlPistola;
+        private System.Windows.Forms.Button pnlGarrafa;
+        private System.Windows.Forms.Button pnlFaca;
+        private System.Windows.Forms.Button pnlEsqueleto;
+        private System.Windows.Forms.Button pnlChave;
+        private System.Windows.Forms.Button pnlTricornio;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
     }
