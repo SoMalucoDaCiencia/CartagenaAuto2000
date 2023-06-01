@@ -32,9 +32,9 @@ namespace PI3{
             ret.name = nomeP;
             ret.senha = senhaP;
             ret.state = PartidaState.parse(Jogo.VerificarVez(ret.id).Substring(0, 1));
-
             ret.createdAt = DateTime.Parse(new List<string>(Jogo.ListarPartidas("T").Replace("\r", "").Split('\n'))
                 .FindAll((str) => str.StartsWith(ret.id + ","))[0].Split(',')[2]);
+            ret.casas = new Dictionary<int, Posicao>();
 
             return ret;
         }

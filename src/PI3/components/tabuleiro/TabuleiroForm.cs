@@ -23,10 +23,6 @@ namespace PI3.components.tabuleiro{
             // Hide defualt hidden components
             showLobby();
 
-            jogadores = GameCore.listarJogadores(Program.partidaEstado.id);
-            this.lstPlayersLobby.Items.Clear();
-            this.lstPlayersLobby.Items.AddRange(Player.GetPlayersNames(jogadores).ToArray());
-
             // Init timer
             timerRoutine(null, null);
             timer.Interval = 5000;
