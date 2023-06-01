@@ -142,7 +142,7 @@ namespace PI3.components.tabuleiro{
             else {
                 MessageBox.Show("Você n tem piratas nessa casa");
             }
-            checkButtons();
+            timerRoutine(null, null);
         }
 
         public void cardClick(object sender, EventArgs e) {
@@ -153,12 +153,11 @@ namespace PI3.components.tabuleiro{
             else {
                 this.lblCartaSelecionada.Text = new Carta(o.Tag.ToString().Substring(0, 1)).tipo.ToString();
             }
-            checkButtons();
+            timerRoutine(null, null);
         }
 
         private void btnEnter_Click(object sender, EventArgs e) {
-            int posicao = (Utils.isStringValid(lblPosicaoSelecionada.Text.Replace("x", ""))
-                ? int.Parse(lblPosicaoSelecionada.Text.Replace("x", ""))
+            int posicao = (Utils.isStringValid(lblPosicaoSelecionada.Text.Replace("x", "")) ? int.Parse(lblPosicaoSelecionada.Text.Replace("x", ""))
                 : -1);
             GameCore.jogar(Program.partidaEstado, posicao,
                 Carta.GetTipoCartaEnum(lblCartaSelecionada.Text.Substring(0, 1)));
@@ -285,6 +284,8 @@ namespace PI3.components.tabuleiro{
             int h = 65;
             int w = 65;
 
+            Dictionary<int, int> map = new Dictionary<int, int>();
+
             // Itera casas da partida
             Program.partidaEstado.casas.Keys.ToList().ForEach((key) => {
                 int k = key - ((key / 6) * 6);
@@ -293,12 +294,16 @@ namespace PI3.components.tabuleiro{
 
                 // Pega casa e itera piratas de jogadores naquela casa
                 Program.partidaEstado.casas[key].piratasPresentes.Keys.ToList().ForEach((innerKey) => {
+                    if (!map.Keys.ToList().Contains(innerKey))
+                    {
+                        map.Add(innerKey, 0);
+                    }
                     if (key > 0 && key < 37) {
 
                         // Itera piratas de um jogador especifico
                         for (int d = 0; d < Program.partidaEstado.casas[key].piratasPresentes[innerKey]; d++) {
                             // Cria desenho do pirata
-                            Panel p = this.Controls.OfType<Panel>().ToList().Find((panel) => (panel.Tag != null) && (innerKey.ToString() == panel.Tag.ToString()));
+                            Panel p = this.Controls.OfType<Panel>().ToList().Find((panel) => (panel.Tag != null) && (innerKey + "." + map[innerKey] == panel.Tag.ToString()));
 
                             int top = (piratas == 1 ? (w / 2) : (w / 4));
                             int left = (piratas == 1 ? (w / 4) : (piratas == 2 ? (w / 2) : (w * (3 / 4))));
@@ -308,6 +313,7 @@ namespace PI3.components.tabuleiro{
                             p.BringToFront();
                             this.Controls.SetChildIndex(p, 0);
                             piratas++;
+                            map[innerKey]++;
                         }
                     }
                 });
@@ -333,7 +339,7 @@ namespace PI3.components.tabuleiro{
                     p.BackgroundImage = Color.getPirate((Color.ColorEnum) order);
                     p.BackColor = System.Drawing.Color.Transparent;
                     p.BackgroundImageLayout = ImageLayout.Stretch;
-                    p.Tag = idJogador.ToString();
+                    p.Tag = idJogador.ToString() + "." + (i-1);
                     p.Height = 42;
                     p.Width = 30;
 
@@ -392,6 +398,11 @@ namespace PI3.components.tabuleiro{
                 this.HistoricoGrid.Rows.Add(partida.id.ToString(), partida.numJogada.ToString(),
                     Carta.GetTipoCartaEnum(partida.simbolo).ToString(), partida.posOrigem, partida.posDestino);
             });
+        }
+
+        private void btnVoltar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

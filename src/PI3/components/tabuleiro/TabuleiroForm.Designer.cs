@@ -199,6 +199,7 @@ namespace PI3.components.tabuleiro
             this.btnVoltar.TabIndex = 14;
             this.btnVoltar.Text = "Voltar";
             this.btnVoltar.UseVisualStyleBackColor = false;
+            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
             // lblCartaSelecionada
             // 
