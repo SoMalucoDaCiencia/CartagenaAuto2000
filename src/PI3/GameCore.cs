@@ -155,8 +155,8 @@ namespace PI3{
                     partida.rodadaAtual = int.Parse(infPartida[2]);
                     return true;
                 } else {
-                    var partidaAchada = listarPartidas(PartidaState.PartidaEnum.INICIADA).Find((one) => one.id == partida.id);
-                    if(partidaAchada != null) {
+                    var partidaAchada = listarPartidas(PartidaState.PartidaEnum.INICIADA).FindAll((one) => one.id == partida.id);
+                    if(partidaAchada[0] != null) {
                         partida.state = PartidaState.PartidaEnum.INICIADA;
                         update(partida);
                     }

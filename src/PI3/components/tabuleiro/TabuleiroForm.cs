@@ -352,7 +352,7 @@ namespace PI3.components.tabuleiro{
                     p.Height = 42;
                     p.Width = 30;
 
-                    p.Top = (order > 1 ? 500 : 0) + (50 * (i-1));
+                    p.Top = (order > 1 ? 220 : 0) + (50 * (i-1));
                     p.Left = (order > 0 ? 35 : 0);
 
                     this.Controls.Add(p);
