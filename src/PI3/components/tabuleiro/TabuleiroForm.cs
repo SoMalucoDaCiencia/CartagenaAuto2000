@@ -174,7 +174,7 @@ namespace PI3.components.tabuleiro{
         {
             int posicao = (Utils.isStringValid(lblPosicaoSelecionada.Text.Replace("x", "")) ? int.Parse(lblPosicaoSelecionada.Text.Replace("x", ""))
     : -1);
-            GameCore.jogar(Program.partidaEstado, posicao, TipoCartaEnum.Nula);
+            GameCore.voltar(Program.partidaEstado, posicao);
             timerRoutine(null, null);
             drawPiratas();
         }
@@ -426,7 +426,7 @@ namespace PI3.components.tabuleiro{
             {
                 drawPiratas();
             }
-            Program.partidaEstado.jogadasAntigas = jogadas; 
+            Program.partidaEstado.jogadasAntigas = jogadas;
             this.HistoricoGrid.Rows.Clear();
             Program.partidaEstado.jogadasAntigas.ForEach((partida) => {
                 this.HistoricoGrid.Rows.Add(partida.id.ToString(), partida.numJogada.ToString(),

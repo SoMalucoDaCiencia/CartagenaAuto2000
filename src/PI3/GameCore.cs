@@ -188,24 +188,60 @@ namespace PI3{
             }
         }
 
-        public static void jogar(Partida partida, int indexPosicao, TipoCartaEnum carta) {
+        public static void jogar(Partida partida, int posicaoPirataAvancar, TipoCartaEnum carta) {
             try {
                 if (partida.state == PartidaState.PartidaEnum.INICIADA) {
                     string serverResponse;
-                    if(indexPosicao >= 0)
+                    if(posicaoPirataAvancar >= 0)
                     {
                         if(carta != null && carta != TipoCartaEnum.Nula)
                         {
-                            serverResponse = Jogo.Jogar(partida.jogador.id, partida.jogador.senha, indexPosicao, carta.ToString().ToArray()[0].ToString());
+                            // Joga no tabuleiro
+                            serverResponse = Jogo.Jogar(partida.jogador.id, partida.jogador.senha, posicaoPirataAvancar, carta.ToString().ToArray()[0].ToString());
                         } else
                         {
-                            serverResponse = Jogo.Jogar(partida.jogador.id, partida.jogador.senha, indexPosicao);
+                            // Volta no tabuleiro
+                            serverResponse = Jogo.Jogar(partida.jogador.id, partida.jogador.senha, posicaoPirataAvancar);
                         }
                     } else
                     {
+                        // Pula no tabuleiro
                         serverResponse = Jogo.Jogar(partida.jogador.id, partida.jogador.senha);
                     }
-                    
+
+                    Utils.checkError(serverResponse);
+
+                    partida.idJogadorAtual = int.Parse(Utils.splitByString(serverResponse, "\r\n")[0].Split(',')[1]);
+                    update(partida);
+                }
+            } catch (Exception e) {
+                MessageBox.Show(e.Message, "Um erro inesperado ocorreu, tente novamente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static void voltar(Partida partida, int posicaoPirataVoltar) {
+            try {
+                if (partida.state == PartidaState.PartidaEnum.INICIADA) {
+                    string serverResponse;
+                    // Volta no tabuleiro
+                    serverResponse = Jogo.Jogar(partida.jogador.id, partida.jogador.senha, posicaoPirataVoltar);
+                    Utils.checkError(serverResponse);
+
+                    partida.idJogadorAtual = int.Parse(Utils.splitByString(serverResponse, "\r\n")[0].Split(',')[1]);
+                    update(partida);
+                }
+            } catch (Exception e) {
+                MessageBox.Show(e.Message, "Um erro inesperado ocorreu, tente novamente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static void pular(Partida partida) {
+            try {
+                if (partida.state == PartidaState.PartidaEnum.INICIADA) {
+                    string serverResponse;
+                    // Pula no tabuleiro
+                    serverResponse = Jogo.Jogar(partida.jogador.id, partida.jogador.senha);
+
                     Utils.checkError(serverResponse);
 
                     partida.idJogadorAtual = int.Parse(Utils.splitByString(serverResponse, "\r\n")[0].Split(',')[1]);
@@ -229,7 +265,7 @@ namespace PI3{
                         var arr = str.Split(',');
                         ret.Add(new Carta(arr[0], int.Parse(arr[1])));
                     }
-                    
+
                 });
 
                 return ret;

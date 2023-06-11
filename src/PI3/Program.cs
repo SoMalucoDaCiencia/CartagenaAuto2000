@@ -41,7 +41,7 @@ namespace PI3
             // }
 
             //Application.Run(new Form1());
-            //Posicao p = new Posicao(Carta.GetTipoCartaEnum("P")); 
+            //Posicao p = new Posicao(Carta.GetTipoCartaEnum("P"));
             //Console.WriteLine(p);
         }
     }
