@@ -107,6 +107,13 @@ namespace PI3{
             return Program.partidaEstado.casas[posicao].piratasPresentes.Values.Aggregate((a, b) => a + b);
         }
 
+        private static bool isPrimeiraRodada() {
+            return Program.partidaEstado.casas.ToList().FindAll((casa) => {
+                    return casa.Key < 2 && casa.Value.piratasPresentes[Program.partidaEstado.jogador.id] < 1;
+                }).Select(one => one.Value.piratasPresentes[Program.partidaEstado.jogador.id])
+                .Aggregate((a, b) => a + b) > 0;
+        }
+
         private static (int, int, int, int, int, int) myPiratesPosition() {
             var postions = Program.partidaEstado.casas.Keys.ToList()
                 .FindAll((key) => key.Equals(Program.partidaEstado.jogador.id));
