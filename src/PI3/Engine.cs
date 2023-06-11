@@ -125,7 +125,9 @@ namespace PI3{
         }
 
         private static bool hasGroups(int aPartirDe) {
-            aPartirDe = (aPartirDe < 0 ? 0 : aPartirDe);
+            if (aPartirDe <= 1) {
+                return false;
+            }
             var groups = Program.partidaEstado.casas.ToList().Select((casa) => casa.Key > 0).FindAll((casa) => {
                 return (aPartirDe - casa.Key <= 7) &&
                        (countPiratasCasa(casa.Key) == 1 ||
