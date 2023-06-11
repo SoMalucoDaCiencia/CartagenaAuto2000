@@ -10,13 +10,13 @@ namespace PI3{
 
                 if (Program.partidaEstado.jogador.mao.Count >= 8) {
                     var loc1 = maisLongePossivel(tuple.Item1);
-                    GameCore.jogar(Program.partidaEstado, loc1.Item1, loc1.Item2);
+                    GameCore.jogar(Program.partidaEstado, tuple.Item1, loc1.Item2);
 
                     var loc2 = maisLongePossivel(tuple.Item2);
-                    GameCore.jogar(Program.partidaEstado, loc2.Item1, loc2.Item2);
+                    GameCore.jogar(Program.partidaEstado, tuple.Item2, loc2.Item2);
 
                     var loc3 = maisLongePossivel(tuple.Item3);
-                    GameCore.jogar(Program.partidaEstado, loc3.Item1, loc3.Item2);
+                    GameCore.jogar(Program.partidaEstado, tuple.Item3, loc3.Item2);
                 }
                 else if (Program.partidaEstado.jogador.mao.Count <= 3) {
 
@@ -33,7 +33,7 @@ namespace PI3{
                     }
 
                     var loc1 = maisLongePossivel(tuple.Item1);
-                    GameCore.jogar(Program.partidaEstado, loc1.Item1, loc1.Item2);
+                    GameCore.jogar(Program.partidaEstado, tuple.Item1, loc1.Item2);
                 }
                 else {
 
@@ -44,10 +44,10 @@ namespace PI3{
                     }
 
                     var loc1 = maisLongePossivel(tuple.Item1);
-                    GameCore.jogar(Program.partidaEstado, loc1.Item1, loc1.Item2);
+                    GameCore.jogar(Program.partidaEstado, tuple.Item1, loc1.Item2);
 
                     var loc2 = maisLongePossivel(tuple.Item2);
-                    GameCore.jogar(Program.partidaEstado, loc2.Item1, loc2.Item2);
+                    GameCore.jogar(Program.partidaEstado, tuple.Item2, loc2.Item2);
                 }
             } catch (Exception e) {
                 GameCore.pular(Program.partidaEstado);
