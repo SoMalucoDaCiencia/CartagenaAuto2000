@@ -310,7 +310,7 @@ namespace PI3.components.tabuleiro{
 
                         if (!order.Keys.Contains(innerKey))
                         {
-                            order.Add(innerKey, order.Values.ToList().Max() > 0 ? order.Values.ToList().Max(): 0);
+                            order.Add(innerKey, order.Values.Count > 0 && order.Values.ToList().Max() > 0 ? order.Values.ToList().Max(): 0);
                         }
                     }
                     if (key > 0 && key <= 37) {
