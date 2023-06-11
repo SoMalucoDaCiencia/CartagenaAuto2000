@@ -7,8 +7,9 @@ namespace PI3{
         public static void process() {
             try {
                 var tuple = myPiratesPosition();
+                var pRodada = isPrimeiraRodada();
 
-                if (Program.partidaEstado.jogador.mao.Count >= 8) {
+                if (Program.partidaEstado.jogador.mao.Count >= 8 || isPrimeiraRodada()) {
                     var loc1 = maisLongePossivel(tuple.Item1);
                     GameCore.jogar(Program.partidaEstado, tuple.Item1, loc1.Item2);
 
@@ -77,8 +78,9 @@ namespace PI3{
             aPartirDe = (aPartirDe < 0 ? 0 : aPartirDe);
             var groups = Program.partidaEstado.casas.ToList().FindAll((casa) => {
                 return (aPartirDe - casa.Key <= 7) &&
-                       countPiratasCasa(casa.Key) == 1 ||
-                       countPiratasCasa(casa.Key) == 2;
+                       (countPiratasCasa(casa.Key) == 1 ||
+                       countPiratasCasa(casa.Key) == 2) &&
+                       casa.Key > 0;
             });
             return groups.Count > 0;
         }
@@ -108,15 +110,13 @@ namespace PI3{
         }
 
         private static bool isPrimeiraRodada() {
-            return Program.partidaEstado.casas.ToList().FindAll((casa) => {
-                    return casa.Key < 2 && casa.Value.piratasPresentes[Program.partidaEstado.jogador.id] < 1;
-                }).Select(one => one.Value.piratasPresentes[Program.partidaEstado.jogador.id])
-                .Aggregate((a, b) => a + b) > 0;
+            return Program.partidaEstado.casas[0].piratasPresentes[Program.partidaEstado.jogador.id] > 3;
         }
 
         private static (int, int, int, int, int, int) myPiratesPosition() {
-            var postions = Program.partidaEstado.casas.Keys.ToList()
-                .FindAll((key) => key.Equals(Program.partidaEstado.jogador.id));
+            var postions = Program.partidaEstado.casas.ToList().FindAll((one) => {
+            return one.Value.piratasPresentes.ContainsKey(Program.partidaEstado.jogador.id) && one.Value.piratasPresentes[Program.partidaEstado.jogador.id] > 0;
+        }).Select((casa) => casa.Key).ToList();
             postions.Sort();
             switch (postions.Count) {
                 case 1:
