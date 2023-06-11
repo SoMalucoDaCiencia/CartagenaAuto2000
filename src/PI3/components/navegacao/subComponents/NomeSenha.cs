@@ -31,7 +31,7 @@ namespace PI3.components.navegacao
             DialogResult = DialogResult.OK;
             if (Utils.isStringValid(txtNome.Text) && Utils.isStringValid(txtSenha.Text)) {
                 Player p = GameCore.entrarPartida(this.partidaPretendida.id, txtNome.Text, txtSenha.Text);
-                Program.partidaEstado = Partida.EnterPartida(this.partidaPretendida.id, txtNome.Text, txtSenha.Text);
+                Program.partidaEstado = new Partida(this.partidaPretendida.id, txtNome.Text, txtSenha.Text);
                 Program.partidaEstado.jogador = p;
                 GameCore.update(Program.partidaEstado);
                 this.Close();

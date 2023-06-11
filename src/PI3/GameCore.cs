@@ -156,7 +156,7 @@ namespace PI3{
                     return true;
                 } else {
                     var partidaAchada = listarPartidas(PartidaState.PartidaEnum.INICIADA).FindAll((one) => one.id == partida.id);
-                    if(partidaAchada[0] != null) {
+                    if(partidaAchada.Count > 0 && partidaAchada[0] != null) {
                         partida.state = PartidaState.PartidaEnum.INICIADA;
                         update(partida);
                     }

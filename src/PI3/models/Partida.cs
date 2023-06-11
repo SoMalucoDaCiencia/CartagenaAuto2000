@@ -26,17 +26,14 @@ namespace PI3{
 
         public DateTime createdAt { get; set; }
 
-        public static Partida EnterPartida(int idPartida, string nomeP, string senhaP) {
-            Partida ret = new Partida();
-            ret.id = int.Parse(Jogo.EntrarPartida(idPartida, nomeP, senhaP));
-            ret.name = nomeP;
-            ret.senha = senhaP;
-            ret.state = PartidaState.parse(Jogo.VerificarVez(ret.id).Substring(0, 1));
-            ret.createdAt = DateTime.Parse(new List<string>(Jogo.ListarPartidas("T").Replace("\r", "").Split('\n'))
-                .FindAll((str) => str.StartsWith(ret.id + ","))[0].Split(',')[2]);
-            ret.casas = new Dictionary<int, Posicao>();
-
-            return ret;
+        public Partida(int idPartida, string nomeP, string senhaP) {
+            this.id = idPartida;
+            this.name = nomeP;
+            this.senha = senhaP;
+            this.state = PartidaState.parse(Jogo.VerificarVez(this.id).Substring(0, 1));
+            this.createdAt = DateTime.Parse(new List<string>(Jogo.ListarPartidas("T").Replace("\r", "").Split('\n'))
+                .FindAll((str) => str.StartsWith(this.id + ","))[0].Split(',')[2]);
+            this.casas = new Dictionary<int, Posicao>();
         }
 
         public Partida() { }
