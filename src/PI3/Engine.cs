@@ -95,11 +95,10 @@ namespace PI3{
 
         private static bool hasGroups(int aPartirDe) {
             aPartirDe = (aPartirDe < 0 ? 0 : aPartirDe);
-            var groups = Program.partidaEstado.casas.ToList().FindAll((casa) => {
+            var groups = Program.partidaEstado.casas.ToList().Select((casa) => casa.Key > 0).FindAll((casa) => {
                 return (aPartirDe - casa.Key <= 7) &&
                        (countPiratasCasa(casa.Key) == 1 ||
-                       countPiratasCasa(casa.Key) == 2) &&
-                       casa.Key > 0;
+                        countPiratasCasa(casa.Key) == 2);
             });
             return groups.Count > 0;
         }
