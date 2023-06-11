@@ -9,10 +9,10 @@ namespace PI3{
             try {
                 var tuple = myPiratesPosition();
 
-                var loc1 = maisLongePossivel(tuple.Item1);
-                GameCore.jogar(Program.partidaEstado, loc1.Item1, loc1.Item2);
-
                 if (Program.partidaEstado.jogador.mao.Count >= 8) {
+                    var loc1 = maisLongePossivel(tuple.Item1);
+                    GameCore.jogar(Program.partidaEstado, loc1.Item1, loc1.Item2);
+
                     var loc2 = maisLongePossivel(tuple.Item2);
                     GameCore.jogar(Program.partidaEstado, loc2.Item1, loc2.Item2);
 
@@ -21,31 +21,34 @@ namespace PI3{
                 }
                 else if (Program.partidaEstado.jogador.mao.Count <= 3) {
 
-                    var loc2 = maisLongePossivel(tuple.Item2);
-                    if (hasGroups(loc2.Item1)) {
-                        GameCore.voltar(Program.partidaEstado, loc2.Item1);
+                    if (hasGroups(tuple.Item2)) {
+                        GameCore.voltar(Program.partidaEstado, tuple.Item2);
                     } else {
                         GameCore.pular(Program.partidaEstado);
                     }
 
-                    var loc3 = maisLongePossivel(tuple.Item3);
-                    if (hasGroups(loc3.Item1)) {
-                        GameCore.voltar(Program.partidaEstado, loc3.Item1);
+                    if (hasGroups(tuple.Item3)) {
+                        GameCore.voltar(Program.partidaEstado, tuple.Item3);
                     } else {
                         GameCore.pular(Program.partidaEstado);
                     }
+
+                    var loc1 = maisLongePossivel(tuple.Item1);
+                    GameCore.jogar(Program.partidaEstado, loc1.Item1, loc1.Item2);
                 }
                 else {
 
-                    var loc2 = maisLongePossivel(tuple.Item2);
-                    GameCore.jogar(Program.partidaEstado, loc2.Item1, loc2.Item2);
-
-                    var loc3 = maisLongePossivel(tuple.Item3);
-                    if (hasGroups(loc3.Item1)) {
-                        GameCore.voltar(Program.partidaEstado, loc3.Item1);
+                    if (hasGroups(tuple.Item3)) {
+                        GameCore.voltar(Program.partidaEstado, tuple.Item3);
                     } else {
                         GameCore.pular(Program.partidaEstado);
                     }
+
+                    var loc1 = maisLongePossivel(tuple.Item1);
+                    GameCore.jogar(Program.partidaEstado, loc1.Item1, loc1.Item2);
+
+                    var loc2 = maisLongePossivel(tuple.Item2);
+                    GameCore.jogar(Program.partidaEstado, loc2.Item1, loc2.Item2);
                 }
             } catch (Exception e) {
                 GameCore.pular(Program.partidaEstado);
