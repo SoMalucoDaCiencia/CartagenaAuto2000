@@ -86,17 +86,17 @@ namespace PI3{
 
         private static void voltar((int, int, int, int, int, int) tp) {
             int target = 0;
-            if (hasGroups(tp.Item2)) {
-                target = tp.Item2;
+            if (hasGroups(tp.Item5)) {
+                target = tp.Item5;
             } else {
-                if (hasGroups(tp.Item3)) {
-                    target = tp.Item3;
+                if (hasGroups(tp.Item4)) {
+                    target = tp.Item4;
                 } else {
-                    if (hasGroups(tp.Item4)) {
-                        target = tp.Item4;
+                    if (hasGroups(tp.Item3)) {
+                        target = tp.Item3;
                     } else {
-                        if (hasGroups(tp.Item1)) {
-                            target = tp.Item1;
+                        if (hasGroups(tp.Item6)) {
+                            target = tp.Item6;
                         } else {
                             GameCore.pular(Program.partidaEstado);
                         }
@@ -128,8 +128,8 @@ namespace PI3{
             if (aPartirDe <= 1) {
                 return false;
             }
-            var groups = Program.partidaEstado.casas.ToList().Select((casa) => casa.Key > 0).FindAll((casa) => {
-                return (aPartirDe - casa.Key <= 7) &&
+            var groups = Program.partidaEstado.casas.ToList().FindAll((casa) => casa.Key > 1 && casa.Key < aPartirDe).ToList().FindAll((casa) => {
+                return (aPartirDe - casa.Key <= 7 && aPartirDe - casa.Key > 0) &&
                        (countPiratasCasa(casa.Key) == 1 ||
                         countPiratasCasa(casa.Key) == 2);
             });
