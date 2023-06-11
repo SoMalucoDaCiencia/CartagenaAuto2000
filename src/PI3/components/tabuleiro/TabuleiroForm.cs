@@ -294,6 +294,7 @@ namespace PI3.components.tabuleiro{
             int w = 65;
 
             Dictionary<int, int> map = new Dictionary<int, int>();
+            Dictionary<int, int> order = new Dictionary<int, int>();
 
             // Itera casas da partida
             Program.partidaEstado.casas.Keys.ToList().ForEach((key) => {
@@ -306,24 +307,41 @@ namespace PI3.components.tabuleiro{
                     if (!map.Keys.ToList().Contains(innerKey))
                     {
                         map.Add(innerKey, 0);
+
+                        if (!order.Keys.Contains(innerKey))
+                        {
+                            order.Add(innerKey, order.Values.ToList().Max() > 0 ? order.Values.ToList().Max(): 0);
+                        }
                     }
-                    if (key > 0 && key < 37) {
+                    if (key > 0 && key <= 37) {
 
                         // Itera piratas de um jogador especifico
-                        for (int d = 0; d < Program.partidaEstado.casas[key].piratasPresentes[innerKey]; d++) {
+                        for (int d = 0, ordem = 0; d < Program.partidaEstado.casas[key].piratasPresentes[innerKey]; d++) {
                             // Cria desenho do pirata
                             Panel p = this.Controls.OfType<Panel>().ToList().Find((panel) => (panel.Tag != null) && (innerKey + "." + map[innerKey] == panel.Tag.ToString()));
 
                             int top = (piratas == 1 ? w : (w / 4));
                             int left = (piratas == 1 ? (w / 4) : (piratas == 2 ? (w / 2) : (w * (3 / 4))));
 
-                            p.Top = (top + marginTop + espY + (h + espY) * (i % 2 == 0 ? k : 5 - k)) - 25;
-                            p.Left = (left + marginLeft + espX + (h + espX) * i) - 10;
+                            if(key < 37)
+                            {
+                                p.Top = (top + marginTop + espY + (h + espY) * (i % 2 == 0 ? k : 5 - k)) - 25;
+                                p.Left = (left + marginLeft + espX + (h + espX) * i) - 10;
+                            }
+                            else
+                            {
+                                p.Top = 15 + (55 * order[innerKey]);
+                                p.Left = 785 + (40 * d);
+                            }
+
                             p.BringToFront();
                             this.Controls.SetChildIndex(p, 0);
                             piratas++;
                             map[innerKey]++;
                         }
+                    } else if(key == 37)
+                    {
+                        //785; 15 -> piratas
                     }
                 });
             });
@@ -352,7 +370,7 @@ namespace PI3.components.tabuleiro{
                     p.Height = 42;
                     p.Width = 30;
 
-                    p.Top = (order > 1 ? 220 : 0) + (50 * (i-1));
+                    p.Top = (order > 1 ? 325 : 0) + (50 * (i-1));
                     p.Left = (order > 0 ? 35 : 0);
 
                     this.Controls.Add(p);
@@ -378,21 +396,23 @@ namespace PI3.components.tabuleiro{
                 int i = key / 6;
                 int piratas = 1;
 
-                Panel tile = new Panel();
-                tile.BackgroundImage = Carta.GetCardBitmap(Program.partidaEstado.casas[(6 * i) + k].tipoPosicao, true);
-                tile.BackgroundImageLayout = ImageLayout.Stretch;
-                tile.BackColor = System.Drawing.Color.Transparent;
-                tile.Top = marginTop + espY + (h + espY) * (i % 2 == 0 ? k : 5 - k);
-                tile.Left = marginLeft + espX + (h + espX) * i;
-                tile.Cursor = System.Windows.Forms.Cursors.Hand;
-                tile.Width = w;
-                tile.Height = h;
+                if(((6 * i) + k) < 37)
+                {
+                    Panel tile = new Panel();
+                    tile.BackgroundImage = Carta.GetCardBitmap(Program.partidaEstado.casas[(6 * i) + k].tipoPosicao, true);
+                    tile.BackgroundImageLayout = ImageLayout.Stretch;
+                    tile.BackColor = System.Drawing.Color.Transparent;
+                    tile.Top = marginTop + espY + (h + espY) * (i % 2 == 0 ? k : 5 - k);
+                    tile.Left = marginLeft + espX + (h + espX) * i;
+                    tile.Cursor = System.Windows.Forms.Cursors.Hand;
+                    tile.Width = w;
+                    tile.Height = h;
 
-                tile.Tag = "i:" + ((6 * i) + k);
-                tile.Click += tileClick;
-                this.Controls.Add(tile);
-                this.Controls.SetChildIndex(tile, 1);
-
+                    tile.Tag = "i:" + ((6 * i) + k);
+                    tile.Click += tileClick;
+                    this.Controls.Add(tile);
+                    this.Controls.SetChildIndex(tile, 1);
+                }
             });
         }
 
@@ -401,7 +421,12 @@ namespace PI3.components.tabuleiro{
         }
 
         private void listarHistorico() {
-            Program.partidaEstado.jogadasAntigas = JogadaAntiga.VerHistorico(Program.partidaEstado);
+            var jogadas = JogadaAntiga.VerHistorico(Program.partidaEstado);
+            if (Program.partidaEstado.jogadasAntigas == null || jogadas.Count > Program.partidaEstado.jogadasAntigas.Count)
+            {
+                drawPiratas();
+            }
+            Program.partidaEstado.jogadasAntigas = jogadas; 
             this.HistoricoGrid.Rows.Clear();
             Program.partidaEstado.jogadasAntigas.ForEach((partida) => {
                 this.HistoricoGrid.Rows.Add(partida.id.ToString(), partida.numJogada.ToString(),
