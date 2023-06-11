@@ -4,71 +4,47 @@ using System;
 
 namespace PI3{
     public class Engine{
+        private static (int, int, int, int, int, int) tuple = myPiratesPosition();
         public static void process() {
             try {
-                var tuple = myPiratesPosition();
 
                 if (Program.partidaEstado.jogador.mao.Count >= 8 || isPrimeiraRodada()) {
                     if (Program.partidaEstado.rodadaAtual == 1) {
-                        // var loc1 = maisLongePossivel(tuple.Item1);
-                        // GameCore.jogar(Program.partidaEstado, tuple.Item1, loc1.Item2);
                         avancar(tuple.Item1);
                     }
 
                     if (Program.partidaEstado.rodadaAtual == 2) {
-                        // var loc2 = maisLongePossivel(tuple.Item2);
-                        // GameCore.jogar(Program.partidaEstado, tuple.Item2, loc2.Item2);
                         avancar(tuple.Item2);
                     }
 
                     if (Program.partidaEstado.rodadaAtual == 3) {
-                        // var loc3 = maisLongePossivel(tuple.Item3);
-                        // GameCore.jogar(Program.partidaEstado, tuple.Item3, loc3.Item2);
                         avancar(tuple.Item3);
                     }
                 }
                 else if (Program.partidaEstado.jogador.mao.Count <= 3) {
 
                     if (Program.partidaEstado.rodadaAtual == 1) {
-                        // if (hasGroups(tuple.Item1)) {
-                        //     GameCore.voltar(Program.partidaEstado, tuple.Item1);
-                        // }
                         voltar(tuple);
                     }
 
                     if (Program.partidaEstado.rodadaAtual == 2) {
-                        // if (hasGroups(tuple.Item2)) {
-                        //     GameCore.voltar(Program.partidaEstado, tuple.Item2);
-                        // }
                         voltar(tuple);
                     }
 
                     if (Program.partidaEstado.rodadaAtual == 3) {
-                        // var loc1 = maisLongePossivel(tuple.Item3);
-                        // GameCore.jogar(Program.partidaEstado, tuple.Item3, loc1.Item2);
                         avancar(tuple.Item3);
                     }
                 }
                 else {
                     if (Program.partidaEstado.rodadaAtual == 1) {
-                        // if (hasGroups(tuple.Item3)) {
-                        //     GameCore.voltar(Program.partidaEstado, tuple.Item3);
-                        // }
-                        // else {
-                        //     GameCore.pular(Program.partidaEstado);
-                        // }
                         voltar(tuple);
                     }
 
                     if (Program.partidaEstado.rodadaAtual == 2) {
-                        // var loc1 = maisLongePossivel(tuple.Item1);
-                        // GameCore.jogar(Program.partidaEstado, tuple.Item1, loc1.Item2);
                         avancar(tuple.Item2);
                     }
 
                     if (Program.partidaEstado.rodadaAtual == 3) {
-                        // var loc2 = maisLongePossivel(tuple.Item2);
-                        // GameCore.jogar(Program.partidaEstado, tuple.Item2, loc2.Item2);
                         avancar(tuple.Item3);
                     }
                 }
@@ -82,6 +58,7 @@ namespace PI3{
         private static void avancar(int pos) {
             var loc1 = maisLongePossivel(pos);
             GameCore.jogar(Program.partidaEstado, pos, loc1.Item2);
+            tuple = myPiratesPosition();
         }
 
         private static void voltar((int, int, int, int, int, int) tp) {
@@ -104,6 +81,7 @@ namespace PI3{
                 }
             }
             GameCore.voltar(Program.partidaEstado, target);
+            tuple = myPiratesPosition();
         }
 
 
