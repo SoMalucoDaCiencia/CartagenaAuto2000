@@ -136,20 +136,20 @@ namespace PI3{
             var postions = Program.partidaEstado.casas.ToList().FindAll((one) => {
             return one.Value.piratasPresentes.ContainsKey(Program.partidaEstado.jogador.id) && one.Value.piratasPresentes[Program.partidaEstado.jogador.id] > 0;
         }).Select((casa) => casa.Key).ToList();
-            postions.OrderByDescending(c => c).ToArray();
+            postions.Sort();
             switch (postions.Count) {
                 case 1:
                     return (postions[0], postions[0], postions[0], postions[0], postions[0], postions[0]);
                 case 2:
-                    return (postions[1], postions[1], postions[1], postions[1], postions[1], postions[0]);
+                    return (postions[0], postions[0], postions[0], postions[0], postions[0], postions[1]);
                 case 3:
-                    return (postions[2], postions[2], postions[2], postions[2], postions[1], postions[0]);
+                    return (postions[0], postions[0], postions[0], postions[0], postions[1], postions[2]);
                 case 4:
-                    return (postions[3], postions[3], postions[3], postions[2], postions[1], postions[0]);
+                    return (postions[0], postions[0], postions[0], postions[1], postions[2], postions[3]);
                 case 5:
-                    return (postions[4], postions[4], postions[3], postions[2], postions[1], postions[0]);
+                    return (postions[0], postions[0], postions[1], postions[2], postions[3], postions[4]);
                 case 6:
-                    return (postions[5], postions[4], postions[3], postions[2], postions[1], postions[0]);
+                    return (postions[0], postions[1], postions[2], postions[3], postions[4], postions[5]);
                 default: return (-1, -1, -1, -1, -1, -1);
             }
         }
