@@ -7,48 +7,67 @@ namespace PI3{
         public static void process() {
             try {
                 var tuple = myPiratesPosition();
-                var pRodada = isPrimeiraRodada();
 
                 if (Program.partidaEstado.jogador.mao.Count >= 8 || isPrimeiraRodada()) {
-                    var loc1 = maisLongePossivel(tuple.Item1);
-                    GameCore.jogar(Program.partidaEstado, tuple.Item1, loc1.Item2);
+                    if (Program.partidaEstado.idJogadorAtual == 1) {
+                        var loc1 = maisLongePossivel(tuple.Item1);
+                        GameCore.jogar(Program.partidaEstado, tuple.Item1, loc1.Item2);
+                    }
 
-                    var loc2 = maisLongePossivel(tuple.Item2);
-                    GameCore.jogar(Program.partidaEstado, tuple.Item2, loc2.Item2);
+                    if (Program.partidaEstado.idJogadorAtual == 2) {
+                        var loc2 = maisLongePossivel(tuple.Item2);
+                        GameCore.jogar(Program.partidaEstado, tuple.Item2, loc2.Item2);
+                    }
 
-                    var loc3 = maisLongePossivel(tuple.Item3);
-                    GameCore.jogar(Program.partidaEstado, tuple.Item3, loc3.Item2);
+                    if (Program.partidaEstado.idJogadorAtual == 3) {
+                        var loc3 = maisLongePossivel(tuple.Item3);
+                        GameCore.jogar(Program.partidaEstado, tuple.Item3, loc3.Item2);
+                    }
                 }
                 else if (Program.partidaEstado.jogador.mao.Count <= 3) {
 
-                    if (hasGroups(tuple.Item2)) {
-                        GameCore.voltar(Program.partidaEstado, tuple.Item2);
-                    } else {
-                        GameCore.pular(Program.partidaEstado);
+                    if (Program.partidaEstado.idJogadorAtual == 1) {
+                        if (hasGroups(tuple.Item2)) {
+                            GameCore.voltar(Program.partidaEstado, tuple.Item2);
+                        }
+                        else {
+                            GameCore.pular(Program.partidaEstado);
+                        }
                     }
 
-                    if (hasGroups(tuple.Item3)) {
-                        GameCore.voltar(Program.partidaEstado, tuple.Item3);
-                    } else {
-                        GameCore.pular(Program.partidaEstado);
+                    if (Program.partidaEstado.idJogadorAtual == 2) {
+                        if (hasGroups(tuple.Item3)) {
+                            GameCore.voltar(Program.partidaEstado, tuple.Item3);
+                        }
+                        else {
+                            GameCore.pular(Program.partidaEstado);
+                        }
                     }
 
-                    var loc1 = maisLongePossivel(tuple.Item1);
-                    GameCore.jogar(Program.partidaEstado, tuple.Item1, loc1.Item2);
+                    if (Program.partidaEstado.idJogadorAtual == 3) {
+                        var loc1 = maisLongePossivel(tuple.Item1);
+                        GameCore.jogar(Program.partidaEstado, tuple.Item1, loc1.Item2);
+                    }
                 }
                 else {
-
-                    if (hasGroups(tuple.Item3)) {
-                        GameCore.voltar(Program.partidaEstado, tuple.Item3);
-                    } else {
-                        GameCore.pular(Program.partidaEstado);
+                    if (Program.partidaEstado.idJogadorAtual == 1) {
+                        if (hasGroups(tuple.Item3)) {
+                            GameCore.voltar(Program.partidaEstado, tuple.Item3);
+                        }
+                        else {
+                            GameCore.pular(Program.partidaEstado);
+                        }
                     }
 
-                    var loc1 = maisLongePossivel(tuple.Item1);
-                    GameCore.jogar(Program.partidaEstado, tuple.Item1, loc1.Item2);
+                    if (Program.partidaEstado.idJogadorAtual == 2) {
+                        var loc1 = maisLongePossivel(tuple.Item1);
+                        GameCore.jogar(Program.partidaEstado, tuple.Item1, loc1.Item2);
+                    }
 
-                    var loc2 = maisLongePossivel(tuple.Item2);
-                    GameCore.jogar(Program.partidaEstado, tuple.Item2, loc2.Item2);
+                    if (Program.partidaEstado.idJogadorAtual == 3) {
+                        var loc2 = maisLongePossivel(tuple.Item2);
+                        GameCore.jogar(Program.partidaEstado, tuple.Item2, loc2.Item2);
+                    }
                 }
             } catch (Exception e) {
                 GameCore.pular(Program.partidaEstado);
