@@ -53,7 +53,7 @@ namespace PI3.components.navegacao
             this.btnOk.Location = new System.Drawing.Point(237, 167);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
-            this.btnOk.TabIndex = 2;
+            this.btnOk.TabIndex = 4;
             this.btnOk.UseVisualStyleBackColor = false;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
@@ -63,7 +63,7 @@ namespace PI3.components.navegacao
             this.txtSenha.Location = new System.Drawing.Point(212, 108);
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.Size = new System.Drawing.Size(100, 23);
-            this.txtSenha.TabIndex = 3;
+            this.txtSenha.TabIndex = 2;
             // 
             // txtNome
             // 
@@ -71,7 +71,7 @@ namespace PI3.components.navegacao
             this.txtNome.Location = new System.Drawing.Point(212, 54);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(100, 23);
-            this.txtNome.TabIndex = 4;
+            this.txtNome.TabIndex = 1;
             // 
             // btnVoltar
             // 
@@ -87,7 +87,7 @@ namespace PI3.components.navegacao
             this.btnVoltar.Location = new System.Drawing.Point(156, 167);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Size = new System.Drawing.Size(75, 23);
-            this.btnVoltar.TabIndex = 5;
+            this.btnVoltar.TabIndex = 3;
             this.btnVoltar.UseVisualStyleBackColor = false;
             this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
