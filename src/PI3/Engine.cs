@@ -9,24 +9,24 @@ namespace PI3{
                 var tuple = myPiratesPosition();
 
                 if (Program.partidaEstado.jogador.mao.Count >= 8 || isPrimeiraRodada()) {
-                    if (Program.partidaEstado.idJogadorAtual == 1) {
+                    if (Program.partidaEstado.rodadaAtual == 1) {
                         var loc1 = maisLongePossivel(tuple.Item1);
                         GameCore.jogar(Program.partidaEstado, tuple.Item1, loc1.Item2);
                     }
 
-                    if (Program.partidaEstado.idJogadorAtual == 2) {
+                    if (Program.partidaEstado.rodadaAtual == 2) {
                         var loc2 = maisLongePossivel(tuple.Item2);
                         GameCore.jogar(Program.partidaEstado, tuple.Item2, loc2.Item2);
                     }
 
-                    if (Program.partidaEstado.idJogadorAtual == 3) {
+                    if (Program.partidaEstado.rodadaAtual == 3) {
                         var loc3 = maisLongePossivel(tuple.Item3);
                         GameCore.jogar(Program.partidaEstado, tuple.Item3, loc3.Item2);
                     }
                 }
                 else if (Program.partidaEstado.jogador.mao.Count <= 3) {
 
-                    if (Program.partidaEstado.idJogadorAtual == 1) {
+                    if (Program.partidaEstado.rodadaAtual == 1) {
                         if (hasGroups(tuple.Item2)) {
                             GameCore.voltar(Program.partidaEstado, tuple.Item2);
                         }
@@ -35,7 +35,7 @@ namespace PI3{
                         }
                     }
 
-                    if (Program.partidaEstado.idJogadorAtual == 2) {
+                    if (Program.partidaEstado.rodadaAtual == 2) {
                         if (hasGroups(tuple.Item3)) {
                             GameCore.voltar(Program.partidaEstado, tuple.Item3);
                         }
@@ -44,13 +44,13 @@ namespace PI3{
                         }
                     }
 
-                    if (Program.partidaEstado.idJogadorAtual == 3) {
+                    if (Program.partidaEstado.rodadaAtual == 3) {
                         var loc1 = maisLongePossivel(tuple.Item1);
                         GameCore.jogar(Program.partidaEstado, tuple.Item1, loc1.Item2);
                     }
                 }
                 else {
-                    if (Program.partidaEstado.idJogadorAtual == 1) {
+                    if (Program.partidaEstado.rodadaAtual == 1) {
                         if (hasGroups(tuple.Item3)) {
                             GameCore.voltar(Program.partidaEstado, tuple.Item3);
                         }
@@ -59,12 +59,12 @@ namespace PI3{
                         }
                     }
 
-                    if (Program.partidaEstado.idJogadorAtual == 2) {
+                    if (Program.partidaEstado.rodadaAtual == 2) {
                         var loc1 = maisLongePossivel(tuple.Item1);
                         GameCore.jogar(Program.partidaEstado, tuple.Item1, loc1.Item2);
                     }
 
-                    if (Program.partidaEstado.idJogadorAtual == 3) {
+                    if (Program.partidaEstado.rodadaAtual == 3) {
                         var loc2 = maisLongePossivel(tuple.Item2);
                         GameCore.jogar(Program.partidaEstado, tuple.Item2, loc2.Item2);
                     }
