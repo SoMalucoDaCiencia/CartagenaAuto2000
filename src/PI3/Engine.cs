@@ -1,7 +1,6 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using PI3.models;
+using System;
 
 namespace PI3{
     public class Engine{
@@ -102,6 +101,9 @@ namespace PI3{
         }
 
         private static int countPiratasCasa(int posicao) {
+            if (Program.partidaEstado.casas[posicao].piratasPresentes == null || Program.partidaEstado.casas[posicao].piratasPresentes.Keys.ToList().Count <= 0) {
+                return 0;
+            }
             return Program.partidaEstado.casas[posicao].piratasPresentes.Values.Aggregate((a, b) => a + b);
         }
 
