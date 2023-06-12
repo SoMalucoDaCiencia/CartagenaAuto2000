@@ -121,6 +121,8 @@ namespace PI3.components.tabuleiro{
             lblCartaSelecionada.Show();
             lblPosicaoSelecionada.Show();
             lblComunicacao.Show();
+
+            btnAuto.Show();
         }
 
         public void showLobby() {
@@ -188,8 +190,9 @@ namespace PI3.components.tabuleiro{
         }
 
         private void btnAuto_Click(object sender, EventArgs e) {
+            Console.WriteLine("passou");
             Engine.process();
-            timerRoutine(null, null);
+            //timerRoutine(null, null);
             drawPiratas();
         }
 
@@ -205,25 +208,33 @@ namespace PI3.components.tabuleiro{
         private void checkButtons() {
             if (Program.partidaEstado.idJogadorAtual == Program.partidaEstado.jogador.id) {
                 lblComunicacao.Text = "É a sua vez. Jogadas restantes: " + (4 - Program.partidaEstado.rodadaAtual);
-                this.btnJogar.Show();
+                
                 btnJogar.Text = "Pular";
-                this.btnAuto.Show();
+               // this.btnAuto.Show();
+
+                if (!btnAuto.Checked) {
+                    this.btnJogar.Show();
+                }
 
                 if (Utils.isStringValid(lblPosicaoSelecionada.Text.Replace("x", ""))) {
-                    btnVoltar.Show();
+                    if (!btnAuto.Checked) {
+                        btnVoltar.Show();
+                    }
 
                     if (Utils.isStringValid(lblCartaSelecionada.Text.Replace("x", ""))) {
                         btnJogar.Text = "Jogar";
                     }
                 }
+
+                if (btnAuto.Checked) {
+                    btnAuto_Click(null, null);
+                }
             }
             else {
-                lblComunicacao.Text = "É a vez do jogador " +
-                                      GameCore.getPlayerName(Program.partidaEstado.id,
-                                          Program.partidaEstado.idJogadorAtual);
+                lblComunicacao.Text = "É a vez do jogador " +  GameCore.getPlayerName(Program.partidaEstado.id, Program.partidaEstado.idJogadorAtual);
                 this.btnJogar.Hide();
                 btnVoltar.Hide();
-                this.btnAuto.Hide();
+               // this.btnAuto.Hide();
             }
         }
 

@@ -30,7 +30,6 @@ namespace PI3.components.tabuleiro
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TabuleiroForm));
             this.btnJogar = new System.Windows.Forms.Button();
-            this.btnAuto = new System.Windows.Forms.Button();
             this.HistoricoGrid = new System.Windows.Forms.DataGridView();
             this.idJogador = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nmJogada = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,6 +43,7 @@ namespace PI3.components.tabuleiro
             this.btnVoltar = new System.Windows.Forms.Button();
             this.lblCartaSelecionada = new System.Windows.Forms.Label();
             this.pnlMadeira = new System.Windows.Forms.Panel();
+            this.btnAuto = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblTricornio = new System.Windows.Forms.Label();
@@ -76,19 +76,6 @@ namespace PI3.components.tabuleiro
             this.btnJogar.Text = "Jogar";
             this.btnJogar.UseVisualStyleBackColor = false;
             this.btnJogar.Click += new System.EventHandler(this.btnEnter_Click);
-            // 
-            // btnAuto
-            // 
-            this.btnAuto.BackColor = System.Drawing.SystemColors.Control;
-            this.btnAuto.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAuto.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAuto.Location = new System.Drawing.Point(963, 604);
-            this.btnAuto.Name = "btnAuto";
-            this.btnAuto.Size = new System.Drawing.Size(181, 50);
-            this.btnAuto.TabIndex = 2;
-            this.btnAuto.Text = "Automático";
-            this.btnAuto.UseVisualStyleBackColor = false;
-            this.btnAuto.Click += new System.EventHandler(this.btnAuto_Click);
             // 
             // HistoricoGrid
             // 
@@ -215,6 +202,7 @@ namespace PI3.components.tabuleiro
             // 
             this.pnlMadeira.BackColor = System.Drawing.Color.Transparent;
             this.pnlMadeira.BackgroundImage = global::PI3.Properties.Resources.madeiraFundo;
+            this.pnlMadeira.Controls.Add(this.btnAuto);
             this.pnlMadeira.Controls.Add(this.label2);
             this.pnlMadeira.Controls.Add(this.label1);
             this.pnlMadeira.Controls.Add(this.lblComunicacao);
@@ -239,6 +227,17 @@ namespace PI3.components.tabuleiro
             this.pnlMadeira.Name = "pnlMadeira";
             this.pnlMadeira.Size = new System.Drawing.Size(409, 361);
             this.pnlMadeira.TabIndex = 16;
+            // 
+            // btnAuto
+            // 
+            this.btnAuto.AutoSize = true;
+            this.btnAuto.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.btnAuto.Location = new System.Drawing.Point(223, 304);
+            this.btnAuto.Name = "btnAuto";
+            this.btnAuto.Size = new System.Drawing.Size(169, 35);
+            this.btnAuto.TabIndex = 17;
+            this.btnAuto.Text = "Automático";
+            this.btnAuto.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -341,6 +340,7 @@ namespace PI3.components.tabuleiro
             this.pnlPistola.Size = new System.Drawing.Size(57, 71);
             this.pnlPistola.TabIndex = 2;
             this.pnlPistola.Tag = "Pistola";
+            this.pnlPistola.UseVisualStyleBackColor = false;
             this.pnlPistola.Click += new System.EventHandler(this.cardClick);
             // 
             // pnlGarrafa
@@ -354,6 +354,7 @@ namespace PI3.components.tabuleiro
             this.pnlGarrafa.Size = new System.Drawing.Size(57, 71);
             this.pnlGarrafa.TabIndex = 2;
             this.pnlGarrafa.Tag = "Garrafa";
+            this.pnlGarrafa.UseVisualStyleBackColor = false;
             this.pnlGarrafa.Click += new System.EventHandler(this.cardClick);
             // 
             // pnlFaca
@@ -367,6 +368,7 @@ namespace PI3.components.tabuleiro
             this.pnlFaca.Size = new System.Drawing.Size(57, 71);
             this.pnlFaca.TabIndex = 2;
             this.pnlFaca.Tag = "Faca";
+            this.pnlFaca.UseVisualStyleBackColor = false;
             this.pnlFaca.Click += new System.EventHandler(this.cardClick);
             // 
             // pnlEsqueleto
@@ -380,6 +382,7 @@ namespace PI3.components.tabuleiro
             this.pnlEsqueleto.Size = new System.Drawing.Size(57, 71);
             this.pnlEsqueleto.TabIndex = 2;
             this.pnlEsqueleto.Tag = "Esqueleto";
+            this.pnlEsqueleto.UseVisualStyleBackColor = false;
             this.pnlEsqueleto.Click += new System.EventHandler(this.cardClick);
             // 
             // pnlChave
@@ -393,6 +396,7 @@ namespace PI3.components.tabuleiro
             this.pnlChave.Size = new System.Drawing.Size(57, 71);
             this.pnlChave.TabIndex = 2;
             this.pnlChave.Tag = "Chave";
+            this.pnlChave.UseVisualStyleBackColor = false;
             this.pnlChave.Click += new System.EventHandler(this.cardClick);
             // 
             // pnlTricornio
@@ -406,6 +410,7 @@ namespace PI3.components.tabuleiro
             this.pnlTricornio.Size = new System.Drawing.Size(57, 71);
             this.pnlTricornio.TabIndex = 1;
             this.pnlTricornio.Tag = "Tricornio";
+            this.pnlTricornio.UseVisualStyleBackColor = false;
             this.pnlTricornio.Click += new System.EventHandler(this.cardClick);
             // 
             // TabuleiroForm
@@ -419,7 +424,6 @@ namespace PI3.components.tabuleiro
             this.Controls.Add(this.btnIniciarPartida);
             this.Controls.Add(this.lstPlayersLobby);
             this.Controls.Add(this.HistoricoGrid);
-            this.Controls.Add(this.btnAuto);
             this.Controls.Add(this.pnlMadeira);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -436,7 +440,6 @@ namespace PI3.components.tabuleiro
 
         #endregion
         private System.Windows.Forms.Button btnJogar;
-        private System.Windows.Forms.Button btnAuto;
         private System.Windows.Forms.DataGridView HistoricoGrid;
         private System.Windows.Forms.ListBox lstPlayersLobby;
         private System.Windows.Forms.Button btnIniciarPartida;
@@ -465,5 +468,6 @@ namespace PI3.components.tabuleiro
         private System.Windows.Forms.Button pnlTricornio;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox btnAuto;
     }
 }
