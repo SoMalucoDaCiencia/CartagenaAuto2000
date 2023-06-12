@@ -11,15 +11,15 @@ namespace PI3{
                 var counter = Program.partidaEstado.jogador.mao.Select((one) => one.quantidade).Aggregate((a, b) => a + b);
                 if (Program.partidaEstado.jogador.mao.Select((one) => one.quantidade).Aggregate((a, b) => a + b) >= 8 || isPrimeiraRodada()) {
                     if (Program.partidaEstado.rodadaAtual == 1) {
-                        avancar(tuple.Item1);
+                        avancar(tuple.Item1, tuple.Item2, tuple.Item3, tuple.Item4, tuple.Item5,  tuple.Item6);
                     }
 
                     if (Program.partidaEstado.rodadaAtual == 2) {
-                        avancar(tuple.Item2);
+                        avancar(tuple.Item2, tuple.Item3, tuple.Item4, tuple.Item5,  tuple.Item6);
                     }
 
                     if (Program.partidaEstado.rodadaAtual == 3) {
-                        avancar(tuple.Item3);
+                        avancar(tuple.Item3, tuple.Item4, tuple.Item5,  tuple.Item6);
                     }
                 }
                 else if (Program.partidaEstado.jogador.mao.Select((one) => one.quantidade).Aggregate((a, b) => a + b) <= 3) {
@@ -33,7 +33,7 @@ namespace PI3{
                     }
 
                     if (Program.partidaEstado.rodadaAtual == 3) {
-                        avancar(tuple.Item1);
+                        avancar(tuple.Item1, tuple.Item2, tuple.Item3, tuple.Item4, tuple.Item5,  tuple.Item6);
                     }
                 }
                 else {
@@ -42,11 +42,11 @@ namespace PI3{
                     }
 
                     if (Program.partidaEstado.rodadaAtual == 2) {
-                        avancar(tuple.Item1);
+                        avancar(tuple.Item1, tuple.Item2, tuple.Item3, tuple.Item4, tuple.Item5,  tuple.Item6);
                     }
 
                     if (Program.partidaEstado.rodadaAtual == 3) {
-                        avancar(tuple.Item2);
+                        avancar(tuple.Item2, tuple.Item3, tuple.Item4, tuple.Item5,  tuple.Item6);
                     }
                 }
             } catch (Exception e) {
@@ -56,16 +56,22 @@ namespace PI3{
             }
         }
 
-        private static void avancar(int pos) {
-            var loc1 = maisLongePossivel(pos);
-            if(loc1.Item1 == 37)
-            {
-                loc1.Item2 = getLastTipoEnumCarta(pos);
-                Console.WriteLine("Carta pro final " + loc1.Item2);
-            }
-            if (loc1.Item1 > 0 && loc1.Item2 != TipoCartaEnum.Nula) {
-            GameCore.jogar(Program.partidaEstado, pos, loc1.Item2);
-            tuple = myPiratesPosition();
+        private static void avancar(params int[] posL){
+            if (posL.ToList().FindAll((value) => value<37).Count > 0) {
+
+                var pos = posL.ToList().Find((value) => value<37);
+                var loc1 = maisLongePossivel(pos);
+                if(loc1.Item1 == 37)
+                {
+                    loc1.Item2 = getLastTipoEnumCarta(pos);
+                    Console.WriteLine("Carta pro final " + loc1.Item2);
+                }
+                if (loc1.Item1 > 0 && loc1.Item2 != TipoCartaEnum.Nula) {
+                    GameCore.jogar(Program.partidaEstado, pos, loc1.Item2);
+                    tuple = myPiratesPosition();
+                }
+            } else {
+                GameCore.pular(Program.partidaEstado);
             }
         }
 
