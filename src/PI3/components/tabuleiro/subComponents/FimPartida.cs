@@ -19,6 +19,7 @@ namespace PI3
             InitializeComponent();
             //vencedor();
             this.winner = winner;
+            lblJogador.Text = winner;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -28,11 +29,6 @@ namespace PI3
             this.Close();
             Menu menu = new Menu();
             menu.Show();
-        }
-
-        public void vencedor()
-        {
-            lblJogador.Text = GameCore.getPlayerName(Program.partidaEstado.id, Program.partidaEstado.jogador.id);
         }
     }
 }
