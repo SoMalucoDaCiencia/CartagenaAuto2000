@@ -124,11 +124,19 @@ namespace PI3{
             if (aPartirDe <= 1) {
                 return false;
             }
-            var groups = Program.partidaEstado.casas.ToList().FindAll((casa) => casa.Key > 1 && casa.Key < aPartirDe).ToList().FindAll((casa) => {
-                return (aPartirDe - casa.Key <= 7 && aPartirDe - casa.Key > 0) &&
-                       (countPiratasCasa(casa.Key) == 1 ||
-                        countPiratasCasa(casa.Key) == 2);
-            });
+
+            List<KeyValuePair<int, Posicao>> groups;
+            if (aPartirDe == 37) {
+                groups = Program.partidaEstado.casas.ToList().FindAll((casa) => casa.Key >= 33 && casa.Key < aPartirDe).ToList().FindAll((casa) => {
+                    return countPiratasCasa(casa.Key) == 2;
+                });
+            } else {
+                groups = Program.partidaEstado.casas.ToList().FindAll((casa) => casa.Key > 1 && casa.Key < aPartirDe).ToList().FindAll((casa) => {
+                    return (aPartirDe - casa.Key <= 7 && aPartirDe - casa.Key > 0) &&
+                           (countPiratasCasa(casa.Key) == 1 ||
+                            countPiratasCasa(casa.Key) == 2);
+                });
+            }
             return groups.Count > 0;
         }
 
