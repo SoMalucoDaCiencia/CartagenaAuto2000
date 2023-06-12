@@ -218,7 +218,7 @@ namespace PI3.components.tabuleiro{
                 this.btnAuto.Hide();
             }
         }
-
+        
         private void btnIniciarPartida_Click(object sender, EventArgs e) {
             GameCore.update(Program.partidaEstado);
             if (Program.partidaEstado.state == PartidaState.PartidaEnum.ABERTA) {
@@ -332,7 +332,7 @@ namespace PI3.components.tabuleiro{
 
                         if (!order.Keys.Contains(innerKey))
                         {
-                            order.Add(innerKey, order.Values.Count > 0 && order.Values.ToList().Max() > 0 ? order.Values.ToList().Max() + 1: 0);
+                            order.Add(innerKey, (order.Values.Count > 0 ? order.Values.ToList().Max() + 1 : 0));
                         }
                     }
                     if (key > 0 && key <= 37) {
