@@ -12,10 +12,13 @@ namespace PI3
 {
     public partial class FimPartida : Form
     {
-        public FimPartida()
+        private string winner;
+
+        public FimPartida(string winner)
         {
             InitializeComponent();
             //vencedor();
+            this.winner = winner;
         }
 
         private void button1_Click(object sender, EventArgs e)
