@@ -21,7 +21,7 @@ namespace PI3.components.tabuleiro{
             InitializeComponent();
 
             // Hide defualt hidden components
-            //showLobby();
+            showLobby();
 
             // Init timer
             timerRoutine(null, null);
@@ -32,23 +32,25 @@ namespace PI3.components.tabuleiro{
 
         private void timerRoutine(object Sender, EventArgs e) {
             GameCore.update(Program.partidaEstado);
-            // Finaliza jogo =========================
-            var winnerId = Program.partidaEstado.casas[37].piratasPresentes.ToList().Find((casa) => casa.Value == 6).Key;
-            if (winnerId > 0) {
-                timer.Stop();
-                FimPartida fp = new FimPartida();
-                fp.Show();
-                this.Close();
-            }
-            // =======================================
 
             if (Program.partidaEstado.state == PartidaState.PartidaEnum.INICIADA) {
                 checkButtons();
                 updateMao();
                 listarHistorico();
                 btnIniciarPartida.Text = "Abrir Partida";
-            } else {
-                showLobby();
+
+                // Finaliza jogo =========================
+                var winnerId = Program.partidaEstado.casas[37].piratasPresentes.ToList().Find((casa) => casa.Value == 6).Key;
+                if (winnerId > 0)
+                {
+                    timer.Stop();
+                    FimPartida fp = new FimPartida();
+                    fp.Show();
+                    this.Close();
+                }
+                // =======================================
+            }
+            else {
                 jogadores = GameCore.listarJogadores(Program.partidaEstado.id);
                 this.lstPlayersLobby.Items.Clear();
                 this.lstPlayersLobby.Items.AddRange(Player.GetPlayersNames(jogadores).ToArray());
