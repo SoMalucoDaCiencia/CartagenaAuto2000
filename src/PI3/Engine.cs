@@ -60,7 +60,7 @@ namespace PI3{
             var loc1 = maisLongePossivel(pos);
             if(loc1.Item1 == 37)
             {
-                loc1.Item2 = getLastTipoEnumCarta(loc1.Item1);
+                loc1.Item2 = getLastTipoEnumCarta(pos);
             }
             if (loc1.Item1 > 0 && loc1.Item2 != TipoCartaEnum.Nula) { 
             GameCore.jogar(Program.partidaEstado, pos, loc1.Item2);
@@ -164,7 +164,7 @@ namespace PI3{
             TipoCartaEnum ret = TipoCartaEnum.Nula;
             Program.partidaEstado.jogador.mao.ForEach((carta) => {
                 List<int> aFrente = Program.partidaEstado.casas.ToList()
-                    .FindAll((casa) => casa.Key > aPartirDe && casa.Key < 37)
+                    .FindAll((casa) => (casa.Key > aPartirDe && casa.Key < 37) && countPiratasCasa(casa.Key) > 0)
                     .Select((casa) => (int)casa.Value.tipoPosicao).ToList();
                 if (!aFrente.Contains((int)carta.tipo))
                 {
