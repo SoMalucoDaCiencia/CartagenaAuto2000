@@ -1,13 +1,26 @@
-using System;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
-using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using CartagenaServer;
+using System.Linq;
 using PI3.models;
+using System;
 
 namespace PI3{
+
+    public class CoreError {
+        private bool fictional { get; set; } = false;
+        private string message { get; set; } = null;
+
+        public CoreError(string message) {
+            this.message = message;
+            this.fictional = true;
+        }
+
+        public bool isError() {
+            return fictional;
+        }
+    }
+
     public class GameCore{
         /// <summary>Lista partidas com o status especificado</summary>
         /// <param name="status"> Status das partidas </param>
