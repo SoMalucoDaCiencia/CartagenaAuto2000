@@ -99,10 +99,10 @@
       <DependentUpon>TabuleiroForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Engine.cs" />
-    <Compile Include="components\tabuleiro\FimPartida.cs">
+    <Compile Include="components\tabuleiro\subComponents\FimPartida.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="components\tabuleiro\FimPartida.Designer.cs">
+    <Compile Include="components\tabuleiro\subComponents\FimPartida.Designer.cs">
       <DependentUpon>FimPartida.cs</DependentUpon>
     </Compile>
     <Compile Include="FontsResources.cs" />
@@ -152,7 +152,7 @@
     <EmbeddedResource Include="components\tabuleiro\TabuleiroForm.resx">
       <DependentUpon>TabuleiroForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="components\tabuleiro\FimPartida.resx">
+    <EmbeddedResource Include="components\tabuleiro\subComponents\FimPartida.resx">
       <DependentUpon>FimPartida.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
@@ -215,7 +215,6 @@
   <ItemGroup>
     <Folder Include="components\criarPartida\subComponents\" />
     <Folder Include="components\menu\subComponents\" />
-    <Folder Include="components\tabuleiro\subComponents\" />
     <Folder Include="Properties\Resources\piratas\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

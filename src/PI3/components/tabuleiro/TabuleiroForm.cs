@@ -21,7 +21,7 @@ namespace PI3.components.tabuleiro{
             InitializeComponent();
 
             // Hide defualt hidden components
-            showLobby();
+            //showLobby();
 
             // Init timer
             timerRoutine(null, null);
@@ -37,7 +37,9 @@ namespace PI3.components.tabuleiro{
                 checkButtons();
                 updateMao();
                 listarHistorico();
+                btnIniciarPartida.Text = "Abrir Partida";
             } else {
+                showLobby();
                 jogadores = GameCore.listarJogadores(Program.partidaEstado.id);
                 this.lstPlayersLobby.Items.Clear();
                 this.lstPlayersLobby.Items.AddRange(Player.GetPlayersNames(jogadores).ToArray());
@@ -205,14 +207,16 @@ namespace PI3.components.tabuleiro{
         }
 
         private void btnIniciarPartida_Click(object sender, EventArgs e) {
-            GameCore.iniciarPartida(Program.partidaEstado);
             if (Program.partidaEstado.state == PartidaState.PartidaEnum.INICIADA) {
                 hideLobby();
                 drawTabuleiro();
-                createPiratesZeroPoint();//////
+                createPiratesZeroPoint();
                 listarHistorico();
                 checkButtons();
                 updateMao();
+            }
+            else if(Program.partidaEstado.state == PartidaState.PartidaEnum.ABERTA) {
+                GameCore.iniciarPartida(Program.partidaEstado);
             }
             else {
                 MessageBox.Show("ERRO!", "Um erro inesperado ocorreu, a partida não foi iniciada", MessageBoxButtons.OK,
