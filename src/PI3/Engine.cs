@@ -75,7 +75,7 @@ namespace PI3{
                         if (hasGroups(tp.Item6)) {
                             target = tp.Item6;
                         } else {
-                            GameCore.pular(Program.partidaEstado);
+                            avancar(tp.Item1);
                         }
                     }
                 }
@@ -139,7 +139,7 @@ namespace PI3{
         }
 
         private static bool isPrimeiraRodada() {
-            return Program.partidaEstado.casas[0].piratasPresentes[Program.partidaEstado.jogador.id] > 3;
+            return Program.partidaEstado.casas[0].piratasPresentes.ContainsKey(Program.partidaEstado.jogador.id) && Program.partidaEstado.casas[0].piratasPresentes[Program.partidaEstado.jogador.id] > 3;
         }
 
         private static (int, int, int, int, int, int) myPiratesPosition() {
