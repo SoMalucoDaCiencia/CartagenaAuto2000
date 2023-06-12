@@ -1,6 +1,7 @@
 using System.Linq;
 using PI3.models;
 using System;
+using System.Collections.Generic;
 
 namespace PI3{
     public class Engine{
@@ -63,6 +64,7 @@ namespace PI3{
 
         private static void voltar((int, int, int, int, int, int) tp) {
             int target = 0;
+            bool avancou = false;
             if (hasGroups(tp.Item5)) {
                 target = tp.Item5;
             } else {
@@ -76,12 +78,16 @@ namespace PI3{
                             target = tp.Item6;
                         } else {
                             avancar(tp.Item1);
+                            avancou = true;
                         }
                     }
                 }
             }
-            GameCore.voltar(Program.partidaEstado, target);
-            tuple = myPiratesPosition();
+            if (!avancou)
+            {
+                GameCore.voltar(Program.partidaEstado, target);
+                tuple = myPiratesPosition();
+            }   
         }
 
 
@@ -143,9 +149,15 @@ namespace PI3{
         }
 
         private static (int, int, int, int, int, int) myPiratesPosition() {
-            var postions = Program.partidaEstado.casas.ToList().FindAll((one) => {
-            return one.Value.piratasPresentes.ContainsKey(Program.partidaEstado.jogador.id) && one.Value.piratasPresentes[Program.partidaEstado.jogador.id] > 0;
-        }).Select((casa) => casa.Key).ToList();
+            var postions = new List<int>();
+            Program.partidaEstado.casas.ToList().FindAll((one) => {
+                return one.Value.piratasPresentes.ContainsKey(Program.partidaEstado.jogador.id) && one.Value.piratasPresentes[Program.partidaEstado.jogador.id] > 0;
+            }).ToList().ForEach((one) => {
+                for (int o = 0; o < one.Value.piratasPresentes[Program.partidaEstado.jogador.id]; o++)
+                {
+                    postions.Add(one.Key);
+                }
+            });
             postions.Sort();
             switch (postions.Count) {
                 case 1:
