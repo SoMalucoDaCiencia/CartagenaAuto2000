@@ -33,7 +33,7 @@ namespace PI3{
                     }
 
                     if (Program.partidaEstado.rodadaAtual == 3) {
-                        avancar(tuple.Item3);
+                        avancar(tuple.Item1);
                     }
                 }
                 else {
@@ -42,11 +42,11 @@ namespace PI3{
                     }
 
                     if (Program.partidaEstado.rodadaAtual == 2) {
-                        avancar(tuple.Item2);
+                        avancar(tuple.Item1);
                     }
 
                     if (Program.partidaEstado.rodadaAtual == 3) {
-                        avancar(tuple.Item3);
+                        avancar(tuple.Item2);
                     }
                 }
             } catch (Exception e) {
