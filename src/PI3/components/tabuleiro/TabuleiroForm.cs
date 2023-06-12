@@ -18,6 +18,9 @@ namespace PI3.components.tabuleiro{
 
         private bool tabuleiroIniciado = false;
 
+        Dictionary<int, int> order = new Dictionary<int, int>();
+
+
         public TabuleiroForm() {
             // Init component
             InitializeComponent();
@@ -316,7 +319,7 @@ namespace PI3.components.tabuleiro{
             int w = 65;
 
             Dictionary<int, int> map = new Dictionary<int, int>();
-            Dictionary<int, int> order = new Dictionary<int, int>();
+            // Dictionary<int, int> order = new Dictionary<int, int>();
 
             // Itera casas da partida
             Program.partidaEstado.casas.Keys.ToList().ForEach((key) => {
@@ -330,10 +333,10 @@ namespace PI3.components.tabuleiro{
                     {
                         map.Add(innerKey, 0);
 
-                        if (!order.Keys.Contains(innerKey))
-                        {
-                            order.Add(innerKey, order.Values.Count > 0 && order.Values.ToList().Max() > 0 ? order.Values.ToList().Max() + 1: 0);
-                        }
+                        // if (!order.Keys.Contains(innerKey))
+                        // {
+                        //     order.Add(innerKey, (order.Values.Count > 0 ? order.Values.ToList().Max() + 1 : 0));
+                        // }
                     }
                     if (key > 0 && key <= 37) {
 
@@ -375,6 +378,12 @@ namespace PI3.components.tabuleiro{
             foreach (var casa in Program.partidaEstado.casas.Values.ToList()) {
                 casa.piratasPresentes.Keys.ToList().ForEach((key) => {
                     jogadoresPresentes.Add(key);
+
+                    ///////
+                    if (!this.order.Keys.Contains(key)) {
+                        this.order.Add(key, (this.order.Values.Count > 0 ? this.order.Values.ToList().Max() + 1 : 0));
+                    }
+                    //////
                 });
                 if (jogadoresPresentes.Count >= 4) {
                     break;
