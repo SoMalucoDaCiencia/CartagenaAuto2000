@@ -164,9 +164,9 @@ namespace PI3{
             TipoCartaEnum ret = TipoCartaEnum.Nula;
             Program.partidaEstado.jogador.mao.ForEach((carta) => {
                 List<int> aFrente = Program.partidaEstado.casas.ToList()
-                    .FindAll((casa) => (casa.Key > aPartirDe && casa.Key < 37) && countPiratasCasa(casa.Key) > 0)
+                    .FindAll((casa) => (casa.Key > aPartirDe && casa.Key < 37) && countPiratasCasa(casa.Key) == 0)
                     .Select((casa) => (int)casa.Value.tipoPosicao).ToList();
-                if (!aFrente.Contains((int)carta.tipo))
+                if (!aFrente.Contains((int)carta.tipo) && carta.tipo != TipoCartaEnum.Nula)
                 {
                     ret = carta.tipo;
                 }
