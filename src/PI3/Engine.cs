@@ -70,6 +70,8 @@ namespace PI3{
                     GameCore.jogar(Program.partidaEstado, pos, loc1.Item2);
                     tuple = myPiratesPosition();
                 }
+            } else {
+                GameCore.pular(Program.partidaEstado);
             }
         }
 
