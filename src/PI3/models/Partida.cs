@@ -18,8 +18,8 @@ namespace PI3{
         
         public int rodadaAtual { get; set; }
 
-        public PartidaState.PartidaEnum state { get; set; }
-
+        public PartidaState.PartidaEnum state { get; set; }  = PartidaState.PartidaEnum.ABERTA;
+        
         public Dictionary<int, Posicao> casas { get; set; }
 
         public List<JogadaAntiga> jogadasAntigas { get; set; }
@@ -30,7 +30,7 @@ namespace PI3{
             this.id = idPartida;
             this.name = nomeP;
             this.senha = senhaP;
-            this.state = PartidaState.parse(Jogo.VerificarVez(this.id).Substring(0, 1));
+            //this.state = PartidaState.parse(Jogo.VerificarVez(this.id).Substring(0, 1));
             this.createdAt = DateTime.Parse(new List<string>(Jogo.ListarPartidas("T").Replace("\r", "").Split('\n'))
                 .FindAll((str) => str.StartsWith(this.id + ","))[0].Split(',')[2]);
             this.casas = new Dictionary<int, Posicao>();
