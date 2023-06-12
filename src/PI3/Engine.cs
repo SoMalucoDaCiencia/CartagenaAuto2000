@@ -8,8 +8,8 @@ namespace PI3{
         private static (int, int, int, int, int, int) tuple = myPiratesPosition();
         public static void process() {
             try {
-
-                if (Program.partidaEstado.jogador.mao.Count >= 8 || isPrimeiraRodada()) {
+                var counter = Program.partidaEstado.jogador.mao.Select((one) => one.quantidade).Aggregate((a, b) => a + b);
+                if (Program.partidaEstado.jogador.mao.Select((one) => one.quantidade).Aggregate((a, b) => a + b) >= 8 || isPrimeiraRodada()) {
                     if (Program.partidaEstado.rodadaAtual == 1) {
                         avancar(tuple.Item1);
                     }
@@ -22,7 +22,7 @@ namespace PI3{
                         avancar(tuple.Item3);
                     }
                 }
-                else if (Program.partidaEstado.jogador.mao.Count <= 3) {
+                else if (Program.partidaEstado.jogador.mao.Select((one) => one.quantidade).Aggregate((a, b) => a + b) <= 3) {
 
                     if (Program.partidaEstado.rodadaAtual == 1) {
                         voltar(tuple);
@@ -58,8 +58,10 @@ namespace PI3{
 
         private static void avancar(int pos) {
             var loc1 = maisLongePossivel(pos);
+            if (loc1.Item1 > 0 && loc1.Item2 != TipoCartaEnum.Nula) { 
             GameCore.jogar(Program.partidaEstado, pos, loc1.Item2);
             tuple = myPiratesPosition();
+            }
         }
 
         private static void voltar((int, int, int, int, int, int) tp) {
@@ -93,13 +95,14 @@ namespace PI3{
 
         private static (int, TipoCartaEnum) maisLongePossivel(int aPartirDe) {
             TipoCartaEnum tipoCasa = TipoCartaEnum.Nula;
-            int maisLonge = (aPartirDe > 0 ? aPartirDe : myPiratesPosition().Item3);
+            int maisLonge = ( - 1);
             Program.partidaEstado.jogador.mao.ForEach((carta) => {
-                int candidata = Program.partidaEstado.casas.ToList().FindAll((casa) => {
+                List<int> candidatas = Program.partidaEstado.casas.ToList().FindAll((casa) => {
                     return countPiratasCasa(casa.Key) == 0 &&
                            casa.Key > aPartirDe &&
                            casa.Value.tipoPosicao == carta.tipo;
-                }).Select(casa => casa.Key).ToList()[0];
+                }).Select(casa => casa.Key).ToList();
+                int candidata = candidatas[0];
                 if (candidata > maisLonge) {
                     maisLonge = candidata;
                     tipoCasa = Program.partidaEstado.casas[candidata].tipoPosicao;
