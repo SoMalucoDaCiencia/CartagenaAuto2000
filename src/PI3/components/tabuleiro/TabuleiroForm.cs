@@ -32,6 +32,15 @@ namespace PI3.components.tabuleiro{
 
         private void timerRoutine(object Sender, EventArgs e) {
             GameCore.update(Program.partidaEstado);
+            // Finaliza jogo =========================
+            var winnerId = Program.partidaEstado.casas[37].piratasPresentes.ToList().Find((casa) => casa.Value == 6).Key;
+            if (winnerId > 0) {
+                timer.Stop();
+                FimPartida fp = new FimPartida();
+                fp.Show();
+                this.Close();
+            }
+            // =======================================
 
             if (Program.partidaEstado.state == PartidaState.PartidaEnum.INICIADA) {
                 checkButtons();
