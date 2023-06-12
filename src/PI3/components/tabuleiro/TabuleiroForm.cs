@@ -41,9 +41,11 @@ namespace PI3.components.tabuleiro{
             // Finaliza jogo =========================
             if ((Program.partidaEstado.state == PartidaState.PartidaEnum.ENCERRADA) || (Program.partidaEstado.casas.Keys.Count > 0 && Program.partidaEstado.casas[37].piratasPresentes.ToList().Find((casa) => casa.Value == 6).Key > 0)) {
                 timer.Stop();
-                    FimPartida fp = new FimPartida();
-                    fp.Show();
+                FimPartida criarSala = new FimPartida();
+                var result = criarSala.ShowDialog();
+                if (result == DialogResult.OK) {
                     this.Close();
+                }
             }
             // =======================================
 
