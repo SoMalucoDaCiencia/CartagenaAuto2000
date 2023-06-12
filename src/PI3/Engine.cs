@@ -58,6 +58,10 @@ namespace PI3{
 
         private static void avancar(int pos) {
             var loc1 = maisLongePossivel(pos);
+            if(loc1.Item1 == 37)
+            {
+                loc1.Item2 = getLastTipoEnumCarta(loc1.Item1);
+            }
             if (loc1.Item1 > 0 && loc1.Item2 != TipoCartaEnum.Nula) { 
             GameCore.jogar(Program.partidaEstado, pos, loc1.Item2);
             tuple = myPiratesPosition();
@@ -98,10 +102,14 @@ namespace PI3{
             int maisLonge = ( - 1);
             Program.partidaEstado.jogador.mao.ForEach((carta) => {
                 List<int> candidatas = Program.partidaEstado.casas.ToList().FindAll((casa) => {
-                    return countPiratasCasa(casa.Key) == 0 &&
+                    return (countPiratasCasa(casa.Key) == 0 &&
                            casa.Key > aPartirDe &&
-                           casa.Value.tipoPosicao == carta.tipo;
+                           casa.Value.tipoPosicao == carta.tipo) || casa.Key == 37;
                 }).Select(casa => casa.Key).ToList();
+                if(candidatas == null)
+                {
+                    Console.WriteLine("s");
+                }
                 int candidata = candidatas[0];
                 if (candidata > maisLonge) {
                     maisLonge = candidata;
@@ -149,6 +157,21 @@ namespace PI3{
 
         private static bool isPrimeiraRodada() {
             return Program.partidaEstado.casas[0].piratasPresentes.ContainsKey(Program.partidaEstado.jogador.id) && Program.partidaEstado.casas[0].piratasPresentes[Program.partidaEstado.jogador.id] > 3;
+        }
+
+        private static TipoCartaEnum getLastTipoEnumCarta(int aPartirDe)
+        {
+            TipoCartaEnum ret = TipoCartaEnum.Nula;
+            Program.partidaEstado.jogador.mao.ForEach((carta) => {
+                List<int> aFrente = Program.partidaEstado.casas.ToList()
+                    .FindAll((casa) => casa.Key > aPartirDe && casa.Key < 37)
+                    .Select((casa) => (int)casa.Value.tipoPosicao).ToList();
+                if (!aFrente.Contains((int)carta.tipo))
+                {
+                    ret = carta.tipo;
+                }
+            });
+            return ret;
         }
 
         private static (int, int, int, int, int, int) myPiratesPosition() {
