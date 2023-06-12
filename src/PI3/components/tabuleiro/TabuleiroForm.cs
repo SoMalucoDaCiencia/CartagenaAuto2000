@@ -38,17 +38,16 @@ namespace PI3.components.tabuleiro{
         private void timerRoutine(object Sender, EventArgs e) {
             GameCore.update(Program.partidaEstado);
 
-            if (Program.partidaEstado.state == PartidaState.PartidaEnum.INICIADA) {
-                // Finaliza jogo =========================
-                var winnerId = Program.partidaEstado.casas[37].piratasPresentes.ToList().Find((casa) => casa.Value == 6).Key;
-                if (winnerId > 0) {
-                    timer.Stop();
+            // Finaliza jogo =========================
+            if ((Program.partidaEstado.state == PartidaState.PartidaEnum.ENCERRADA) || (Program.partidaEstado.casas.Keys.Count > 0 && Program.partidaEstado.casas[37].piratasPresentes.ToList().Find((casa) => casa.Value == 6).Key > 0)) {
+                timer.Stop();
                     FimPartida fp = new FimPartida();
                     fp.Show();
                     this.Close();
-                }
-                // =======================================
+            }
+            // =======================================
 
+            if (Program.partidaEstado.state == PartidaState.PartidaEnum.INICIADA) {
                 if (!this.tabuleiroIniciado) {
                     initTabuleiro();
                 }
