@@ -16,6 +16,8 @@ namespace PI3.components.tabuleiro{
 
         bool stop = false;
 
+        private bool tabuleiroIniciado = false;
+
         public TabuleiroForm() {
             // Init component
             InitializeComponent();
@@ -34,23 +36,23 @@ namespace PI3.components.tabuleiro{
             GameCore.update(Program.partidaEstado);
 
             if (Program.partidaEstado.state == PartidaState.PartidaEnum.INICIADA) {
-                checkButtons();
-                updateMao();
-                listarHistorico();
-                btnIniciarPartida.Text = "Abrir Partida";
-
                 // Finaliza jogo =========================
                 var winnerId = Program.partidaEstado.casas[37].piratasPresentes.ToList().Find((casa) => casa.Value == 6).Key;
-                if (winnerId > 0)
-                {
+                if (winnerId > 0) {
                     timer.Stop();
                     FimPartida fp = new FimPartida();
                     fp.Show();
                     this.Close();
                 }
                 // =======================================
-            }
-            else {
+
+                if (!this.tabuleiroIniciado) {
+                    initTabuleiro();
+                }
+                checkButtons();
+                updateMao();
+                listarHistorico();
+            } else {
                 jogadores = GameCore.listarJogadores(Program.partidaEstado.id);
                 this.lstPlayersLobby.Items.Clear();
                 this.lstPlayersLobby.Items.AddRange(Player.GetPlayersNames(jogadores).ToArray());
@@ -218,21 +220,26 @@ namespace PI3.components.tabuleiro{
         }
 
         private void btnIniciarPartida_Click(object sender, EventArgs e) {
-            if (Program.partidaEstado.state == PartidaState.PartidaEnum.INICIADA) {
-                hideLobby();
-                drawTabuleiro();
-                createPiratesZeroPoint();
-                listarHistorico();
-                checkButtons();
-                updateMao();
-            }
-            else if(Program.partidaEstado.state == PartidaState.PartidaEnum.ABERTA) {
+            GameCore.update(Program.partidaEstado);
+            if (Program.partidaEstado.state == PartidaState.PartidaEnum.ABERTA) {
                 GameCore.iniciarPartida(Program.partidaEstado);
             }
-            else {
-                MessageBox.Show("ERRO!", "Um erro inesperado ocorreu, a partida não foi iniciada", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+
+            if (Program.partidaEstado.state == PartidaState.PartidaEnum.INICIADA) {
+                initTabuleiro();
+            } else {
+                MessageBox.Show("ERRO!", "Um erro inesperado ocorreu, a partida não foi iniciada", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void initTabuleiro() {
+            hideLobby();
+            drawTabuleiro();
+            createPiratesZeroPoint();
+            listarHistorico();
+            checkButtons();
+            updateMao();
+            this.tabuleiroIniciado = true;
         }
 
         private void showQtd(object sender, EventArgs e) {
