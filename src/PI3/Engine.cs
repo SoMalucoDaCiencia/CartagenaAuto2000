@@ -61,8 +61,9 @@ namespace PI3{
             if(loc1.Item1 == 37)
             {
                 loc1.Item2 = getLastTipoEnumCarta(pos);
+                Console.WriteLine("Carta pro final " + loc1.Item2);
             }
-            if (loc1.Item1 > 0 && loc1.Item2 != TipoCartaEnum.Nula) { 
+            if (loc1.Item1 > 0 && loc1.Item2 != TipoCartaEnum.Nula) {
             GameCore.jogar(Program.partidaEstado, pos, loc1.Item2);
             tuple = myPiratesPosition();
             }
@@ -93,7 +94,7 @@ namespace PI3{
             {
                 GameCore.voltar(Program.partidaEstado, target);
                 tuple = myPiratesPosition();
-            }   
+            }
         }
 
 
